@@ -86,7 +86,13 @@ ul ul li::before{content:"\2013";color:var(--navy);}
 .card h3{margin-top:0;color:var(--navy);}
 .card .kick{font-family:'Oswald',sans-serif;color:var(--red);font-size:13px;
   letter-spacing:2px;text-transform:uppercase;}
+.icon{width:42px;height:42px;display:block;color:var(--navy);}
+.card-icon{width:42px;height:42px;display:block;margin:10px 0 4px;color:var(--blue);
+  transition:color .12s;}
+h2 .icon{width:26px;height:26px;display:inline-block;vertical-align:-4px;margin-right:9px;
+  color:var(--red);}
 a.card{display:block;text-decoration:none;color:inherit;transition:background .12s,border-color .12s;}
+a.card:hover .card-icon{color:var(--red);}
 a.card:hover{background:var(--cream-soft);border-color:var(--red);}
 a.card:hover h3{color:var(--red);}
 a.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
@@ -170,9 +176,10 @@ HP&nbsp;Inc.</p>
 classically trained international security and foreign policy analyst &mdash; under
 Dr.&nbsp;Pfaltzgraff at Tufts, then with Dr.&nbsp;Strmecki at the Smith Richardson Foundation,
 whose board has included Rumsfeld, Brzezinski and Woolsey, and today McMaster and Keane. She
-volunteers with the Office of Net Assessment on AI-enabled scenario-based planning.</p>
+volunteers with the Office of Net Assessment on AI-enabled scenario-based planning, and is a
+Senior Fellow at the Institute for State Effectiveness in Washington,&nbsp;D.C.</p>
 
-<h2>Track record</h2>
+<h2><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><polygon points="32,5 37.5,26.5 59,32 37.5,37.5 32,59 26.5,37.5 5,32 26.5,26.5" fill="currentColor"/><circle cx="32" cy="32" r="5" fill="#F5EEE0"/><circle cx="32" cy="32" r="2" fill="currentColor"/></svg>Track record</h2>
 <ul>
   <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
   <span class="num">$300M</span> Gracenote business at Nielsen.</li>
@@ -181,6 +188,8 @@ volunteers with the Office of Net Assessment on AI-enabled scenario-based planni
   <li>Built and piloted multi-agent systems for decision support, for infrastructure investors
   across <span class="num">four</span> countries &mdash; ports, data centers, and district
   assets.</li>
+  <li>Shipped HP&rsquo;s first API-based data exchange and governance capability, for a
+  <span class="num">$40B</span> channel-partner program.</li>
 </ul>
 
 <div class="quote">
@@ -199,9 +208,9 @@ volunteers with the Office of Net Assessment on AI-enabled scenario-based planni
 <h2>Services</h2>
 <p>Click any service to open an email, already written.</p>
 <div class="grid">
-  <a class="card" href="mailto:miller@ripleydecisionadvantage.net?subject=Zero-to-one%20product%20engineering&amp;body=I%20am%20writing%20to%20inquire%20about%20your%20zero-to-one%20product%20engineering%20services%2C%20please%20contact%20me%20to%20start%20this%20discussion"><span class="kick">01</span><h3>Zero-to-one product engineering</h3><p>Bespoke AI/ML systems from first requirement to production. Architecture, build, launch.</p><span class="mailcue">Click to email &rarr;</span></a>
-  <a class="card" href="mailto:miller@ripleydecisionadvantage.net?subject=MLOps%20%26%20governance&amp;body=I%20am%20writing%20to%20inquire%20about%20your%20MLOps%20and%20governance%20services%2C%20please%20contact%20me%20to%20start%20this%20discussion"><span class="kick">02</span><h3>MLOps &amp; governance</h3><p>Deployment pipelines, model risk management, and audit-ready frameworks that survive regulatory review.</p><span class="mailcue">Click to email &rarr;</span></a>
-  <a class="card" href="mailto:miller@ripleydecisionadvantage.net?subject=Technical%20sales%20%26%20pre-sales&amp;body=I%20am%20writing%20to%20inquire%20about%20your%20technical%20sales%20and%20pre-sales%20services%2C%20please%20contact%20me%20to%20start%20this%20discussion"><span class="kick">03</span><h3>Technical sales &amp; pre-sales</h3><p>Demos, proofs of concept, and technical narratives that close. Engineering credibility in the room.</p><span class="mailcue">Click to email &rarr;</span></a>
+  <a class="card" href="mailto:miller@ripleydecisionadvantage.net?subject=Zero-to-one%20product%20engineering&amp;body=I%20am%20writing%20to%20inquire%20about%20your%20zero-to-one%20product%20engineering%20services%2C%20please%20contact%20me%20to%20start%20this%20discussion"><span class="kick">01</span><svg class="card-icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><polygon points="0,58 30,16 50,58" fill="currentColor"/><rect x="29" y="4" width="2.4" height="23" fill="currentColor"/><polygon points="31.4,4 46,9 31.4,14" fill="currentColor"/></svg><h3>Zero-to-one product engineering</h3><p>Bespoke AI/ML systems from first requirement to production. Architecture, build, launch.</p><span class="mailcue">Click to email &rarr;</span></a>
+  <a class="card" href="mailto:miller@ripleydecisionadvantage.net?subject=MLOps%20%26%20governance&amp;body=I%20am%20writing%20to%20inquire%20about%20your%20MLOps%20and%20governance%20services%2C%20please%20contact%20me%20to%20start%20this%20discussion"><span class="kick">02</span><svg class="card-icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M 32 4 L 56 12 L 54 36 Q 52 52 32 60 Q 12 52 10 36 L 8 12 Z"/></svg><h3>MLOps &amp; governance</h3><p>Deployment pipelines, model risk management, and audit-ready frameworks that survive regulatory review.</p><span class="mailcue">Click to email &rarr;</span></a>
+  <a class="card" href="mailto:miller@ripleydecisionadvantage.net?subject=Technical%20sales%20%26%20pre-sales&amp;body=I%20am%20writing%20to%20inquire%20about%20your%20technical%20sales%20and%20pre-sales%20services%2C%20please%20contact%20me%20to%20start%20this%20discussion"><span class="kick">03</span><svg class="card-icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect x="7" y="32" width="15" height="26" fill="currentColor"/><rect x="24.5" y="18" width="15" height="40" fill="currentColor"/><rect x="42" y="40" width="15" height="18" fill="currentColor"/><rect x="5" y="58" width="54" height="3" fill="currentColor"/><rect x="26.5" y="30" width="11" height="1.6" fill="#F5EEE0"/><rect x="26.5" y="34" width="11" height="1.6" fill="#F5EEE0"/><rect x="26.5" y="38" width="11" height="1.6" fill="#F5EEE0"/></svg><h3>Technical sales &amp; pre-sales</h3><p>Demos, proofs of concept, and technical narratives that close. Engineering credibility in the room.</p><span class="mailcue">Click to email &rarr;</span></a>
 </div>
 
 <p style="text-align:center">

@@ -86,7 +86,13 @@ ul ul li::before{content:"\2013";color:var(--navy);}
 .card h3{margin-top:0;color:var(--navy);}
 .card .kick{font-family:'Oswald',sans-serif;color:var(--red);font-size:13px;
   letter-spacing:2px;text-transform:uppercase;}
+.icon{width:42px;height:42px;display:block;color:var(--navy);}
+.card-icon{width:42px;height:42px;display:block;margin:10px 0 4px;color:var(--blue);
+  transition:color .12s;}
+h2 .icon{width:26px;height:26px;display:inline-block;vertical-align:-4px;margin-right:9px;
+  color:var(--red);}
 a.card{display:block;text-decoration:none;color:inherit;transition:background .12s,border-color .12s;}
+a.card:hover .card-icon{color:var(--red);}
 a.card:hover{background:var(--cream-soft);border-color:var(--red);}
 a.card:hover h3{color:var(--red);}
 a.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
@@ -170,8 +176,11 @@ footer{background:var(--navy);color:var(--cream-soft);}
   voice infrastructure via Vapi and Retell AI</td></tr>
   <tr><td class="dom">Software</td><td>Python, Java, Scala, TypeScript, JavaScript, React,
   Node.js, FastAPI</td></tr>
-  <tr><td class="dom">Data</td><td>PostgreSQL, Snowflake, Google BigQuery, Databricks, vector
-  databases, BI platforms</td></tr>
+  <tr><td class="dom">Data</td><td>PostgreSQL, Neo4j/Cypher, Snowflake, Google BigQuery,
+  Databricks, Elasticsearch kNN, vector databases, BI platforms</td></tr>
+  <tr><td class="dom">Governance</td><td>Model risk management (SR&nbsp;11-7), NIST AI RMF,
+  audit-trail architectures, data provenance and lineage, PII governance and RBAC, confidential
+  computing (TEEs)</td></tr>
   <tr><td class="dom">Compliance</td><td>Financial-services compliance (SEC/FINRA), insurance
   regulatory alignment (NAIC), explainable AI (XAI)</td></tr>
 </table>

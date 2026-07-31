@@ -31,7 +31,7 @@ site/             generated — this is what gets deployed
 |---|---|---|
 | `index.html` | yes (About) | hero, firm, principal, services, track record, quote |
 | `tools.html` | yes (Tools) | expertise groups + stack table |
-| `contact.html` | yes (Contact) | email, phone, what to include |
+| `contact.html` | yes (Contact) | email, phone, LinkedIn |
 | `egon.html` | **no — deliberately unlisted** | reachable by direct link only |
 | `privacy.html` | footer | |
 | `terms.html` | footer | |

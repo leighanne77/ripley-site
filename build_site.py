@@ -105,7 +105,13 @@ ul ul li::before{content:"\\2013";color:var(--navy);}
 .card h3{margin-top:0;color:var(--navy);}
 .card .kick{font-family:'Oswald',sans-serif;color:var(--red);font-size:13px;
   letter-spacing:2px;text-transform:uppercase;}
+.icon{width:42px;height:42px;display:block;color:var(--navy);}
+.card-icon{width:42px;height:42px;display:block;margin:10px 0 4px;color:var(--blue);
+  transition:color .12s;}
+h2 .icon{width:26px;height:26px;display:inline-block;vertical-align:-4px;margin-right:9px;
+  color:var(--red);}
 a.card{display:block;text-decoration:none;color:inherit;transition:background .12s,border-color .12s;}
+a.card:hover .card-icon{color:var(--red);}
 a.card:hover{background:var(--cream-soft);border-color:var(--red);}
 a.card:hover h3{color:var(--red);}
 a.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
@@ -198,19 +204,49 @@ def page(fname, title, desc, body):
 
 EMAIL = "miller@ripleydecisionadvantage.net"
 
+# ---- Section icons. Same treatment as the mountain mark: 64x64 box, geometric
+# fills, navy swapped for currentColor so each icon inherits colour from context
+# (navy at rest, red on card hover). Cream detail stays literal.
+ICONS = {
+    "summit":
+        '<polygon points="0,58 30,16 50,58" fill="currentColor"/>'
+        '<rect x="29" y="4" width="2.4" height="23" fill="currentColor"/>'
+        '<polygon points="31.4,4 46,9 31.4,14" fill="currentColor"/>',
+    "shield":
+        '<path fill="currentColor" fill-rule="evenodd" '
+        'd="M 32 4 L 56 12 L 54 36 Q 52 52 32 60 Q 12 52 10 36 L 8 12 Z"/>',
+    "podium":
+        '<rect x="7" y="32" width="15" height="26" fill="currentColor"/>'
+        '<rect x="24.5" y="18" width="15" height="40" fill="currentColor"/>'
+        '<rect x="42" y="40" width="15" height="18" fill="currentColor"/>'
+        '<rect x="5" y="58" width="54" height="3" fill="currentColor"/>'
+        '<rect x="26.5" y="30" width="11" height="1.6" fill="#F5EEE0"/>'
+        '<rect x="26.5" y="34" width="11" height="1.6" fill="#F5EEE0"/>'
+        '<rect x="26.5" y="38" width="11" height="1.6" fill="#F5EEE0"/>',
+    "compass":
+        '<polygon points="32,5 37.5,26.5 59,32 37.5,37.5 32,59 26.5,37.5 5,32 26.5,26.5" '
+        'fill="currentColor"/>'
+        '<circle cx="32" cy="32" r="5" fill="#F5EEE0"/>'
+        '<circle cx="32" cy="32" r="2" fill="currentColor"/>',
+}
+
+def icon(name, cls="icon"):
+    return (f'<svg class="{cls}" viewBox="0 0 64 64" aria-hidden="true" '
+            f'xmlns="http://www.w3.org/2000/svg">{ICONS[name]}</svg>')
+
 # Each card is a mailto link with the enquiry pre-written, so the visitor's
 # first email arrives already scoped to the service they clicked.
 SERVICES = [
-    ("01", "Zero-to-one product engineering",
+    ("01", "summit", "Zero-to-one product engineering",
      "Bespoke AI/ML systems from first requirement to production. Architecture, build, launch.",
      "I am writing to inquire about your zero-to-one product engineering services, "
      "please contact me to start this discussion"),
-    ("02", "MLOps & governance",
+    ("02", "shield", "MLOps & governance",
      "Deployment pipelines, model risk management, and audit-ready frameworks that survive "
      "regulatory review.",
      "I am writing to inquire about your MLOps and governance services, "
      "please contact me to start this discussion"),
-    ("03", "Technical sales & pre-sales",
+    ("03", "podium", "Technical sales & pre-sales",
      "Demos, proofs of concept, and technical narratives that close. Engineering credibility in "
      "the room.",
      "I am writing to inquire about your technical sales and pre-sales services, "
@@ -219,7 +255,7 @@ SERVICES = [
 
 def service_cards():
     cards = []
-    for kick, title, blurb, ask in SERVICES:
+    for kick, ico, title, blurb, ask in SERVICES:
         # quote (not quote_plus): a "+" would render literally in the mail body
         query = urllib.parse.urlencode({"subject": title, "body": ask},
                                        quote_via=urllib.parse.quote)
@@ -227,6 +263,7 @@ def service_cards():
         cards.append(
             f'  <a class="card" href="{href}">'
             f'<span class="kick">{kick}</span>'
+            f'{icon(ico, "card-icon")}'
             f'<h3>{html.escape(title)}</h3>'
             f'<p>{html.escape(blurb)}</p>'
             f'<span class="mailcue">Click to email &rarr;</span></a>')
@@ -269,9 +306,10 @@ HP&nbsp;Inc.</p>
 classically trained international security and foreign policy analyst &mdash; under
 Dr.&nbsp;Pfaltzgraff at Tufts, then with Dr.&nbsp;Strmecki at the Smith Richardson Foundation,
 whose board has included Rumsfeld, Brzezinski and Woolsey, and today McMaster and Keane. She
-volunteers with the Office of Net Assessment on AI-enabled scenario-based planning.</p>
+volunteers with the Office of Net Assessment on AI-enabled scenario-based planning, and is a
+Senior Fellow at the Institute for State Effectiveness in Washington,&nbsp;D.C.</p>
 
-<h2>Track record</h2>
+<h2>{icon("compass")}Track record</h2>
 <ul>
   <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
   <span class="num">$300M</span> Gracenote business at Nielsen.</li>
@@ -280,6 +318,8 @@ volunteers with the Office of Net Assessment on AI-enabled scenario-based planni
   <li>Built and piloted multi-agent systems for decision support, for infrastructure investors
   across <span class="num">four</span> countries &mdash; ports, data centers, and district
   assets.</li>
+  <li>Shipped HP&rsquo;s first API-based data exchange and governance capability, for a
+  <span class="num">$40B</span> channel-partner program.</li>
 </ul>
 
 <div class="quote">
@@ -397,8 +437,11 @@ PAGES["tools.html"] = ("Languages & Tools | Ripley Decision Advantage",
   voice infrastructure via Vapi and Retell AI</td></tr>
   <tr><td class="dom">Software</td><td>Python, Java, Scala, TypeScript, JavaScript, React,
   Node.js, FastAPI</td></tr>
-  <tr><td class="dom">Data</td><td>PostgreSQL, Snowflake, Google BigQuery, Databricks, vector
-  databases, BI platforms</td></tr>
+  <tr><td class="dom">Data</td><td>PostgreSQL, Neo4j/Cypher, Snowflake, Google BigQuery,
+  Databricks, Elasticsearch kNN, vector databases, BI platforms</td></tr>
+  <tr><td class="dom">Governance</td><td>Model risk management (SR&nbsp;11-7), NIST AI RMF,
+  audit-trail architectures, data provenance and lineage, PII governance and RBAC, confidential
+  computing (TEEs)</td></tr>
   <tr><td class="dom">Compliance</td><td>Financial-services compliance (SEC/FINRA), insurance
   regulatory alignment (NAIC), explainable AI (XAI)</td></tr>
 </table>
@@ -433,12 +476,6 @@ PAGES["contact.html"] = ("Contact | Ripley Decision Advantage",
   leighannemillerengineering</a></p>
 </div>
 
-<h2>What to include</h2>
-<ul>
-  <li>The decision you need to make, and by when.</li>
-  <li>What you have tried, and what it cost.</li>
-  <li>Any regulatory or audit constraints up front.</li>
-</ul>
 <div class="stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
 """)
 
