@@ -3,7 +3,7 @@
 Ripley identity on the EGON visual system. Six self-contained pages, fonts base64-embedded.
 Source of truth for the Ripley mountain mark geometry: MARK_SVG below.
 """
-import base64, os, pathlib
+import base64, html, os, pathlib, urllib.parse
 
 ROOT = pathlib.Path(__file__).parent
 OUT = ROOT / "site"
@@ -105,6 +105,12 @@ ul ul li::before{content:"\\2013";color:var(--navy);}
 .card h3{margin-top:0;color:var(--navy);}
 .card .kick{font-family:'Oswald',sans-serif;color:var(--red);font-size:13px;
   letter-spacing:2px;text-transform:uppercase;}
+a.card{display:block;text-decoration:none;color:inherit;transition:background .12s,border-color .12s;}
+a.card:hover{background:var(--cream-soft);border-color:var(--red);}
+a.card:hover h3{color:var(--red);}
+a.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
+  letter-spacing:2px;text-transform:uppercase;color:var(--blue);}
+a.card:hover .mailcue{color:var(--red);}
 /* quote (§9.4) */
 .quote{margin:34px 0;padding:8px 0;text-align:center;}
 .quote .q{font-family:'Oswald',sans-serif;font-weight:700;color:var(--red);
@@ -190,6 +196,44 @@ def page(fname, title, desc, body):
 </html>
 """
 
+EMAIL = "miller@ripleydecisionadvantage.net"
+
+# Each card is a mailto link with the enquiry pre-written, so the visitor's
+# first email arrives already scoped to the service they clicked.
+SERVICES = [
+    ("01", "Zero-to-one product engineering",
+     "Bespoke AI/ML systems from first requirement to production. Architecture, build, launch.",
+     "I am writing to inquire about your zero-to-one product engineering services, "
+     "please contact me to start this discussion"),
+    ("02", "MLOps & governance",
+     "Deployment pipelines, model risk management, and audit-ready frameworks that survive "
+     "regulatory review.",
+     "I am writing to inquire about your MLOps and governance services, "
+     "please contact me to start this discussion"),
+    ("03", "Technical sales & pre-sales",
+     "Demos, proofs of concept, and technical narratives that close. Engineering credibility in "
+     "the room.",
+     "I am writing to inquire about your technical sales and pre-sales services, "
+     "please contact me to start this discussion"),
+]
+
+def service_cards():
+    cards = []
+    for kick, title, blurb, ask in SERVICES:
+        # quote (not quote_plus): a "+" would render literally in the mail body
+        query = urllib.parse.urlencode({"subject": title, "body": ask},
+                                       quote_via=urllib.parse.quote)
+        href = html.escape(f"mailto:{EMAIL}?{query}", quote=True)
+        cards.append(
+            f'  <a class="card" href="{href}">'
+            f'<span class="kick">{kick}</span>'
+            f'<h3>{html.escape(title)}</h3>'
+            f'<p>{html.escape(blurb)}</p>'
+            f'<span class="mailcue">Click to email &rarr;</span></a>')
+    return "\n".join(cards)
+
+SERVICE_CARDS = service_cards()
+
 PAGES = {}
 
 # ---------------------------------------------------------------- index
@@ -246,23 +290,14 @@ Spinf&nbsp;AI, and HP&nbsp;Inc.</p>
 </div>
 
 <h2>Services</h2>
+<p>Click any service to open an email, already written.</p>
 <div class="grid">
-  <div class="card"><span class="kick">01</span><h3>Zero-to-one product engineering</h3>
-    <p>Bespoke AI/ML systems from first requirement to production. Architecture, build, launch.</p></div>
-  <div class="card"><span class="kick">02</span><h3>MLOps &amp; governance</h3>
-    <p>Deployment pipelines, model risk management, and audit-ready frameworks that survive
-    regulatory review.</p></div>
-  <div class="card"><span class="kick">03</span><h3>Technical sales &amp; pre-sales</h3>
-    <p>Demos, proofs of concept, and technical narratives that close. Engineering credibility in
-    the room.</p></div>
-  <div class="card"><span class="kick">04</span><h3>Vendor &amp; procurement assessment</h3>
-    <p>Independent technical assessment of vendors and tools before you sign. Evidence, not
-    brochures.</p></div>
+{SERVICE_CARDS}
 </div>
 
 <p style="text-align:center">
-  <a class="cta" href="mailto:miller@ripleydecisionadvantage.net">Click to email</a><br>
-  <a href="mailto:miller@ripleydecisionadvantage.net">miller@ripleydecisionadvantage.net</a>
+  <a class="cta" href="mailto:{EMAIL}">Something else &mdash; email us</a><br>
+  <a href="mailto:{EMAIL}">{EMAIL}</a>
 </p>
 
 <div class="callout">

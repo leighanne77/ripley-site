@@ -86,6 +86,12 @@ ul ul li::before{content:"\2013";color:var(--navy);}
 .card h3{margin-top:0;color:var(--navy);}
 .card .kick{font-family:'Oswald',sans-serif;color:var(--red);font-size:13px;
   letter-spacing:2px;text-transform:uppercase;}
+a.card{display:block;text-decoration:none;color:inherit;transition:background .12s,border-color .12s;}
+a.card:hover{background:var(--cream-soft);border-color:var(--red);}
+a.card:hover h3{color:var(--red);}
+a.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
+  letter-spacing:2px;text-transform:uppercase;color:var(--blue);}
+a.card:hover .mailcue{color:var(--red);}
 /* quote (§9.4) */
 .quote{margin:34px 0;padding:8px 0;text-align:center;}
 .quote .q{font-family:'Oswald',sans-serif;font-weight:700;color:var(--red);

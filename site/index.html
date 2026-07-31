@@ -86,6 +86,12 @@ ul ul li::before{content:"\2013";color:var(--navy);}
 .card h3{margin-top:0;color:var(--navy);}
 .card .kick{font-family:'Oswald',sans-serif;color:var(--red);font-size:13px;
   letter-spacing:2px;text-transform:uppercase;}
+a.card{display:block;text-decoration:none;color:inherit;transition:background .12s,border-color .12s;}
+a.card:hover{background:var(--cream-soft);border-color:var(--red);}
+a.card:hover h3{color:var(--red);}
+a.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
+  letter-spacing:2px;text-transform:uppercase;color:var(--blue);}
+a.card:hover .mailcue{color:var(--red);}
 /* quote (§9.4) */
 .quote{margin:34px 0;padding:8px 0;text-align:center;}
 .quote .q{font-family:'Oswald',sans-serif;font-weight:700;color:var(--red);
@@ -185,22 +191,15 @@ Spinf&nbsp;AI, and HP&nbsp;Inc.</p>
 </div>
 
 <h2>Services</h2>
+<p>Click any service to open an email, already written.</p>
 <div class="grid">
-  <div class="card"><span class="kick">01</span><h3>Zero-to-one product engineering</h3>
-    <p>Bespoke AI/ML systems from first requirement to production. Architecture, build, launch.</p></div>
-  <div class="card"><span class="kick">02</span><h3>MLOps &amp; governance</h3>
-    <p>Deployment pipelines, model risk management, and audit-ready frameworks that survive
-    regulatory review.</p></div>
-  <div class="card"><span class="kick">03</span><h3>Technical sales &amp; pre-sales</h3>
-    <p>Demos, proofs of concept, and technical narratives that close. Engineering credibility in
-    the room.</p></div>
-  <div class="card"><span class="kick">04</span><h3>Vendor &amp; procurement assessment</h3>
-    <p>Independent technical assessment of vendors and tools before you sign. Evidence, not
-    brochures.</p></div>
+  <a class="card" href="mailto:miller@ripleydecisionadvantage.net?subject=Zero-to-one%20product%20engineering&amp;body=I%20am%20writing%20to%20inquire%20about%20your%20zero-to-one%20product%20engineering%20services%2C%20please%20contact%20me%20to%20start%20this%20discussion"><span class="kick">01</span><h3>Zero-to-one product engineering</h3><p>Bespoke AI/ML systems from first requirement to production. Architecture, build, launch.</p><span class="mailcue">Click to email &rarr;</span></a>
+  <a class="card" href="mailto:miller@ripleydecisionadvantage.net?subject=MLOps%20%26%20governance&amp;body=I%20am%20writing%20to%20inquire%20about%20your%20MLOps%20and%20governance%20services%2C%20please%20contact%20me%20to%20start%20this%20discussion"><span class="kick">02</span><h3>MLOps &amp; governance</h3><p>Deployment pipelines, model risk management, and audit-ready frameworks that survive regulatory review.</p><span class="mailcue">Click to email &rarr;</span></a>
+  <a class="card" href="mailto:miller@ripleydecisionadvantage.net?subject=Technical%20sales%20%26%20pre-sales&amp;body=I%20am%20writing%20to%20inquire%20about%20your%20technical%20sales%20and%20pre-sales%20services%2C%20please%20contact%20me%20to%20start%20this%20discussion"><span class="kick">03</span><h3>Technical sales &amp; pre-sales</h3><p>Demos, proofs of concept, and technical narratives that close. Engineering credibility in the room.</p><span class="mailcue">Click to email &rarr;</span></a>
 </div>
 
 <p style="text-align:center">
-  <a class="cta" href="mailto:miller@ripleydecisionadvantage.net">Click to email</a><br>
+  <a class="cta" href="mailto:miller@ripleydecisionadvantage.net">Something else &mdash; email us</a><br>
   <a href="mailto:miller@ripleydecisionadvantage.net">miller@ripleydecisionadvantage.net</a>
 </p>
 
