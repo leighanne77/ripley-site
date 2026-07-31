@@ -309,6 +309,9 @@ whose board has included Rumsfeld, Brzezinski and Woolsey, and today McMaster an
 volunteers with the Office of Net Assessment on AI-enabled scenario-based planning, and is a
 Senior Fellow at the Institute for State Effectiveness in Washington,&nbsp;D.C.</p>
 
+<p>EGON, in stealth, applies that background: AI-enabled scenario tools for rebuilding the
+infrastructure behind US organic means of production, built for a two-front scenario.</p>
+
 <h2>{icon("compass")}Track record</h2>
 <ul>
   <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
