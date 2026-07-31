@@ -215,11 +215,35 @@ not just a beautiful product.</p>
 
 <h2>The principal</h2>
 <p>Leigh Miller architects and industrializes AI/ML systems for high-stakes, low-trust
-environments. She led the <span class="num">$300M</span> Nielsen/Gracenote restart. Her regulated
+environments. She restarted the world&rsquo;s largest metadata platform build, stalled in the
+<span class="num">$300M</span> Gracenote business at Nielsen. Her regulated
 capital-markets work improved IRR accuracy by <span class="num">15%+</span>. She has kept
 production AI systems in service continuously since <span class="num">2023</span> &mdash; from
 Fortune&nbsp;50 boardrooms to post-conflict infrastructure. Prior roles include Nielsen/Gracenote,
 Spinf&nbsp;AI, and HP&nbsp;Inc.</p>
+
+<h2>Track record</h2>
+<ul>
+  <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
+  <span class="num">$300M</span> Gracenote business at Nielsen.</li>
+  <li>Improved IRR accuracy by <span class="num">15%+</span> in regulated capital-markets work.</li>
+  <li>Production AI systems in continuous service since <span class="num">2023</span>.</li>
+  <li>Built and piloted decision systems for capital-intensive infrastructure across
+  <span class="num">four</span> countries &mdash; ports, data centers, and district assets.</li>
+</ul>
+
+<div class="quote">
+  <div class="q">&ldquo;Considered near-impossible to do &mdash; but she did them with
+  ease.&rdquo;</div>
+  <div class="attr">&mdash; Peter Dunker, VP Technology, Cloud Enablement &amp; Infrastructure,
+  Gracenote / Nielsen &mdash; on the unified data model and platform build</div>
+</div>
+
+<div class="quote">
+  <div class="q">&ldquo;She has an unmatched ability to lead by influence and gets
+  results.&rdquo;</div>
+  <div class="attr">&mdash; Filiz Bahmanpour, VP (Product), Gracenote / Nielsen</div>
+</div>
 
 <h2>Services</h2>
 <div class="grid">
@@ -236,25 +260,15 @@ Spinf&nbsp;AI, and HP&nbsp;Inc.</p>
     brochures.</p></div>
 </div>
 
+<p style="text-align:center">
+  <a class="cta" href="mailto:miller@ripleydecisionadvantage.net">Click to email</a><br>
+  <a href="mailto:miller@ripleydecisionadvantage.net">miller@ripleydecisionadvantage.net</a>
+</p>
+
 <div class="callout">
   <div class="ctitle">How we work</div>
   <p>Numbers first. Every recommendation is priced, sourced, and testable. If a system cannot
   survive an audit, it does not ship.</p>
-</div>
-
-<h2>Track record</h2>
-<ul>
-  <li>Restarted a <span class="num">$300M</span> data business at Nielsen/Gracenote.</li>
-  <li>Improved IRR accuracy by <span class="num">15%+</span> in regulated capital-markets work.</li>
-  <li>Production AI systems in continuous service since <span class="num">2023</span>.</li>
-  <li>Built and piloted decision systems for capital-intensive infrastructure across
-  <span class="num">four</span> countries &mdash; ports, data centers, and district assets.</li>
-</ul>
-
-<div class="quote">
-  <div class="q">&ldquo;She has an unmatched ability to lead by influence and gets
-  results.&rdquo;</div>
-  <div class="attr">&mdash; Filiz Bahmanpour, VP (Product), Gracenote / Nielsen</div>
 </div>
 
 <p style="text-align:center"><a class="cta" href="contact.html">Start a conversation</a></p>
@@ -359,6 +373,12 @@ PAGES["tools.html"] = ("Languages & Tools | Ripley Decision Advantage",
   <div class="ctitle">Selection discipline</div>
   <p>Tools are chosen per engagement &mdash; on fit, auditability, and total cost of ownership,
   never on fashion. If a simpler tool survives the audit, the simpler tool wins.</p>
+</div>
+
+<div class="quote">
+  <div class="q">&ldquo;She was 100% responsible for a successful outcome and got it done in
+  less than three months.&rdquo;</div>
+  <div class="attr">&mdash; Michael Khait, now CTO &amp; Co-founder, TrustPoint Technologies</div>
 </div>
 """)
 
