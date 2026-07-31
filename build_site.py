@@ -305,8 +305,9 @@ person in the executive demo and in the codebase.</p>
   under Dr.&nbsp;Pfaltzgraff at Tufts, then with Dr.&nbsp;Strmecki at the Smith Richardson
   Foundation, whose board has included Rumsfeld, Brzezinski and Woolsey, and today McMaster and
   Keane.</li>
-  <li>Volunteers with the Office of Net Assessment on AI-enabled scenario-based planning.
-  Affiliated with the Institute for State Effectiveness in Washington,&nbsp;D.C.</li>
+  <li>Volunteers with the Department of War&rsquo;s Office of Net Assessment on AI-enabled
+  scenario-based planning, and with the Defense Investors Network (Silicon Valley).</li>
+  <li>Affiliated with the Institute for State Effectiveness in Washington,&nbsp;D.C.</li>
   <li>EGON, in stealth, applies that background: AI-enabled scenario tools for rebuilding the
   infrastructure behind US organic means of production, built for a two-front scenario.</li>
   <li>Caltech AI/ML engineering certificate, Stanford master&rsquo;s, Tufts BA.</li>
