@@ -252,8 +252,8 @@ PAGES["index.html"] = ("Ripley Decision Advantage — AI/ML Consulting, Silicon 
 </div>
 
 <h2>The firm</h2>
-<p>Ripley Decision Advantage is a full-service consulting firm. We advise on AI/ML tools and
-workflow optimization for businesses and public-sector organizations. The result is measured in
+<p>Ripley Decision Advantage is a full-service AI/ML engineering consulting firm. We advise on
+tooling and workflow optimization for businesses and public-sector organizations. The result is measured in
 your numbers: lower engineering costs, stronger product-market fit, and growing revenue &mdash;
 not just a beautiful product.</p>
 
