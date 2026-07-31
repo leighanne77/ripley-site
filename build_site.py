@@ -300,13 +300,6 @@ HP&nbsp;Inc.</p>
   <a href="mailto:{EMAIL}">{EMAIL}</a>
 </p>
 
-<div class="callout">
-  <div class="ctitle">How we work</div>
-  <p>Numbers first. Every recommendation is priced, sourced, and testable. If a system cannot
-  survive an audit, it does not ship.</p>
-</div>
-
-<p style="text-align:center"><a class="cta" href="contact.html">Start a conversation</a></p>
 """)
 
 # ---------------------------------------------------------------- egon
