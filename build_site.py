@@ -262,7 +262,7 @@ not just a beautiful product.</p>
 environments &mdash; from Fortune&nbsp;50 boardrooms to post-conflict infrastructure. She embeds
 with the client, runs the technical discovery, and stays hands-on through production: the same
 person in the executive demo and in the codebase. Caltech AI/ML engineering certificate, Stanford
-master&rsquo;s, Tufts BA. Prior roles include Nielsen/Gracenote, Spinf&nbsp;AI, and
+master&rsquo;s, Tufts BA. Prior roles include Google, Nielsen/Gracenote, Spinf&nbsp;AI, and
 HP&nbsp;Inc.</p>
 
 <h2>Track record</h2>
