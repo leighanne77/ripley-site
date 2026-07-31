@@ -283,7 +283,7 @@ PAGES["index.html"] = ("Ripley Decision Advantage — AI/ML Consulting, Silicon 
   <div class="tag">Decision Advantage</div>
   <div class="rule"></div>
   <h1>AI/ML systems that ship.</h1>
-  <p class="sub">Silicon Valley engineering for high-stakes, low-trust environments, anywhere.</p>
+  <p class="sub">Engineering for high-stakes, low-trust environments, anywhere.</p>
   <p class="doctype">Full-service &middot; Private sector and public sector</p>
   <div class="stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
 </div>
