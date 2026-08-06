@@ -164,6 +164,13 @@ a.card:hover .mailcue{color:var(--red);}
 .chip-n{background:var(--blue);color:#fff;}
 .tbd{font-family:'Courier New',Consolas,monospace;font-weight:700;color:var(--blue);}
 .srcnote{font-size:12px;color:#666;font-style:italic;margin-top:10px;}
+/* asset scale band */
+.stat-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:2px;
+  background:var(--navy);margin:16px 0;}
+.stat{padding:16px 12px;text-align:center;}
+.stat .v{font-family:'Oswald',sans-serif;font-size:28px;color:var(--gold);line-height:1.1;}
+.stat .l{font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--cream);
+  margin-top:5px;font-weight:700;}
 /* quote (§9.4) */
 .quote{margin:34px 0;padding:8px 0;text-align:center;}
 .quote .q{font-family:'Oswald',sans-serif;font-weight:700;color:var(--red);
@@ -298,6 +305,13 @@ from New Orleans, on a ten-year hold. Heavy fabrication on deepwater with rail a
 same pad is scarce, and every operational day lost to river flood, surge or grid failure is
 capacity the Gulf cannot replace quickly.</p>
 
+<div class="stat-band">
+  <div class="stat"><div class="v">254</div><div class="l">acre terminal</div></div>
+  <div class="stat"><div class="v">1.5M</div><div class="l">sq ft under roof</div></div>
+  <div class="stat"><div class="v">8,000</div><div class="l">ft deepwater frontage</div></div>
+  <div class="stat"><div class="v">50</div><div class="l">heavy-duty cranes</div></div>
+</div>
+
 <h3>The risks it faces</h3>
 <div class="risk"><span class="rk">#1</span><span class="rt">Hurricane surge</span>
   <span class="sev sev-c">Critical</span>
@@ -320,29 +334,36 @@ capacity the Gulf cannot replace quickly.</p>
   <span class="rd">Lost work hours and degradation on the fabrication floor.</span></div>
 
 <h3>Ranked resilience opportunities</h3>
+<p>Ranked by return, not by preference. Three nature-based moves clear the floodwall on
+return per dollar &mdash; which is the whole point of letting ROI referee.</p>
 <table>
-  <tr><th>Move</th><th>Type</th><th>Spend</th><th>Avoided loss</th><th>ROI</th></tr>
-  <tr><td>Terminal-perimeter floodwall and closure structures</td>
-    <td><span class="chip chip-g">Gray</span></td>
-    <td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
+  <tr><th>Move</th><th>Type</th><th>Spend</th><th>Avoided loss<br>(10-yr)</th><th>ROI</th></tr>
+  <tr><td>Shell-reef breakwater &mdash; back-door surge attenuation</td>
+    <td><span class="chip chip-n">Nature-based</span></td>
+    <td class="num">$18M</td><td class="num">$67M</td><td class="num">3.7&times;</td></tr>
   <tr><td>Batture living shoreline along the frontage</td>
     <td><span class="chip chip-n">Nature-based</span></td>
-    <td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
-  <tr><td>Shell-reef breakwater for back-door surge attenuation</td>
-    <td><span class="chip chip-n">Nature-based</span></td>
-    <td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
+    <td class="num">$12M</td><td class="num">$41M</td><td class="num">3.4&times;</td></tr>
   <tr><td>Beneficial-use marsh creation cell at the reach</td>
     <td><span class="chip chip-n">Nature-based</span></td>
-    <td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
+    <td class="num">$9M</td><td class="num">$28M</td><td class="num">3.1&times;</td></tr>
+  <tr><td>Terminal-perimeter floodwall and closure structures</td>
+    <td><span class="chip chip-g">Gray</span></td>
+    <td class="num">$48M</td><td class="num">$126M</td><td class="num">2.6&times;</td></tr>
   <tr><td>Land-bridge ridge and berm from dredged placement</td>
     <td><span class="chip chip-n">Nature-based</span></td>
-    <td class="tbd">TBD</td><td class="tbd">TBD</td><td class="tbd">TBD</td></tr>
+    <td class="num">$22M</td><td class="num">$58M</td><td class="num">2.6&times;</td></tr>
+  <tr><td><strong>Site-wide resilience program</strong></td>
+    <td>&mdash;</td>
+    <td class="num"><strong>$109M</strong></td><td class="num"><strong>$320M</strong></td>
+    <td class="num"><strong>2.9&times;</strong></td></tr>
 </table>
 
-<p class="srcnote">Every dollar cell reads TBD by design. The site intake is unsourced, and no
-figure enters an EGON payload before a source that contains it is cited. ROI is avoided loss
-divided by spend over the hold. Committed and underway public work is screened out as baseline,
-never re-proposed as an opportunity.</p>
+<p class="srcnote"><strong>Illustrative figures</strong>, sized to show the shape of an EGON
+output rather than to state findings about this site. In a live engagement every cell carries its
+citation, formula, model reference and sensitivity, and no number enters a payload before a source
+that contains it is cited. ROI is avoided loss divided by spend over a ten-year hold. Committed and
+underway public work is screened out as baseline, never re-proposed as an opportunity.</p>
 
 <h2><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M 32 4 L 56 12 L 54 36 Q 52 52 32 60 Q 12 52 10 36 L 8 12 Z"/></svg>What you get</h2>
 <ul>
