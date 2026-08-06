@@ -317,7 +317,7 @@ person in the executive demo and in the codebase.</p>
 <h2>{icon("summit")}Current work</h2>
 
 <h3>EGON &mdash; extreme-weather risk for defense-adjacent assets</h3>
-<p><em>Ripley Decision Advantage &middot; Palo Alto, CA &middot; 2025&ndash;present &middot;
+<p><em>Ripley Decision Advantage &middot; Palo Alto, CA &middot; New as of July 2026 &middot;
 Founder &amp; architect</em></p>
 
 <p>A multi-agent decision-support system that prices statistically significant extreme-weather risk
