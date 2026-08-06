@@ -3,7 +3,7 @@
 Ripley identity on the EGON visual system. Six self-contained pages, fonts base64-embedded.
 Source of truth for the Ripley mountain mark geometry: MARK_SVG below.
 """
-import base64, html, os, pathlib, urllib.parse
+import base64, html, os, pathlib, re, urllib.parse
 
 ROOT = pathlib.Path(__file__).parent
 OUT = ROOT / "site"
@@ -12,8 +12,21 @@ OUT.mkdir(exist_ok=True)
 def b64(p):
     return base64.b64encode(open(p, "rb").read()).decode()
 
+def svg_asset(name):
+    """Inline an SVG wordmark. Strips width/height so CSS controls the size —
+    the viewBox alone keeps the aspect ratio."""
+    s = (ROOT / "assets" / name).read_text().strip()
+    s = re.sub(r'<\?xml[^>]*\?>\s*', '', s)
+    s = re.sub(r'\s(width|height)="[^"]*"', '', s, count=2)
+    return s
+
 OSWALD = b64(ROOT / "fonts" / "Oswald-700.woff2")
 QUICKSAND = b64(ROOT / "fonts" / "Quicksand-700.woff2")
+
+# Partner wordmarks for the Current work thumbnails, recoloured cream to sit on
+# navy panels. EGON from the web-demo asset; DIN from the bigdin.net lockup.
+EGON_WORDMARK = svg_asset("egon-wordmark.svg")
+DIN_WORDMARK = svg_asset("din-wordmark.svg")
 
 # ---- Ripley mountain mark: geometric filled silhouette, true-knockout zigzag snowcaps
 # (EGON-style: fill-rule evenodd, page shows through the caps; fill:currentColor)
@@ -117,6 +130,20 @@ a.card:hover h3{color:var(--red);}
 a.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
   letter-spacing:2px;text-transform:uppercase;color:var(--blue);}
 a.card:hover .mailcue{color:var(--red);}
+/* current work: two side-by-side blocks with wordmark thumbnails */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px;
+  margin:18px 0 10px;}
+.work-card{border:1px solid #ccc;border-top:4px solid var(--red);display:flex;
+  flex-direction:column;}
+.work-thumb{background:var(--navy);padding:26px 24px;display:flex;align-items:center;
+  justify-content:center;min-height:96px;}
+.work-thumb svg{width:100%;max-width:200px;height:auto;display:block;}
+.work-body{padding:16px 20px 20px;}
+.work-body h3{margin:0 0 4px;color:var(--navy);font-size:17px;}
+.work-body .meta{font-style:italic;color:var(--blue);font-size:13px;margin-bottom:10px;}
+.work-body p{font-size:15px;}
+.work-body ul{margin-bottom:10px;}
+.work-body ul li{font-size:14px;margin-bottom:6px;}
 /* quote (§9.4) */
 .quote{margin:34px 0;padding:8px 0;text-align:center;}
 .quote .q{font-family:'Oswald',sans-serif;font-weight:700;color:var(--red);
@@ -316,58 +343,52 @@ person in the executive demo and in the codebase.</p>
 
 <h2>{icon("summit")}Current work</h2>
 
-<h3>EGON &mdash; extreme-weather risk for defense-adjacent assets</h3>
-<p><em>Ripley Decision Advantage &middot; Palo Alto, CA &middot; New as of July 2026 &middot;
-Founder &amp; architect</em></p>
+<div class="work-grid">
 
-<p>A multi-agent decision-support system that prices statistically significant extreme-weather risk
-for the assets defense depends on &mdash; shipyards, ports, mineral processing, and the energy that
-powers the perimeter. Institutional owners get a risk-and-mitigation breakdown they can defend line
-by line.</p>
+  <div class="work-card">
+    <div class="work-thumb">{EGON_WORDMARK}</div>
+    <div class="work-body">
+      <h3>Extreme-weather risk for defense-adjacent assets</h3>
+      <p class="meta">Ripley Decision Advantage &middot; Palo Alto, CA &middot; New as of
+      July 2026 &middot; Founder &amp; architect</p>
+      <p>A multi-agent decision-support system that prices statistically significant
+      extreme-weather risk for the assets defense depends on &mdash; shipyards, ports, mineral
+      processing, and the energy that powers the perimeter.</p>
+      <ul>
+        <li><span class="num">20+</span> data loaders on a 1&ndash;6 hour refresh, fusing NOAA,
+        OpenFEMA and ERDDAP ground truth with an economic ledger and <span class="num">45+</span>
+        nature-based-solutions datasets.</li>
+        <li>Orchestrated on Google&rsquo;s ADK over the Agent-to-Agent protocol, with custom
+        validation and resilience layers.</li>
+        <li>Isolated and API-first. It never plugs into a financial core &mdash; it exports
+        verifiable data a human carries into their own models.</li>
+      </ul>
+      <p><a href="egon.html">Read the EGON one-pager</a> &mdash; deeper technical detail on
+      request.</p>
+    </div>
+  </div>
 
-<div class="callout">
-  <div class="ctitle">Not an automated decision-maker</div>
-  <p>EGON is isolated and API-first. It never plugs into a financial core. It exports verifiable
-  data that a human carries into their own proprietary models &mdash; built to inform a decision,
-  not replace it.</p>
+  <div class="work-card">
+    <div class="work-thumb">{DIN_WORDMARK}</div>
+    <div class="work-body">
+      <h3>AI tools for patriotic capital</h3>
+      <p class="meta">Palo Alto, CA &middot; May 2026&ndash;present &middot; AI Solution
+      Architect &middot; <a href="https://www.bigdin.net">bigdin.net</a> (team access only)</p>
+      <p>A production investor-relations platform for a dual-use defense investor team &mdash;
+      maritime industrial base, critical-mineral sovereignty, energy resilience. Architected and
+      shipped solo, live with a real user base.</p>
+      <ul>
+        <li>A graph-backed warm-introduction engine on Neo4j scores relationship paths
+        deterministically and auditably, behind hard safety gates.</li>
+        <li>PII governance mapped to NIST AI RMF and SR&nbsp;11-7: three-tier privacy at the
+        query layer, owner-scoped writes, Fernet encryption, hashed-payload audit trail.</li>
+        <li>Data layer right-sized deliberately &mdash; PostgreSQL and recursive CTEs first,
+        Spark rejected as over-scaled for the volume.</li>
+      </ul>
+    </div>
+  </div>
+
 </div>
-
-<ul>
-  <li><span class="num">20+</span> specialized data loaders on a 1&ndash;6 hour event-driven
-  refresh, fusing environmental ground truth (NOAA Storm Events and SWDI, OpenFEMA, ERDDAP) with an
-  economic ledger (FRED, BLS, Census, USDA NASS) and <span class="num">45+</span> curated
-  nature-based-solutions datasets.</li>
-  <li>Orchestrated on Google&rsquo;s ADK using the Agent-to-Agent protocol, with a custom
-  message-envelope and validation layer and a resilience layer &mdash; session caching, circuit
-  breakers, exponential-backoff retries &mdash; so one faltering external call never stalls the
-  user.</li>
-  <li>Four worker agents divide the load: extreme-weather risk analysis, nature-based solutions
-  across <span class="num">45+</span> adaptation strategies, cost&#8202;/&#8202;benefit modeling
-  that isolates only statistically significant improvements, and verification with a geocoding
-  validation layer.</li>
-  <li>Export-only REST endpoints and a lightweight dashboard. Every figure traceable, every figure
-  exportable.</li>
-</ul>
-
-<p><a href="egon.html">Read the EGON one-pager</a> &mdash; deeper technical detail on request.</p>
-
-<h3>Defense Investors Network &mdash; AI tools for patriotic capital</h3>
-<p><em>Palo Alto, CA &middot; May 2026&ndash;present &middot; AI Solution Architect &middot;
-<a href="https://www.bigdin.net">bigdin.net</a> (team access only)</em></p>
-
-<p>A production investor-relations platform for a dual-use defense investor team &mdash; maritime
-industrial base, critical-mineral sovereignty, energy resilience. Architected and shipped solo,
-live with a real user base.</p>
-
-<ul>
-  <li>A graph-backed warm-introduction engine on Neo4j scores relationship paths deterministically
-  and auditably, behind hard safety gates.</li>
-  <li>PII governance mapped to NIST AI RMF and SR&nbsp;11-7: three-tier privacy enforced at the
-  query layer, owner-scoped authorization on every write, Fernet encryption, and a hashed-payload
-  audit trail with per-field diffs.</li>
-  <li>The data layer was right-sized deliberately &mdash; PostgreSQL and recursive CTEs first,
-  Spark rejected as over-scaled for the volume.</li>
-</ul>
 
 <div class="callout">
   <div class="ctitle">Stack</div>

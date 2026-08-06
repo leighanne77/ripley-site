@@ -98,6 +98,20 @@ a.card:hover h3{color:var(--red);}
 a.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
   letter-spacing:2px;text-transform:uppercase;color:var(--blue);}
 a.card:hover .mailcue{color:var(--red);}
+/* current work: two side-by-side blocks with wordmark thumbnails */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px;
+  margin:18px 0 10px;}
+.work-card{border:1px solid #ccc;border-top:4px solid var(--red);display:flex;
+  flex-direction:column;}
+.work-thumb{background:var(--navy);padding:26px 24px;display:flex;align-items:center;
+  justify-content:center;min-height:96px;}
+.work-thumb svg{width:100%;max-width:200px;height:auto;display:block;}
+.work-body{padding:16px 20px 20px;}
+.work-body h3{margin:0 0 4px;color:var(--navy);font-size:17px;}
+.work-body .meta{font-style:italic;color:var(--blue);font-size:13px;margin-bottom:10px;}
+.work-body p{font-size:15px;}
+.work-body ul{margin-bottom:10px;}
+.work-body ul li{font-size:14px;margin-bottom:6px;}
 /* quote (§9.4) */
 .quote{margin:34px 0;padding:8px 0;text-align:center;}
 .quote .q{font-family:'Oswald',sans-serif;font-weight:700;color:var(--red);
