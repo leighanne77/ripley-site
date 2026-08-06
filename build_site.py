@@ -353,7 +353,7 @@ by line.</p>
 
 <h3>Defense Investors Network &mdash; AI tools for patriotic capital</h3>
 <p><em>Palo Alto, CA &middot; May 2026&ndash;present &middot; AI Solution Architect &middot;
-<a href="https://www.bigdin.net">bigdin.net</a> (password protected)</em></p>
+<a href="https://www.bigdin.net">bigdin.net</a> (team access only)</em></p>
 
 <p>A production investor-relations platform for a dual-use defense investor team &mdash; maritime
 industrial base, critical-mineral sovereignty, energy resilience. Architected and shipped solo,
