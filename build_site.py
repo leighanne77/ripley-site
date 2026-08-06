@@ -258,6 +258,40 @@ ICONS = {
         'fill="currentColor"/>'
         '<circle cx="32" cy="32" r="5" fill="#F5EEE0"/>'
         '<circle cx="32" cy="32" r="2" fill="currentColor"/>',
+    "industrial":
+        '<rect x="10" y="6" width="9" height="52" fill="currentColor"/>'
+        '<rect x="5" y="58" width="50" height="4" fill="currentColor"/>'
+        '<rect x="10" y="6" width="47" height="4.5" fill="currentColor"/>'
+        '<polygon points="19,10.5 31,10.5 19,20" fill="currentColor"/>'
+        '<rect x="50" y="10.5" width="2.6" height="15" fill="currentColor"/>'
+        '<rect x="45" y="25" width="11" height="7" fill="currentColor"/>',
+    "people":
+        '<circle cx="21" cy="35" r="13" fill="currentColor"/>'
+        '<circle cx="42" cy="38" r="13" fill="currentColor"/>'
+        '<ellipse cx="42" cy="30" rx="15" ry="2.5" fill="currentColor"/>'
+        '<rect x="41.2" y="19.5" width="1.6" height="10" fill="#F5EEE0"/>'
+        '<rect x="29" y="29.9" width="26" height="1.1" fill="#F5EEE0"/>',
+    "briefcase":
+        '<rect x="11" y="24" width="42" height="30" fill="currentColor"/>'
+        '<rect x="26" y="16" width="12" height="6" fill="currentColor"/>'
+        '<rect x="28.5" y="17.4" width="7" height="3" fill="#F5EEE0"/>'
+        '<rect x="11" y="32" width="42" height="2.4" fill="#F5EEE0"/>'
+        '<rect x="28.5" y="35" width="7" height="5" fill="#F5EEE0"/>',
+    # the red lens detail would vanish inside a red heading, so it maps to cream
+    "glasses":
+        '<circle cx="23" cy="33" r="9" fill="currentColor"/>'
+        '<circle cx="23" cy="33" r="5.5" fill="#F5EEE0"/>'
+        '<circle cx="41" cy="33" r="9" fill="currentColor"/>'
+        '<circle cx="41" cy="33" r="5.5" fill="#F5EEE0"/>'
+        '<rect x="30" y="31.4" width="4" height="2.2" fill="currentColor"/>'
+        '<polygon points="14,30.5 9,27 7.5,29 12.5,32.5" fill="currentColor"/>'
+        '<polygon points="50,30.5 55,27 56.5,29 51.5,32.5" fill="currentColor"/>',
+    "link":
+        '<g transform="rotate(40 32 32)">'
+        '<ellipse cx="32" cy="23" rx="10.5" ry="15" fill="currentColor"/>'
+        '<ellipse cx="32" cy="23" rx="5.5" ry="10" fill="#F5EEE0"/>'
+        '<ellipse cx="32" cy="41" rx="10.5" ry="15" fill="currentColor"/>'
+        '<ellipse cx="32" cy="41" rx="5.5" ry="10" fill="#F5EEE0"/></g>',
 }
 
 def icon(name, cls="icon"):
@@ -318,13 +352,13 @@ PAGES["index.html"] = ("Ripley Decision Advantage — AI/ML Consulting, Silicon 
   <div class="stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
 </div>
 
-<h2>The firm</h2>
+<h2>{icon("industrial")}The firm</h2>
 <p>Ripley Decision Advantage is a full-service AI/ML engineering consulting firm. We advise on
 tooling and workflow optimization for businesses and public-sector organizations. The result is measured in
 your numbers: lower engineering costs, stronger product-market fit, and growing revenue &mdash;
 not just a beautiful product.</p>
 
-<h2>The principal</h2>
+<h2>{icon("people")}The principal</h2>
 <p>Leigh Anne Miller architects and industrializes AI/ML systems for high-stakes, low-trust
 environments &mdash; from Fortune&nbsp;50 boardrooms to post-conflict infrastructure. She embeds
 with the client, runs the technical discovery, and stays hands-on through production: the same
@@ -426,7 +460,7 @@ person in the executive demo and in the codebase.</p>
   <div class="attr">&mdash; Filiz Bahmanpour, VP (Product), Gracenote / Nielsen</div>
 </div>
 
-<h2>Services</h2>
+<h2>{icon("briefcase")}Services</h2>
 <p>Click any service to open an email, already written.</p>
 <div class="grid">
 {SERVICE_CARDS}
@@ -498,11 +532,11 @@ capability rides on top at no cost to return.</p>
 # ---------------------------------------------------------------- tools
 PAGES["tools.html"] = ("Languages & Tools | Ripley Decision Advantage",
   "Expertise and technical stack: agentic AI, MLOps, software, data, and compliance.",
-  """
+  f"""
 <h1>Languages &amp; tools</h1>
 <div class="h1-rule"></div>
 
-<h2>Expertise</h2>
+<h2>{icon("glasses")}Expertise</h2>
 <h3>Strategic technical leadership</h3>
 <ul>
   <li>Sales engineering &middot; product engineering &middot; executive AI strategy</li>
@@ -519,7 +553,7 @@ PAGES["tools.html"] = ("Languages & Tools | Ripley Decision Advantage",
   <li>Model risk management (MRM) automation</li>
 </ul>
 
-<h2>Stack</h2>
+<h2>{icon("link")}Stack</h2>
 <table>
   <tr><th>Domain</th><th>Working set</th></tr>
   <tr><td class="dom">Data</td><td>PostgreSQL as production core &mdash; array columns, recursive
