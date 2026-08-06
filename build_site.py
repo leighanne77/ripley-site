@@ -311,7 +311,7 @@ person in the executive demo and in the codebase.</p>
   <li>EGON applies that background: AI-enabled scenario tools for rebuilding the infrastructure
   behind US organic means of production, built for a two-front scenario.</li>
   <li>Caltech AI/ML engineering certificate, Stanford master&rsquo;s, Tufts BA.</li>
-  <li>Prior roles: Google, Nielsen/Gracenote, Spinf&nbsp;AI, and HP&nbsp;Inc.</li>
+  <li>Prior roles: Google, Nielsen/Gracenote, and HP&nbsp;Inc.</li>
 </ul>
 
 <h2>{icon("summit")}Current work</h2>
