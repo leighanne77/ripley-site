@@ -522,19 +522,27 @@ PAGES["tools.html"] = ("Languages & Tools | Ripley Decision Advantage",
 <h2>Stack</h2>
 <table>
   <tr><th>Domain</th><th>Working set</th></tr>
-  <tr><td class="dom">Agentic AI</td><td>Model Context Protocol, agent-to-agent systems, Pydantic
-  AI, Google Agent Development Kit, Semantic Kernel, LangGraph, CrewAI</td></tr>
-  <tr><td class="dom">ML Ops</td><td>Arize, Weights &amp; Biases, Amazon and Google ML platforms,
-  voice infrastructure via Vapi and Retell AI</td></tr>
-  <tr><td class="dom">Software</td><td>Python, Java, Scala, TypeScript, JavaScript, React,
-  Node.js, FastAPI</td></tr>
-  <tr><td class="dom">Data</td><td>PostgreSQL, Neo4j/Cypher, Snowflake, Google BigQuery,
-  Databricks, Elasticsearch kNN, vector databases, BI platforms</td></tr>
-  <tr><td class="dom">Governance</td><td>Model risk management (SR&nbsp;11-7), NIST AI RMF,
-  audit-trail architectures, data provenance and lineage, PII governance and RBAC, confidential
-  computing (TEEs)</td></tr>
-  <tr><td class="dom">Compliance</td><td>Financial-services compliance (SEC/FINRA), insurance
-  regulatory alignment (NAIC), explainable AI (XAI)</td></tr>
+  <tr><td class="dom">Data</td><td>PostgreSQL as production core &mdash; array columns, recursive
+  CTEs. Neo4j/Cypher for graph fact-checking and the warm-introduction engine. Elasticsearch kNN.
+  Prior platform roles: BigQuery, Snowflake, Databricks/Spark, dbt, Airflow</td></tr>
+  <tr><td class="dom">Pipelines</td><td>ETL and ingestion across <span class="num">20+</span>
+  external-source loaders, entity resolution, data fusion, OSINT acquisition, provenance and
+  lineage, data quality</td></tr>
+  <tr><td class="dom">Agentic AI</td><td>LangChain routing with SuperAGI autonomy as a Compound AI
+  System. A Google ADK build implementing Google&rsquo;s A2A protocol. Graph-grounded output
+  verification. Pydantic-driven tool use, bounded agent loops, human-in-the-loop, MCP</td></tr>
+  <tr><td class="dom">Software</td><td>Python, Java, TypeScript, JavaScript, React, Node.js,
+  FastAPI, Pydantic, SQLAlchemy. AI-native delivery with Claude Code</td></tr>
+  <tr><td class="dom">Infrastructure</td><td>AWS and GCP (Cloud Run, Cloud SQL, Secret Manager),
+  multi-cloud via Shadeform, Docker, Kubernetes, Cloudflare, Google OAuth&nbsp;2.0, Fernet,
+  circuit breakers and exponential backoff</td></tr>
+  <tr><td class="dom">ML Ops</td><td>Arize, Weights &amp; Biases, promptfoo. Model evaluation,
+  capability auditing, AI failure-mode analysis, boundary testing</td></tr>
+  <tr><td class="dom">Voice</td><td>ASR/TTS and streaming audio &mdash; Vapi, Retell AI, Chirp,
+  Groq, ElevenLabs, Deepgram</td></tr>
+  <tr><td class="dom">Governance</td><td>NIST AI RMF, model risk management (SR&nbsp;11-7),
+  SEC/FINRA and NAIC alignment, PII governance and RBAC, explainable AI (XAI), audit-trail
+  architectures, confidential computing (TEEs), data contracts</td></tr>
 </table>
 
 <div class="callout">
