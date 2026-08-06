@@ -135,9 +135,12 @@ a.card:hover .mailcue{color:var(--red);}
   margin:18px 0 10px;}
 .work-card{border:1px solid #ccc;border-top:4px solid var(--red);display:flex;
   flex-direction:column;}
-.work-thumb{background:var(--navy);padding:26px 24px;display:flex;align-items:center;
-  justify-content:center;min-height:96px;}
-.work-thumb svg{width:100%;max-width:200px;height:auto;display:block;}
+/* Fixed panel height so both cards line up: the wordmarks have very different
+   aspect ratios (EGON 4.2:1, DIN 2.4:1), so sizing by width alone left EGON's
+   panel short. Cap both dimensions and let each mark land where it fits. */
+.work-thumb{background:var(--navy);padding:20px 24px;display:flex;align-items:center;
+  justify-content:center;height:140px;}
+.work-thumb svg{max-height:64px;max-width:230px;width:auto;height:auto;display:block;}
 .work-body{padding:16px 20px 20px;}
 .work-body h3{margin:0 0 4px;color:var(--navy);font-size:17px;}
 .work-body .meta{font-style:italic;color:var(--blue);font-size:13px;margin-bottom:10px;}
@@ -341,6 +344,19 @@ person in the executive demo and in the codebase.</p>
   <li>Prior roles: Google, Nielsen/Gracenote, and HP&nbsp;Inc.</li>
 </ul>
 
+<h2>{icon("compass")}Track record</h2>
+<ul>
+  <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
+  <span class="num">$300M</span> Gracenote business at Nielsen.</li>
+  <li>Improved IRR accuracy by <span class="num">15%+</span> in regulated capital-markets work.</li>
+  <li>Production AI systems in continuous service since <span class="num">2023</span>.</li>
+  <li>Built and piloted multi-agent systems for decision support, for infrastructure investors
+  across <span class="num">four</span> countries &mdash; ports, data centers, and district
+  assets.</li>
+  <li>Shipped HP&rsquo;s first API-based data exchange and governance capability, for a
+  <span class="num">$40B</span> channel-partner program.</li>
+</ul>
+
 <h2>{icon("summit")}Current work</h2>
 
 <div class="work-grid">
@@ -396,19 +412,6 @@ person in the executive demo and in the codebase.</p>
   &middot; GCP &middot; Google OAuth&nbsp;2.0 &middot; Fernet &middot; promptfoo &middot;
   OpenTelemetry &middot; Chart.js &middot; Python</p>
 </div>
-
-<h2>{icon("compass")}Track record</h2>
-<ul>
-  <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
-  <span class="num">$300M</span> Gracenote business at Nielsen.</li>
-  <li>Improved IRR accuracy by <span class="num">15%+</span> in regulated capital-markets work.</li>
-  <li>Production AI systems in continuous service since <span class="num">2023</span>.</li>
-  <li>Built and piloted multi-agent systems for decision support, for infrastructure investors
-  across <span class="num">four</span> countries &mdash; ports, data centers, and district
-  assets.</li>
-  <li>Shipped HP&rsquo;s first API-based data exchange and governance capability, for a
-  <span class="num">$40B</span> channel-partner program.</li>
-</ul>
 
 <div class="quote">
   <div class="q">&ldquo;Considered near-impossible to do &mdash; but she did them with

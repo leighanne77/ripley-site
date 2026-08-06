@@ -103,9 +103,12 @@ a.card:hover .mailcue{color:var(--red);}
   margin:18px 0 10px;}
 .work-card{border:1px solid #ccc;border-top:4px solid var(--red);display:flex;
   flex-direction:column;}
-.work-thumb{background:var(--navy);padding:26px 24px;display:flex;align-items:center;
-  justify-content:center;min-height:96px;}
-.work-thumb svg{width:100%;max-width:200px;height:auto;display:block;}
+/* Fixed panel height so both cards line up: the wordmarks have very different
+   aspect ratios (EGON 4.2:1, DIN 2.4:1), so sizing by width alone left EGON's
+   panel short. Cap both dimensions and let each mark land where it fits. */
+.work-thumb{background:var(--navy);padding:20px 24px;display:flex;align-items:center;
+  justify-content:center;height:140px;}
+.work-thumb svg{max-height:64px;max-width:230px;width:auto;height:auto;display:block;}
 .work-body{padding:16px 20px 20px;}
 .work-body h3{margin:0 0 4px;color:var(--navy);font-size:17px;}
 .work-body .meta{font-style:italic;color:var(--blue);font-size:13px;margin-bottom:10px;}
