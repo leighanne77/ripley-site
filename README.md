@@ -29,18 +29,28 @@ site/             generated — this is what gets deployed
 
 | File | In nav? | Notes |
 |---|---|---|
-| `index.html` | yes (About) | hero, firm, principal, services, track record, quote |
+| `index.html` | yes (About) | hero, firm, principal, track record, current work, quotes, services |
 | `tools.html` | yes (Tools) | expertise groups + stack table |
 | `contact.html` | yes (Contact) | email, phone, LinkedIn |
-| `egon.html` | **no — deliberately unlisted** | reachable by direct link only |
+| `egon.html` | **not in nav** | linked from index "Current work" · Avondale worked example |
+| `egon-baltimore.html` | **not in nav** | linked from `egon.html` · Baltimore Harbor worked example |
 | `privacy.html` | footer | |
 | `terms.html` | footer | |
 
-### EGON is intentionally not in the nav
+### The EGON pages are not in the nav
 
-`egon.html` builds and deploys, but nothing on the public site links to it. Send the
-URL directly to prospects rather than advertising the product. If you ever want it
-public, add `("egon.html", "EGON")` back to the `NAV` list in `build_site.py`.
+Neither EGON page appears in `NAV`. `egon.html` is linked from the index "Current
+work" section, and `egon-baltimore.html` is linked from `egon.html` — so both are
+reachable by anyone browsing, not just by direct link. **Neither is access-gated.**
+To put EGON in the nav, add `("egon.html", "EGON")` back to the `NAV` list.
+
+### Worked-example figures are illustrative
+
+Both EGON pages carry dollar figures that are illustrative, not analysis output —
+each page says so in a `srcnote` under its table. Keep that label unless the numbers
+are replaced with sourced ones. The rows are internally consistent: ROI = avoided
+loss ÷ spend, and the rows sum to the program total. If you edit a figure, fix the
+arithmetic too.
 
 The phrase "Exit Value Enhancer" is not used anywhere. Don't reintroduce it.
 

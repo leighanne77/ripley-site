@@ -21,11 +21,28 @@ fonts or the favicons, both of which are already committed.
 - "Resilient Intelligence" was dropped and stays dropped.
 - Voice: short sentences, active verbs, numbers over adjectives, no coined terms.
 
-## EGON is deliberately unlisted
+## The EGON pages are not in the nav
 
-Nav is About / Tools / Contact. `egon.html` builds and deploys but nothing
-links to it — the URL gets sent to prospects directly. To make it public, add
-`("egon.html", "EGON")` back to the `NAV` list.
+Nav is About / Tools / Contact. Two EGON pages build and deploy outside it:
+
+- `egon.html` — product page plus the Avondale worked example. Linked from the
+  index "Current work" section.
+- `egon-baltimore.html` — Baltimore Harbor worked example. Linked from `egon.html`.
+
+They are no longer link-private: anyone browsing the site can reach both, and
+neither is access-gated. Gating `/egon` with Cloudflare Access is an open task.
+To put EGON in the nav, add `("egon.html", "EGON")` back to the `NAV` list.
+
+## Worked-example figures are illustrative
+
+Both EGON pages carry dollar figures that are illustrative, not analysis output.
+Each page states this in a `srcnote` under its table — keep that label unless the
+numbers are replaced with sourced ones. Rows are internally consistent:
+ROI = avoided loss ÷ spend, and the rows sum to the program total. Fix the
+arithmetic if you edit a figure.
+
+No site intake has been run for Baltimore. Its hazards reflect publicly documented
+characteristics of the upper Chesapeake, not a study.
 
 ## Design system
 

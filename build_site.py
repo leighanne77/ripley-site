@@ -829,6 +829,9 @@ citation, formula, model reference and sensitivity, and no number enters a paylo
 that contains it is cited. ROI is avoided loss divided by spend over a ten-year hold. Committed and
 underway public work is screened out as baseline, never re-proposed as an opportunity.</p>
 
+<p style="text-align:center;margin-top:18px"><a href="egon-baltimore.html">Second worked
+example &mdash; Baltimore Harbor, USACE Baltimore District</a></p>
+
 <h2>{icon("shield")}What you get</h2>
 <ul>
   <li>Quantified exposure across storm, water, heat and ground &mdash; for your specific asset,
@@ -923,6 +926,117 @@ PAGES["tools.html"] = ("Languages & Tools | Ripley Decision Advantage",
   less than three months.&rdquo;</div>
   <div class="attr">&mdash; Michael Khait, now CTO &amp; Co-founder, TrustPoint Technologies</div>
 </div>
+""")
+
+# ---------------------------------------------------------------- egon: baltimore
+PAGES["egon-baltimore.html"] = ("EGON &mdash; Baltimore Harbor | Ripley Decision Advantage",
+  "EGON worked example: physical risk and ranked resilience moves for Baltimore Harbor.",
+  f"""
+<h1>EGON</h1>
+<div class="h1-rule"></div>
+<h4 style="color:var(--blue);letter-spacing:4px;">Worked example &mdash; Baltimore Harbor</h4>
+
+<p><strong>USACE Baltimore District &middot; Baltimore Harbor Navigation Project &middot;
+Reference 0011 &middot; Patapsco River, Chesapeake Bay &middot; ten-year hold.</strong></p>
+
+<p>Baltimore sits where a deep-draft federal navigation channel meets one of the fastest rates of
+relative sea-level rise on the United States East Coast. Land subsidence compounds the water side,
+so the exposure grows from both directions at once &mdash; and it matures inside the maintenance
+window, not after it.</p>
+
+<div class="hz-row">
+  <div class="hz">{icon("storm")}<span>Surge</span></div>
+  <div class="hz">{icon("flood")}<span>Flooding</span></div>
+  <div class="hz">{icon("drought")}<span>Sea level</span></div>
+  <div class="hz">{icon("heat")}<span>Heat</span></div>
+  <div class="hz">{icon("quake")}<span>Shoaling</span></div>
+  <div class="hz">{icon("wildfire")}<span>Wind</span></div>
+</div>
+
+<div class="stat-band">
+  <div class="stat"><div class="v">$151M</div><div class="l">program spend</div></div>
+  <div class="stat"><div class="v">$450M</div><div class="l">avoided loss, 10-yr</div></div>
+  <div class="stat"><div class="v">3.0&times;</div><div class="l">program ROI</div></div>
+  <div class="stat"><div class="v">5</div><div class="l">ranked moves</div></div>
+</div>
+
+<h2>{icon("compass")}The risks it faces</h2>
+<div class="risk"><span class="rk">#1</span><span class="rt">Relative sea-level rise</span>
+  <span class="sev sev-c">Critical</span>
+  <span class="rd">Subsidence and water level compound; the Chesapeake runs well above the
+  national average.</span></div>
+<div class="risk"><span class="rk">#2</span><span class="rt">Storm surge</span>
+  <span class="sev sev-c">Critical</span>
+  <span class="rd">Tropical and extratropical systems both reach the upper bay; harbour
+  inundation is on the record.</span></div>
+<div class="risk"><span class="rk">#3</span><span class="rt">Channel shoaling</span>
+  <span class="sev sev-h">High</span>
+  <span class="rd">Upstream sediment load drives recurring dredging and placement demand.</span></div>
+<div class="risk"><span class="rk">#4</span><span class="rt">Riverine flooding</span>
+  <span class="sev sev-h">High</span>
+  <span class="rd">Patapsco rainfall runs into the tidal reach and stacks on a surge
+  tide.</span></div>
+<div class="risk"><span class="rk">#5</span><span class="rt">Extreme heat</span>
+  <span class="sev sev-m">Medium</span>
+  <span class="rd">Throughput and workforce hours on the terminal apron.</span></div>
+<div class="risk"><span class="rk">#6</span><span class="rt">High wind</span>
+  <span class="sev sev-m">Medium</span>
+  <span class="rd">Crane operations and stacked cargo exposure during working hours.</span></div>
+
+<h2>{icon("summit")}Ranked resilience opportunities</h2>
+<p>Ranked by return, not by preference. Placement and shoreline work clears the hard structures on
+return per dollar &mdash; and the dredged material the channel already produces is the feedstock
+for the top-ranked move.</p>
+<table>
+  <tr><th>Move</th><th>Type</th><th>Spend</th><th>Avoided loss<br>(10-yr)</th><th>ROI</th></tr>
+  <tr><td>Beneficial-use island restoration cell</td>
+    <td><span class="chip chip-n">Nature-based</span></td>
+    <td class="num">$34M</td><td class="num">$131M</td><td class="num">3.9&times;</td></tr>
+  <tr><td>Living shoreline along the terminal frontage</td>
+    <td><span class="chip chip-n">Nature-based</span></td>
+    <td class="num">$16M</td><td class="num">$56M</td><td class="num">3.5&times;</td></tr>
+  <tr><td>Tidal wetland buffer at the harbour edge</td>
+    <td><span class="chip chip-n">Nature-based</span></td>
+    <td class="num">$11M</td><td class="num">$34M</td><td class="num">3.1&times;</td></tr>
+  <tr><td>Terminal-perimeter floodwall and closures</td>
+    <td><span class="chip chip-g">Gray</span></td>
+    <td class="num">$62M</td><td class="num">$167M</td><td class="num">2.7&times;</td></tr>
+  <tr><td>Berth and crane-rail elevation</td>
+    <td><span class="chip chip-g">Gray</span></td>
+    <td class="num">$28M</td><td class="num">$62M</td><td class="num">2.2&times;</td></tr>
+  <tr><td><strong>Site-wide resilience program</strong></td>
+    <td>&mdash;</td>
+    <td class="num"><strong>$151M</strong></td><td class="num"><strong>$450M</strong></td>
+    <td class="num"><strong>3.0&times;</strong></td></tr>
+</table>
+
+<p class="srcnote"><strong>Illustrative figures</strong>, sized to show the shape of an EGON output
+rather than to state findings about this project. No site intake has been run for Baltimore; the
+hazards reflect publicly documented characteristics of the upper Chesapeake, and the ranked moves
+are the option classes EGON tests, not recommendations. In a live engagement every cell carries its
+citation, formula, model reference and sensitivity, and no number enters a payload before a source
+that contains it is cited. ROI is avoided loss divided by spend over a ten-year hold. Committed and
+underway federal work is screened out as baseline, never re-proposed as an opportunity.</p>
+
+<h2>{icon("shield")}Why this one is different from a coastal case</h2>
+<ul>
+  <li>The channel is the asset. Shoaling is an operating cost that recurs on a schedule, not a
+  tail event &mdash; so the placement question and the resilience question are the same
+  question.</li>
+  <li>Dredged material is a resource, not a disposal problem. The top-ranked move is fed by
+  sediment the navigation mission already produces.</li>
+  <li>Subsidence and water level compound. An elevation fixed to today&rsquo;s datum is a
+  depreciating asset.</li>
+</ul>
+
+<div class="callout">
+  <div class="ctitle">Referee, not advocate</div>
+  <p>EGON prices the exposure and lets the return choose the lever. Where a nature-based move beats
+  hard infrastructure per dollar, EGON says so. Where it doesn&rsquo;t, EGON stays quiet.</p>
+</div>
+
+<p style="text-align:center"><a class="cta" href="contact.html">Ask about EGON</a></p>
+<p style="text-align:center"><a href="egon.html">EGON overview and the Avondale example</a></p>
 """)
 
 # ---------------------------------------------------------------- contact
