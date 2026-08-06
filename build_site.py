@@ -314,6 +314,68 @@ person in the executive demo and in the codebase.</p>
   <li>Prior roles: Google, Nielsen/Gracenote, Spinf&nbsp;AI, and HP&nbsp;Inc.</li>
 </ul>
 
+<h2>{icon("summit")}Current work</h2>
+
+<h3>EGON &mdash; extreme-weather risk for defense-adjacent assets</h3>
+<p><em>Ripley Decision Advantage &middot; Palo Alto, CA &middot; 2025&ndash;present &middot;
+Founder &amp; architect</em></p>
+
+<p>A multi-agent decision-support system that prices statistically significant extreme-weather risk
+for the assets defense depends on &mdash; shipyards, ports, mineral processing, and the energy that
+powers the perimeter. Institutional owners get a risk-and-mitigation breakdown they can defend line
+by line.</p>
+
+<div class="callout">
+  <div class="ctitle">Not an automated decision-maker</div>
+  <p>EGON is isolated and API-first. It never plugs into a financial core. It exports verifiable
+  data that a human carries into their own proprietary models &mdash; built to inform a decision,
+  not replace it.</p>
+</div>
+
+<ul>
+  <li><span class="num">20+</span> specialized data loaders on a 1&ndash;6 hour event-driven
+  refresh, fusing environmental ground truth (NOAA Storm Events and SWDI, OpenFEMA, ERDDAP) with an
+  economic ledger (FRED, BLS, Census, USDA NASS) and <span class="num">45+</span> curated
+  nature-based-solutions datasets.</li>
+  <li>Orchestrated on Google&rsquo;s ADK using the Agent-to-Agent protocol, with a custom
+  message-envelope and validation layer and a resilience layer &mdash; session caching, circuit
+  breakers, exponential-backoff retries &mdash; so one faltering external call never stalls the
+  user.</li>
+  <li>Four worker agents divide the load: extreme-weather risk analysis, nature-based solutions
+  across <span class="num">45+</span> adaptation strategies, cost&#8202;/&#8202;benefit modeling
+  that isolates only statistically significant improvements, and verification with a geocoding
+  validation layer.</li>
+  <li>Export-only REST endpoints and a lightweight dashboard. Every figure traceable, every figure
+  exportable.</li>
+</ul>
+
+<p><a href="egon.html">Read the EGON one-pager</a> &mdash; access by request.</p>
+
+<h3>Defense Investors Network &mdash; AI tools for patriotic capital</h3>
+<p><em>Palo Alto, CA &middot; May 2026&ndash;present &middot; AI Solution Architect &middot;
+<a href="https://www.bigdin.net">bigdin.net</a> (password protected)</em></p>
+
+<p>A production investor-relations platform for a dual-use defense investor team &mdash; maritime
+industrial base, critical-mineral sovereignty, energy resilience. Architected and shipped solo,
+live with a real user base.</p>
+
+<ul>
+  <li>A graph-backed warm-introduction engine on Neo4j scores relationship paths deterministically
+  and auditably, behind hard safety gates.</li>
+  <li>PII governance mapped to NIST AI RMF and SR&nbsp;11-7: three-tier privacy enforced at the
+  query layer, owner-scoped authorization on every write, Fernet encryption, and a hashed-payload
+  audit trail with per-field diffs.</li>
+  <li>The data layer was right-sized deliberately &mdash; PostgreSQL and recursive CTEs first,
+  Spark rejected as over-scaled for the volume.</li>
+</ul>
+
+<div class="callout">
+  <div class="ctitle">Stack</div>
+  <p>Google ADK &middot; A2A protocol &middot; FastAPI &middot; PostgreSQL &middot; Neo4j/Cypher
+  &middot; GCP &middot; Google OAuth&nbsp;2.0 &middot; Fernet &middot; promptfoo &middot;
+  OpenTelemetry &middot; Chart.js &middot; Python</p>
+</div>
+
 <h2>{icon("compass")}Track record</h2>
 <ul>
   <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
