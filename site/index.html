@@ -165,6 +165,34 @@ a.card:hover .mailcue{color:var(--red);}
 .chip-n{background:var(--blue);color:#fff;}
 .tbd{font-family:'Courier New',Consolas,monospace;font-weight:700;color:var(--blue);}
 .srcnote{font-size:12px;color:#666;font-style:italic;margin-top:10px;}
+/* USACE process-fit: their phases on top, EGON capability cards beneath */
+.phase-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:3px;
+  margin:16px 0 0;}
+.ph{background:#E4E8EC;color:var(--navy);padding:9px 5px;text-align:center;font-size:9.5px;
+  font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.ph .pn{display:block;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;}
+.ph.done{background:var(--blue);color:#fff;}
+.ph.now{background:var(--red);color:#fff;}
+.gates{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:3px;
+  margin:3px 0 18px;}
+.gate{background:var(--cream);border-top:3px solid var(--gold);padding:9px 10px;font-size:10px;
+  font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--navy);
+  text-align:center;}
+.fit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:18px;
+  margin:18px 0;}
+.fit{border:1px solid #ccc;border-top:4px solid var(--red);padding:15px 18px 18px;}
+.fit.pending{border-top-color:var(--gold);}
+.fit .phn{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:2px;color:var(--red);}
+.fit .fh{font-weight:700;font-size:16px;color:var(--navy);margin:3px 0 4px;}
+.fit .lbl{font-size:9.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--blue);margin-top:12px;}
+.fit p{font-size:13.5px;margin:3px 0 0;}
+.fit .green{background:var(--cream);border-left:3px solid var(--gold);padding:9px 11px;
+  margin-top:11px;font-size:13.5px;font-weight:700;color:var(--navy);}
+.fit .green em{display:block;font-weight:400;font-size:11px;color:#666;margin-top:3px;}
+.notbuilt{display:inline-block;background:var(--gold);color:var(--navy);font-size:9.5px;
+  font-weight:700;letter-spacing:1.4px;text-transform:uppercase;padding:2px 8px;margin-bottom:8px;}
+.blank{border-bottom:2px solid var(--red);padding:0 20px;}
 /* asset scale band */
 .stat-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:2px;
   background:var(--navy);margin:16px 0;}

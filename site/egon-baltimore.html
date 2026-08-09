@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EGON &mdash; Baltimore Harbor | Ripley Decision Advantage</title>
-<meta name="description" content="EGON worked example: physical risk and ranked resilience moves for Baltimore Harbor.">
+<meta name="description" content="Where EGON fits in the USACE delivery process: Baltimore Harbor Navigation Project.">
 <link rel="icon" href="favicon.ico" sizes="48x48">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -165,6 +165,34 @@ a.card:hover .mailcue{color:var(--red);}
 .chip-n{background:var(--blue);color:#fff;}
 .tbd{font-family:'Courier New',Consolas,monospace;font-weight:700;color:var(--blue);}
 .srcnote{font-size:12px;color:#666;font-style:italic;margin-top:10px;}
+/* USACE process-fit: their phases on top, EGON capability cards beneath */
+.phase-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:3px;
+  margin:16px 0 0;}
+.ph{background:#E4E8EC;color:var(--navy);padding:9px 5px;text-align:center;font-size:9.5px;
+  font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.ph .pn{display:block;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;}
+.ph.done{background:var(--blue);color:#fff;}
+.ph.now{background:var(--red);color:#fff;}
+.gates{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:3px;
+  margin:3px 0 18px;}
+.gate{background:var(--cream);border-top:3px solid var(--gold);padding:9px 10px;font-size:10px;
+  font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--navy);
+  text-align:center;}
+.fit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:18px;
+  margin:18px 0;}
+.fit{border:1px solid #ccc;border-top:4px solid var(--red);padding:15px 18px 18px;}
+.fit.pending{border-top-color:var(--gold);}
+.fit .phn{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:2px;color:var(--red);}
+.fit .fh{font-weight:700;font-size:16px;color:var(--navy);margin:3px 0 4px;}
+.fit .lbl{font-size:9.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--blue);margin-top:12px;}
+.fit p{font-size:13.5px;margin:3px 0 0;}
+.fit .green{background:var(--cream);border-left:3px solid var(--gold);padding:9px 11px;
+  margin-top:11px;font-size:13.5px;font-weight:700;color:var(--navy);}
+.fit .green em{display:block;font-weight:400;font-size:11px;color:#666;margin-top:3px;}
+.notbuilt{display:inline-block;background:var(--gold);color:var(--navy);font-size:9.5px;
+  font-weight:700;letter-spacing:1.4px;text-transform:uppercase;padding:2px 8px;margin-bottom:8px;}
+.blank{border-bottom:2px solid var(--red);padding:0 20px;}
 /* asset scale band */
 .stat-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:2px;
   background:var(--navy);margin:16px 0;}
@@ -223,105 +251,133 @@ footer{background:var(--navy);color:var(--cream-soft);}
 
 <h1>EGON</h1>
 <div class="h1-rule"></div>
-<h4 style="color:var(--blue);letter-spacing:4px;">Worked example &mdash; Baltimore Harbor</h4>
+<h4 style="color:var(--blue);letter-spacing:4px;">Where it fits in your process</h4>
 
-<p><strong>USACE Baltimore District &middot; Baltimore Harbor Navigation Project &middot;
-Reference 0011 &middot; Patapsco River, Chesapeake Bay &middot; ten-year hold.</strong></p>
+<p><strong>Baltimore Harbor Navigation Project &middot; USACE Baltimore District, North Atlantic
+Division.</strong></p>
 
-<p>Baltimore sits where a deep-draft federal navigation channel meets one of the fastest rates of
-relative sea-level rise on the United States East Coast. Land subsidence compounds the water side,
-so the exposure grows from both directions at once &mdash; and it matures inside the maintenance
-window, not after it.</p>
+<p>EGON does not replace a step and does not ask you to change one. It sits underneath the process
+you already run, and it is download-only &mdash; nothing touches HEC-RAS, HEC-FDA or ADCIRC. Your
+certified models stay the system of record. EGON reads what they export.</p>
 
-<div class="hz-row">
-  <div class="hz"><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M18 38 a11 11 0 0 1 3 -21 a14 14 0 0 1 26 4 a9 9 0 0 1 -1 17 Z"/><polygon fill="currentColor" points="34,36 22,56 30,56 26,62 43,42 34,42 38,36"/></svg><span>Surge</span></div>
-  <div class="hz"><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><g fill="currentColor" fill-rule="evenodd"><path d="M 2 20 Q 12 10 22 20 T 42 20 T 62 20 L 62 26 Q 52 16 42 26 T 22 26 T 2 26 Z"/><path d="M 2 34 Q 12 24 22 34 T 42 34 T 62 34 L 62 40 Q 52 30 42 40 T 22 40 T 2 40 Z"/><path d="M 2 48 Q 12 38 22 48 T 42 48 T 62 48 L 62 54 Q 52 44 42 54 T 22 54 T 2 54 Z"/></g></svg><span>Flooding</span></div>
-  <div class="hz"><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentColor" d="M32 6 C32 6 50 27 50 40 a18 18 0 0 1 -36 0 C14 27 32 6 32 6 Z M30 19 L33 19 L31 45 L28 45 Z M20 33 H44 V35.4 H20 Z"/></svg><span>Sea level</span></div>
-  <div class="hz"><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="32" r="11" fill="currentColor"/><g fill="currentColor"><rect x="30" y="3" width="4" height="10"/><rect x="30" y="51" width="4" height="10"/><rect x="3" y="30" width="10" height="4"/><rect x="51" y="30" width="10" height="4"/><g transform="rotate(45 32 32)"><rect x="30" y="3" width="4" height="10"/><rect x="30" y="51" width="4" height="10"/><rect x="3" y="30" width="10" height="4"/><rect x="51" y="30" width="10" height="4"/></g></g></svg><span>Heat</span></div>
-  <div class="hz"><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="currentColor" d="M6 32 h17 l3 -6 l4 8 l3 -5 l4 7 h21 v20 a2 2 0 0 1 -2 2 h-50 a2 2 0 0 1 -2 -2 z M30 38 L33 38 L31 58 L27 58 Z"/></svg><span>Shoaling</span></div>
-  <div class="hz"><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><polygon fill="currentColor" points="32,3 38,17 35,16 41,27 45,23 47,34 44,45 36,55 28,59 20,51 18,38 23,28 26,33 26,19 30,25"/></svg><span>Wind</span></div>
+<div class="phase-bar">
+  <div class="ph done"><span class="pn">1</span>Study</div>
+  <div class="ph done"><span class="pn">2</span>Feasibility</div>
+  <div class="ph done"><span class="pn">3</span>Alternatives</div>
+  <div class="ph done"><span class="pn">4</span>Design</div>
+  <div class="ph now"><span class="pn">5</span>Permitting</div>
+  <div class="ph"><span class="pn">6</span>Funding</div>
+  <div class="ph"><span class="pn">7</span>Construction</div>
+</div>
+<div class="gates">
+  <div class="gate">Engineering &mdash; phases 1&ndash;4, into 5</div>
+  <div class="gate">Funding &mdash; phase 6</div>
+  <div class="gate">Stakeholder engagement &mdash; phase 7</div>
 </div>
 
-<div class="stat-band">
-  <div class="stat"><div class="v">$151M</div><div class="l">program spend</div></div>
-  <div class="stat"><div class="v">$450M</div><div class="l">avoided loss, 10-yr</div></div>
-  <div class="stat"><div class="v">3.0&times;</div><div class="l">program ROI</div></div>
-  <div class="stat"><div class="v">5</div><div class="l">ranked moves</div></div>
+<div class="callout">
+  <div class="ctitle">What is settled, and what is not</div>
+  <p>The cost side is priced and cited. Benefit-cost ratio localisation and benefit transfer are
+  <strong>unresolved</strong> &mdash; that is proof-of-concept work, not a claim. Permitting support
+  is designed but <strong>not built</strong>. Everything below says which it is.</p>
 </div>
 
-<h2><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><polygon points="32,5 37.5,26.5 59,32 37.5,37.5 32,59 26.5,37.5 5,32 26.5,26.5" fill="currentColor"/><circle cx="32" cy="32" r="5" fill="#F5EEE0"/><circle cx="32" cy="32" r="2" fill="currentColor"/></svg>The risks it faces</h2>
-<div class="risk"><span class="rk">#1</span><span class="rt">Relative sea-level rise</span>
-  <span class="sev sev-c">Critical</span>
-  <span class="rd">Subsidence and water level compound; the Chesapeake runs well above the
-  national average.</span></div>
-<div class="risk"><span class="rk">#2</span><span class="rt">Storm surge</span>
-  <span class="sev sev-c">Critical</span>
-  <span class="rd">Tropical and extratropical systems both reach the upper bay; harbour
-  inundation is on the record.</span></div>
-<div class="risk"><span class="rk">#3</span><span class="rt">Channel shoaling</span>
-  <span class="sev sev-h">High</span>
-  <span class="rd">Upstream sediment load drives recurring dredging and placement demand.</span></div>
-<div class="risk"><span class="rk">#4</span><span class="rt">Riverine flooding</span>
-  <span class="sev sev-h">High</span>
-  <span class="rd">Patapsco rainfall runs into the tidal reach and stacks on a surge
-  tide.</span></div>
-<div class="risk"><span class="rk">#5</span><span class="rt">Extreme heat</span>
-  <span class="sev sev-m">Medium</span>
-  <span class="rd">Throughput and workforce hours on the terminal apron.</span></div>
-<div class="risk"><span class="rk">#6</span><span class="rt">High wind</span>
-  <span class="sev sev-m">Medium</span>
-  <span class="rd">Crane operations and stacked cargo exposure during working hours.</span></div>
+<div class="fit-grid">
 
-<h2><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><polygon points="0,58 30,16 50,58" fill="currentColor"/><rect x="29" y="4" width="2.4" height="23" fill="currentColor"/><polygon points="31.4,4 46,9 31.4,14" fill="currentColor"/></svg>Ranked resilience opportunities</h2>
-<p>Ranked by return, not by preference. Placement and shoreline work clears the hard structures on
-return per dollar &mdash; and the dredged material the channel already produces is the feedstock
-for the top-ranked move.</p>
-<table>
-  <tr><th>Move</th><th>Type</th><th>Spend</th><th>Avoided loss<br>(10-yr)</th><th>ROI</th></tr>
-  <tr><td>Beneficial-use island restoration cell</td>
-    <td><span class="chip chip-n">Nature-based</span></td>
-    <td class="num">$34M</td><td class="num">$131M</td><td class="num">3.9&times;</td></tr>
-  <tr><td>Living shoreline along the terminal frontage</td>
-    <td><span class="chip chip-n">Nature-based</span></td>
-    <td class="num">$16M</td><td class="num">$56M</td><td class="num">3.5&times;</td></tr>
-  <tr><td>Tidal wetland buffer at the harbour edge</td>
-    <td><span class="chip chip-n">Nature-based</span></td>
-    <td class="num">$11M</td><td class="num">$34M</td><td class="num">3.1&times;</td></tr>
-  <tr><td>Terminal-perimeter floodwall and closures</td>
-    <td><span class="chip chip-g">Gray</span></td>
-    <td class="num">$62M</td><td class="num">$167M</td><td class="num">2.7&times;</td></tr>
-  <tr><td>Berth and crane-rail elevation</td>
-    <td><span class="chip chip-g">Gray</span></td>
-    <td class="num">$28M</td><td class="num">$62M</td><td class="num">2.2&times;</td></tr>
-  <tr><td><strong>Site-wide resilience program</strong></td>
-    <td>&mdash;</td>
-    <td class="num"><strong>$151M</strong></td><td class="num"><strong>$450M</strong></td>
-    <td class="num"><strong>3.0&times;</strong></td></tr>
-</table>
+  <div class="fit">
+    <span class="phn">02</span><div class="fh">Feasibility</div>
+    <div class="lbl">The problem</div>
+    <p>Floods surprise you when the analysis silently did not cover what you thought it did. A datum
+    from 1992 measured against ground from 2024. A dominant asset class excluded because no curve
+    exists for it. Depth measured from the dirt, fed into a curve indexed to the first floor.</p>
+    <div class="lbl">What EGON does</div>
+    <p>Verified open-source and government data under enforced contracts &mdash; sources named
+    before anything is computed. Escrowed refresh: every pull time-stamped, staleness gated red or
+    green, no human in the loop. Models draft and discover; a deterministic core is the only
+    writer. Each of those gaps is written on the figure, so it surfaces in review rather than after
+    the water.</p>
+    <div class="green">A feasibility cycle <span class="blank">&nbsp;</span>% shorter.
+    <em>Blank until your baseline</em></div>
+  </div>
 
-<p class="srcnote"><strong>Illustrative figures</strong>, sized to show the shape of an EGON output
-rather than to state findings about this project. No site intake has been run for Baltimore; the
-hazards reflect publicly documented characteristics of the upper Chesapeake, and the ranked moves
-are the option classes EGON tests, not recommendations. In a live engagement every cell carries its
-citation, formula, model reference and sensitivity, and no number enters a payload before a source
-that contains it is cited. ROI is avoided loss divided by spend over a ten-year hold. Committed and
-underway federal work is screened out as baseline, never re-proposed as an opportunity.</p>
+  <div class="fit">
+    <span class="phn">03</span><div class="fh">Alternatives</div>
+    <div class="lbl">The problem</div>
+    <p>Alternatives are built by hand, a few at a time, by planners working in separate
+    regions.</p>
+    <div class="lbl">What EGON does</div>
+    <p>A scenario generator surfaces the site&rsquo;s full measure catalogue &mdash; nature-based,
+    gray and hybrid &mdash; rather than the handful someone had time to think of. Every measure is
+    screened to approved sources, then ranked on risk-adjusted return. A rejection log records what
+    was screened out and why. Both horizons are reported: the near-term hold and the long-term
+    service life.</p>
+    <div class="green"><span class="blank">&nbsp;</span>% more of the right alternatives, earlier.
+    <em>Blank until your baseline</em></div>
+  </div>
 
-<h2><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M 32 4 L 56 12 L 54 36 Q 52 52 32 60 Q 12 52 10 36 L 8 12 Z"/></svg>Why this one is different from a coastal case</h2>
+  <div class="fit">
+    <span class="phn">04</span><div class="fh">Design</div>
+    <div class="lbl">The problem</div>
+    <p>Design maturity is whatever it has reached at the moment money is asked for, and it strains
+    toward 35%.</p>
+    <div class="lbl">What EGON does</div>
+    <p>A USACE Class-5 cost engine built to your methods, not a generic model, alongside
+    expected-annual-damage and life-cycle benefit engines running both horizons. CWCCIS escalation,
+    so cross-year figures are escalated rather than summed raw. The validation gate fails closed on
+    provenance and schema.</p>
+    <div class="green">Design integrity <span class="blank">&nbsp;</span>% &rarr; 35% at
+    appropriation. <em>Your own figures</em></div>
+  </div>
+
+  <div class="fit pending">
+    <span class="phn">05</span><div class="fh">Permitting</div>
+    <span class="notbuilt">Pending POC &mdash; not yet built</span>
+    <div class="lbl">The problem</div>
+    <p>Agency packages are assembled by hand.</p>
+    <div class="lbl">What EGON could do</div>
+    <p>The same deterministic core generates the agency-facing package &mdash; Section 404 and
+    others &mdash; every figure carrying its source and its calculation into the submission. Same
+    payload, different reader. EGON does not shorten a statutory clock. It shortens the time you
+    spend assembling what goes into it.</p>
+    <div class="green">Packages that arrive complete and sourced.</div>
+  </div>
+
+</div>
+
+<h2><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M 32 4 L 56 12 L 54 36 Q 52 52 32 60 Q 12 52 10 36 L 8 12 Z"/></svg>How the numbers stay defensible</h2>
 <ul>
-  <li>The channel is the asset. Shoaling is an operating cost that recurs on a schedule, not a
-  tail event &mdash; so the placement question and the resilience question are the same
-  question.</li>
-  <li>Dredged material is a resource, not a disposal problem. The top-ranked move is fed by
-  sediment the navigation mission already produces.</li>
-  <li>Subsidence and water level compound. An elevation fixed to today&rsquo;s datum is a
-  depreciating asset.</li>
+  <li><strong>No model in the trust path.</strong> Language models draft and discover; a
+  deterministic core is the only writer, so the same run produces the same report.</li>
+  <li><strong>No contact with your certified models.</strong> Download-only. Nothing interfaces
+  with HEC-RAS, HEC-FDA or ADCIRC.</li>
+  <li><strong>Decision support, not decision making.</strong> You export, you integrate, you
+  decide.</li>
+  <li><strong>The gate fails closed.</strong> A figure without a source and a reproducible
+  calculation cannot be represented at all. That is a structural property, not a promise.</li>
 </ul>
+
+<h2><svg class="icon" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="23" cy="33" r="9" fill="currentColor"/><circle cx="23" cy="33" r="5.5" fill="#F5EEE0"/><circle cx="41" cy="33" r="9" fill="currentColor"/><circle cx="41" cy="33" r="5.5" fill="#F5EEE0"/><rect x="30" y="31.4" width="4" height="2.2" fill="currentColor"/><polygon points="14,30.5 9,27 7.5,29 12.5,32.5" fill="currentColor"/><polygon points="50,30.5 55,27 56.5,29 51.5,32.5" fill="currentColor"/></svg>What the guarantee actually is</h2>
+<p>Not that every figure is good &mdash; that you know what every figure is worth. Each one arrives
+with its source named, its calculation shown, its model named and carried under an alternate so you
+can see what the model choice is worth &mdash; or flagged as a gap, never quietly filled in.</p>
+
+<div class="callout">
+  <div class="ctitle">A worked search, including the part that failed</div>
+  <p>Pricing a coastal industrial asset at the Port of Mobile needed a depth-damage curve carrying
+  wave and erosion, not inundation alone. No published USACE curve covers that case. Six sources
+  were screened; none closed it. The escrowed NACCS report was read in full &mdash; all
+  <span class="num">306</span> pages &mdash; and carries no coastal industrial curve. No successor
+  has been issued. The riverine substitutes were rejected on the record, because they carry no wave
+  or erosion mechanism.</p>
+  <p>EGON reported that no benefit-cost ratio was computable, rather than producing one. It does not
+  close the gap. It names it, shows the search, and stops there.</p>
+</div>
 
 <div class="callout">
   <div class="ctitle">Referee, not advocate</div>
   <p>EGON prices the exposure and lets the return choose the lever. Where a nature-based move beats
-  hard infrastructure per dollar, EGON says so. Where it doesn&rsquo;t, EGON stays quiet.</p>
+  hard infrastructure per dollar, EGON says so. Where it doesn&rsquo;t, EGON stays quiet. Poplar
+  Island is the Baltimore District precedent for what beneficial-use placement can carry.</p>
 </div>
 
 <p style="text-align:center"><a class="cta" href="contact.html">Ask about EGON</a></p>
