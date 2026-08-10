@@ -27,7 +27,9 @@ QUICKSAND = b64(ROOT / "fonts" / "Quicksand-700.woff2")
 # navy panels. EGON from the web-demo asset; DIN from the bigdin.net lockup.
 EGON_WORDMARK = svg_asset("egon-wordmark.svg")
 DIN_WORDMARK = svg_asset("din-wordmark.svg")
-DAN_WORDMARK = svg_asset("dan-wordmark.svg")
+# class goes on the <svg> itself, not a wrapper: both marks must be direct flex
+# items of the panel or they size by different rules
+DAN_WORDMARK = svg_asset("dan-wordmark.svg").replace('<svg ', '<svg class="dan" ', 1)
 
 # ---- Ripley mountain mark: geometric filled silhouette, true-knockout zigzag snowcaps
 # (EGON-style: fill-rule evenodd, page shows through the caps; fill:currentColor)
@@ -149,8 +151,8 @@ a.card:hover .mailcue{color:var(--red);}
    DIN rather than pushing DAN down. Pair is 266px wide against 278 available
    in the narrowest grid column. */
 .work-thumb.two{gap:14px;padding:0 16px 42px;align-items:flex-end;}
-.work-thumb.two svg{max-height:40px;}
-.work-thumb.two .dan svg{max-height:55px;}
+.work-thumb.two svg{height:40px;width:auto;max-width:none;}
+.work-thumb.two svg.dan{height:55px;}
 .work-thumb .sep{width:1px;height:30px;background:rgba(245,238,224,.3);flex:none;}
 .work-body{padding:16px 20px 20px;}
 .work-body h3{margin:0 0 4px;color:var(--navy);font-size:17px;}
@@ -647,8 +649,7 @@ person in the executive demo and in the codebase.</p>
   </div>
 
   <div class="work-card">
-    <div class="work-thumb two">{DIN_WORDMARK}<span class="sep"></span>
-    <span class="dan">{DAN_WORDMARK}</span></div>
+    <div class="work-thumb two">{DIN_WORDMARK}<span class="sep"></span>{DAN_WORDMARK}</div>
     <div class="work-body">
       <h3>AI tools for patriotic capital</h3>
       <p class="meta">Palo Alto, CA &middot; May 2026&ndash;present &middot; AI Solution
