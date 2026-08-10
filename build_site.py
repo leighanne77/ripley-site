@@ -141,17 +141,20 @@ a.card:hover .mailcue{color:var(--red);}
 /* Fixed panel height so both cards line up: the wordmarks have very different
    aspect ratios (EGON 4.2:1, DIN 2.4:1), so sizing by width alone left EGON's
    panel short. Cap both dimensions and let each mark land where it fits. */
-.work-thumb{background:var(--navy);padding:20px 24px;display:flex;align-items:center;
-  justify-content:center;height:140px;}
-.work-thumb svg{max-height:64px;max-width:230px;width:auto;height:auto;display:block;}
+/* All three wordmarks carry the same 425-unit letter band. EGON and DIN are
+   cropped to a matching 437-unit box so a single height renders both at the
+   same letter size; DAN's box is taller only because it keeps its halo.
+   Aligned flex-end so every mark sits on the same baseline across cards. */
+.work-thumb{background:var(--navy);padding:0 24px 42px;display:flex;
+  align-items:flex-end;justify-content:center;height:140px;}
+.work-thumb svg{height:40px;width:auto;max-width:100%;display:block;}
 /* Two marks share one panel. Both carry the same 425-unit letter band, but
    DAN's box is taller because it keeps the halo above the letters. Sizing DAN
    to 55px against DIN's 40px lands both letterforms at ~39px; the extra height
    is halo. Aligned flex-end so the baselines line up and the glow rises above
    DIN rather than pushing DAN down. Pair is 266px wide against 278 available
    in the narrowest grid column. */
-.work-thumb.two{gap:14px;padding:0 16px 42px;align-items:flex-end;}
-.work-thumb.two svg{height:40px;width:auto;max-width:none;}
+.work-thumb.two{gap:14px;padding-left:16px;padding-right:16px;}
 .work-thumb.two svg.dan{height:55px;}
 .work-thumb .sep{width:1px;height:30px;background:rgba(245,238,224,.3);flex:none;}
 .work-body{padding:16px 20px 20px;}
