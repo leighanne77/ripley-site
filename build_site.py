@@ -623,7 +623,7 @@ environments &mdash; from Fortune&nbsp;50 boardrooms to post-conflict infrastruc
 with the client, runs the technical discovery, and stays hands-on through production: the same
 person in the executive demo and in the codebase.</p>
 <ul>
-  <li>A decade-plus in tech, the last four as an AI/ML engineer.</li>
+  <li>A decade-plus in engineering, the last four specializing in multi-agent systems.</li>
   <li>Started as a classically trained international security and foreign policy analyst &mdash;
   under Dr.&nbsp;Pfaltzgraff at Tufts, then with Dr.&nbsp;Strmecki at the Smith Richardson
   Foundation, whose board has included Rumsfeld, Brzezinski and Woolsey, and today McMaster and
