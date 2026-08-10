@@ -1149,9 +1149,10 @@ PAGES["bio.html"] = ("Leigh Anne Miller | Ripley Decision Advantage",
 <div class="bio-head">
   <img src="data:image/jpeg;base64,{BIO_PORTRAIT}" alt="Leigh Anne Miller"
        width="560" height="560">
-  <p class="bio-lead">A decade-plus in tech, the last four as an AI/ML engineer &mdash; and before
-  that, a classically trained international security and foreign policy analyst. The two halves are
-  the practice: systems built to survive audit, for decisions that carry real consequence.</p>
+  <p class="bio-lead">A decade-plus in engineering, the last four specializing in multi-agent
+  systems &mdash; and before that, a classically trained international security and foreign policy
+  analyst. The two halves are the practice: systems built to survive audit, for decisions that
+  carry real consequence.</p>
 </div>
 
 <div class="bio-sec">
