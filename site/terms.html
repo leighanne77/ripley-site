@@ -109,11 +109,13 @@ a.card:hover .mailcue{color:var(--red);}
 .work-thumb{background:var(--navy);padding:20px 24px;display:flex;align-items:center;
   justify-content:center;height:140px;}
 .work-thumb svg{max-height:64px;max-width:230px;width:auto;height:auto;display:block;}
-/* two marks share one panel: cap each at just under half the width so they
-   stay side by side at every column width, with a hairline between */
-.work-thumb.two{gap:16px;}
-.work-thumb.two svg{max-height:50px;max-width:42%;}
-.work-thumb .sep{width:1px;height:42px;background:rgba(245,238,224,.3);flex:none;}
+/* Two marks share one panel. Both viewBoxes are cropped to the same 437-unit
+   mark band, so constraining height alone renders them at identical letter
+   height; widths then differ only by each mark's own aspect. 40px keeps the
+   pair inside the narrowest grid column (310px) without wrapping. */
+.work-thumb.two{gap:14px;padding-left:16px;padding-right:16px;}
+.work-thumb.two svg{max-height:40px;}
+.work-thumb .sep{width:1px;height:34px;background:rgba(245,238,224,.3);flex:none;}
 .work-body{padding:16px 20px 20px;}
 .work-body h3{margin:0 0 4px;color:var(--navy);font-size:17px;}
 .work-body .meta{font-style:italic;color:var(--blue);font-size:13px;margin-bottom:10px;}
