@@ -142,13 +142,16 @@ a.card:hover .mailcue{color:var(--red);}
 .work-thumb{background:var(--navy);padding:20px 24px;display:flex;align-items:center;
   justify-content:center;height:140px;}
 .work-thumb svg{max-height:64px;max-width:230px;width:auto;height:auto;display:block;}
-/* Two marks share one panel. Both viewBoxes are cropped to the same 437-unit
-   mark band, so constraining height alone renders them at identical letter
-   height; widths then differ only by each mark's own aspect. 40px keeps the
-   pair inside the narrowest grid column (310px) without wrapping. */
-.work-thumb.two{gap:14px;padding-left:16px;padding-right:16px;}
+/* Two marks share one panel. Both carry the same 425-unit letter band, but
+   DAN's box is taller because it keeps the halo above the letters. Sizing DAN
+   to 55px against DIN's 40px lands both letterforms at ~39px; the extra height
+   is halo. Aligned flex-end so the baselines line up and the glow rises above
+   DIN rather than pushing DAN down. Pair is 266px wide against 278 available
+   in the narrowest grid column. */
+.work-thumb.two{gap:14px;padding:0 16px 42px;align-items:flex-end;}
 .work-thumb.two svg{max-height:40px;}
-.work-thumb .sep{width:1px;height:34px;background:rgba(245,238,224,.3);flex:none;}
+.work-thumb.two .dan svg{max-height:55px;}
+.work-thumb .sep{width:1px;height:30px;background:rgba(245,238,224,.3);flex:none;}
 .work-body{padding:16px 20px 20px;}
 .work-body h3{margin:0 0 4px;color:var(--navy);font-size:17px;}
 .work-body .meta{font-style:italic;color:var(--blue);font-size:13px;margin-bottom:10px;}
@@ -644,14 +647,16 @@ person in the executive demo and in the codebase.</p>
   </div>
 
   <div class="work-card">
-    <div class="work-thumb two">{DIN_WORDMARK}<span class="sep"></span>{DAN_WORDMARK}</div>
+    <div class="work-thumb two">{DIN_WORDMARK}<span class="sep"></span>
+    <span class="dan">{DAN_WORDMARK}</span></div>
     <div class="work-body">
       <h3>AI tools for patriotic capital</h3>
       <p class="meta">Palo Alto, CA &middot; May 2026&ndash;present &middot; AI Solution
       Architect &middot; <a href="https://www.bigdin.net">bigdin.net</a> (team access only)</p>
-      <p>A production investor-relations platform for a dual-use defense investor team &mdash;
-      maritime industrial base, critical-mineral sovereignty, energy resilience. Architected and
-      shipped solo, live with a real user base.</p>
+      <p>Defense Investor Network (DIN) and Defense Angel Network (DAN): a production
+      investor-relations platform for a dual-use defense investor team &mdash; maritime industrial
+      base, critical-mineral sovereignty, energy resilience. Architected and shipped solo, live
+      with a real user base.</p>
       <ul>
         <li>A graph-backed warm-introduction engine on Neo4j scores relationship paths
         deterministically and auditably, behind hard safety gates.</li>
