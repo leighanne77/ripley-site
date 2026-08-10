@@ -118,7 +118,41 @@ Entries marked **[verify]** are ones to confirm before saying out loud to USACE.
 | **XAI** | Explainable AI. |
 | **Provenance / lineage** | Where a figure came from and every transformation applied to it. |
 
-## 8 · Banned copy — do not use
+## 8 · Brand entities
+
+| Term | Means |
+|---|---|
+| **Ripley Decision Advantage** | The firm. `ripleydecisionadvantage.net`. |
+| **DIN** | Defense Investor Network. The investor-relations platform at `bigdin.net` — **email-verified, team access only**, not password protected. |
+| **DAN** | Defense Angel Network. Sister network to DIN; its mark carries a gold halo above the letters. Both marks share one panel on the Ripley index. |
+| **EGON** | The physical-risk decision-support product. Two public pages: the overview with the Avondale example, and the Baltimore worked example. |
+| **Wordmark vs lockup** | A wordmark is the letterforms alone; a lockup adds a tagline beneath. All three site marks are cropped to wordmark — the DEFENSE INVESTOR NETWORK and DEFENSE ANGEL NETWORK taglines are excluded. |
+| **Letter band** | y 171.74 → 597.09 — the 425.4-unit cap-height band shared by the EGON, DIN and DAN wordmarks. They come from one design system, which is why normalising to this band makes all three render at identical letter height. |
+
+## 9 · Site and asset engineering
+
+| Term | Means |
+|---|---|
+| **Source of truth** | `build_site.py`. `site/*.html` is generated — editing it directly is lost on the next build. |
+| **Self-contained** | Every page inlines its fonts, icons, wordmarks and images. Zero external requests, on every page. |
+| **Data URI** | A base64 asset embedded in the markup. Three per page carrying weight: two woff2 fonts, and the bio portrait. |
+| **viewBox** | The SVG coordinate window. Cropping it hides everything outside without deleting geometry — how both taglines came off, reversibly, with no risk of breaking a mark. |
+| **Intrinsic dimensions** | The `width`/`height` attributes on an SVG. `svg_asset()` strips them so CSS controls size. **The trap:** a stripped SVG only sizes predictably as a *direct* flex item. Wrapping DAN in a `<span>` made it collapse and disappear. |
+| **Replaced element** | An element whose content comes from outside CSS — `img`, `svg`. Without intrinsic dimensions it falls back to a default box, which is the failure above. Prefer an explicit `height` with `width:auto`. |
+| **Edge cache** | Cloudflare serves a cached copy for a window after each deploy. `cf-cache-status: HIT` on a cache-busted URL means you are looking at the old page, **not** a failed deploy. Re-check before diagnosing. |
+| **Canonical hostname** | Apex and `www` currently both serve independently with **no redirect between them**. Any gate must cover both, or one should redirect to the other first. |
+
+## 10 · Access and email posture
+
+| Term | Means |
+|---|---|
+| **Cloudflare Access** | Identity gate sitting in front of a hostname and path. Needs no code change to an assets-only Worker. |
+| **One-time PIN** | Access identity provider that emails a 6-digit code, valid 10 minutes, single use. No external IdP; allowlist by email address. Blocked users receive no email at all, so the page's existence is not confirmed. |
+| **SPF / DKIM / DMARC** | The three email-authentication records. All three are live and verified on the domain. |
+| **p=none / quarantine / reject** | The DMARC policy ladder. `none` is monitor-only — it satisfies the check and starts the reports but blocks nothing. Enforcement begins at `quarantine`. |
+| **rua** | The DMARC aggregate-report address. Reports go to `miller@`. They are the only warning when a legitimate sender starts failing. |
+
+## 11 · Banned copy — do not use
 
 From `CLAUDE.md`, enforced on every build:
 
@@ -128,7 +162,7 @@ From `CLAUDE.md`, enforced on every build:
 - **"Resilient Intelligence"** — dropped, stays dropped.
 - **X / The Moonshot Factory** — not in the biography. "Google" alone is fine.
 
-## 9 · Claims discipline
+## 12 · Claims discipline
 
 Phrases that must stay accurate, because they are the product:
 
