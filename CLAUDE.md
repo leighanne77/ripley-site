@@ -33,6 +33,13 @@ They are no longer link-private: anyone browsing the site can reach both, and
 neither is access-gated. Gating `/egon` with Cloudflare Access is an open task.
 To put EGON in the nav, add `("egon.html", "EGON")` back to the `NAV` list.
 
+## bio.html is also outside the nav
+
+`bio.html` is the long-form biography, reached from a small grey "more" link
+beside the "The principal" heading on the index. Three numbered sections —
+AI/ML engineering, international security, founder — modelled on the Defense
+Angel Network bio page. No photo yet.
+
 ## Worked-example figures are illustrative
 
 Both EGON pages carry dollar figures that are illustrative, not analysis output.

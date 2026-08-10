@@ -32,6 +32,7 @@ site/             generated — this is what gets deployed
 | `index.html` | yes (About) | hero, firm, principal, track record, current work, quotes, services |
 | `tools.html` | yes (Tools) | expertise groups + stack table |
 | `contact.html` | yes (Contact) | email, phone, LinkedIn |
+| `bio.html` | **not in nav** | linked from the "more" beside The principal |
 | `egon.html` | **not in nav** | linked from index "Current work" · Avondale worked example |
 | `egon-baltimore.html` | **not in nav** | linked from `egon.html` · Baltimore Harbor worked example |
 | `privacy.html` | footer | |

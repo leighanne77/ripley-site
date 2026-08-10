@@ -163,6 +163,21 @@ a.card:hover .mailcue{color:var(--red);}
 .work-body p{font-size:15px;}
 .work-body ul{margin-bottom:10px;}
 .work-body ul li{font-size:14px;margin-bottom:6px;}
+/* quiet "more" link riding beside a heading */
+.more{font-family:Arial,sans-serif;font-weight:400;font-size:13px;letter-spacing:.4px;
+  color:#8D96A2;text-decoration:none;margin-left:11px;vertical-align:3px;}
+.more:hover{color:var(--red);text-decoration:underline;}
+/* biography page: numbered sections */
+.bio-lead{font-size:19px;line-height:1.45;margin:0 0 6px;}
+.bio-sec{display:grid;grid-template-columns:54px 1fr;gap:0 18px;margin:28px 0;
+  border-top:1px solid #e3e3e3;padding-top:22px;}
+.bio-sec .bn{font-family:'Oswald',sans-serif;font-size:30px;color:var(--gold);line-height:1;}
+.bio-sec h2{margin:0 0 10px;font-size:22px;}
+.bio-sec p:last-child,.bio-sec ul:last-child{margin-bottom:0;}
+@media (max-width:560px){
+  .bio-sec{grid-template-columns:1fr;}
+  .bio-sec .bn{margin-bottom:8px;}
+}
 /* ---- EGON graphics ---- */
 /* hazard tiles */
 .hz-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(94px,1fr));gap:10px;
@@ -591,7 +606,7 @@ tooling and workflow optimization for businesses and public-sector organizations
 your numbers: lower engineering costs, stronger product-market fit, and growing revenue &mdash;
 not just a beautiful product.</p>
 
-<h2>{icon("people")}The principal</h2>
+<h2>{icon("people")}The principal<a class="more" href="bio.html">more</a></h2>
 <p>Leigh Anne Miller architects and industrializes AI/ML systems for high-stakes, low-trust
 environments &mdash; from Fortune&nbsp;50 boardrooms to post-conflict infrastructure. She embeds
 with the client, runs the technical discovery, and stays hands-on through production: the same
@@ -1110,6 +1125,72 @@ can see what the model choice is worth &mdash; or flagged as a gap, never quietl
 
 <p style="text-align:center"><a class="cta" href="contact.html">Ask about EGON</a></p>
 <p style="text-align:center"><a href="egon.html">EGON overview and the Avondale example</a></p>
+""")
+
+# ---------------------------------------------------------------- bio
+PAGES["bio.html"] = ("Leigh Anne Miller | Ripley Decision Advantage",
+  "Leigh Anne Miller — AI/ML engineer, international security analyst, founder of "
+  "Ripley Decision Advantage.",
+  f"""
+<h1>Leigh Anne Miller</h1>
+<div class="h1-rule"></div>
+
+<p class="bio-lead">A decade-plus in tech, the last four as an AI/ML engineer &mdash; and before
+that, a classically trained international security and foreign policy analyst. The two halves are
+the practice: systems built to survive audit, for decisions that carry real
+consequence.</p>
+
+<div class="bio-sec">
+  <span class="bn">01</span>
+  <div>
+    <h2>AI/ML engineering</h2>
+    <p>She architects and industrializes AI/ML systems for high-stakes, low-trust environments
+    &mdash; from Fortune&nbsp;50 boardrooms to post-conflict infrastructure. She embeds with the
+    client, runs the technical discovery, and stays hands-on through production: the same person
+    in the executive demo and in the codebase.</p>
+    <ul>
+      <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
+      <span class="num">$300M</span> Gracenote business at Nielsen.</li>
+      <li>Shipped HP&rsquo;s first API-based data exchange and governance capability, for a
+      <span class="num">$40B</span> channel-partner program.</li>
+      <li>Production AI systems in continuous service since <span class="num">2023</span>.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="bio-sec">
+  <span class="bn">02</span>
+  <div>
+    <h2>International security and foreign policy</h2>
+    <p>She started as a classically trained analyst &mdash; under Dr.&nbsp;Pfaltzgraff at Tufts,
+    then with Dr.&nbsp;Strmecki at the Smith Richardson Foundation, whose board has included
+    Rumsfeld, Brzezinski and Woolsey, and today McMaster and Keane.</p>
+    <p>She volunteers with the Department of War&rsquo;s Office of Net Assessment on AI-enabled
+    scenario-based planning, and is affiliated with the Institute for State Effectiveness in
+    Washington,&nbsp;D.C.</p>
+  </div>
+</div>
+
+<div class="bio-sec">
+  <span class="bn">03</span>
+  <div>
+    <h2>Founder &mdash; Ripley Decision Advantage</h2>
+    <p>Ripley Decision Advantage is a full-service AI/ML engineering consulting firm, advising on
+    tooling and workflow optimization for businesses and public-sector organizations.</p>
+    <p>Its product EGON, new as of July&nbsp;2026, is an AI-enabled scenario tool for rebuilding
+    the infrastructure behind US organic means of production, built for a two-front scenario.
+    <a href="egon.html">Read the EGON one-pager</a>.</p>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="ctitle">Credentials</div>
+  <p>Caltech AI/ML engineering certificate &middot; Stanford master&rsquo;s &middot; Tufts BA.
+  Prior roles include Google, Nielsen/Gracenote, and HP&nbsp;Inc.</p>
+</div>
+
+<p style="text-align:center"><a class="cta" href="contact.html">Start a conversation</a></p>
+<p style="text-align:center"><a href="index.html">Back to Ripley Decision Advantage</a></p>
 """)
 
 # ---------------------------------------------------------------- contact
