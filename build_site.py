@@ -27,6 +27,7 @@ QUICKSAND = b64(ROOT / "fonts" / "Quicksand-700.woff2")
 # navy panels. EGON from the web-demo asset; DIN from the bigdin.net lockup.
 EGON_WORDMARK = svg_asset("egon-wordmark.svg")
 DIN_WORDMARK = svg_asset("din-wordmark.svg")
+DAN_WORDMARK = svg_asset("dan-wordmark.svg")
 
 # ---- Ripley mountain mark: geometric filled silhouette, true-knockout zigzag snowcaps
 # (EGON-style: fill-rule evenodd, page shows through the caps; fill:currentColor)
@@ -141,6 +142,11 @@ a.card:hover .mailcue{color:var(--red);}
 .work-thumb{background:var(--navy);padding:20px 24px;display:flex;align-items:center;
   justify-content:center;height:140px;}
 .work-thumb svg{max-height:64px;max-width:230px;width:auto;height:auto;display:block;}
+/* two marks share one panel: cap each at just under half the width so they
+   stay side by side at every column width, with a hairline between */
+.work-thumb.two{gap:16px;}
+.work-thumb.two svg{max-height:50px;max-width:42%;}
+.work-thumb .sep{width:1px;height:42px;background:rgba(245,238,224,.3);flex:none;}
 .work-body{padding:16px 20px 20px;}
 .work-body h3{margin:0 0 4px;color:var(--navy);font-size:17px;}
 .work-body .meta{font-style:italic;color:var(--blue);font-size:13px;margin-bottom:10px;}
@@ -636,7 +642,7 @@ person in the executive demo and in the codebase.</p>
   </div>
 
   <div class="work-card">
-    <div class="work-thumb">{DIN_WORDMARK}</div>
+    <div class="work-thumb two">{DIN_WORDMARK}<span class="sep"></span>{DAN_WORDMARK}</div>
     <div class="work-body">
       <h3>AI tools for patriotic capital</h3>
       <p class="meta">Palo Alto, CA &middot; May 2026&ndash;present &middot; AI Solution
