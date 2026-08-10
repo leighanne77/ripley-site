@@ -132,7 +132,11 @@ a.card:hover .mailcue{color:var(--red);}
 .more{font-family:Arial,sans-serif;font-weight:400;font-size:13px;letter-spacing:.4px;
   color:#8D96A2;text-decoration:none;margin-left:11px;vertical-align:3px;}
 .more:hover{color:var(--red);text-decoration:underline;}
-/* biography page: numbered sections */
+/* biography page: portrait beside the lead, then numbered sections */
+.bio-head{display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:start;
+  margin:0 0 8px;}
+.bio-head img{width:100%;height:auto;display:block;border-top:4px solid var(--red);
+  border-bottom:2px solid var(--gold);}
 .bio-lead{font-size:19px;line-height:1.45;margin:0 0 6px;}
 .bio-sec{display:grid;grid-template-columns:54px 1fr;gap:0 18px;margin:28px 0;
   border-top:1px solid #e3e3e3;padding-top:22px;}
@@ -142,6 +146,8 @@ a.card:hover .mailcue{color:var(--red);}
 @media (max-width:560px){
   .bio-sec{grid-template-columns:1fr;}
   .bio-sec .bn{margin-bottom:8px;}
+  .bio-head{grid-template-columns:1fr;gap:16px;}
+  .bio-head img{max-width:190px;}
 }
 /* ---- EGON graphics ---- */
 /* hazard tiles */

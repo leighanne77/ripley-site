@@ -31,6 +31,11 @@ DIN_WORDMARK = svg_asset("din-wordmark.svg")
 # items of the panel or they size by different rules
 DAN_WORDMARK = svg_asset("dan-wordmark.svg").replace('<svg ', '<svg class="dan" ', 1)
 
+# Bio portrait, inlined like everything else so the page makes no external
+# request. Source was 800px PNG at 601KB; downscaled to 560px JPEG at 68KB
+# before encoding, or the data URI would have tripled the page.
+BIO_PORTRAIT = b64(ROOT / "assets" / "bio-portrait.jpg")
+
 # ---- Ripley mountain mark: geometric filled silhouette, true-knockout zigzag snowcaps
 # (EGON-style: fill-rule evenodd, page shows through the caps; fill:currentColor)
 MARK_PATHS = (
@@ -167,7 +172,11 @@ a.card:hover .mailcue{color:var(--red);}
 .more{font-family:Arial,sans-serif;font-weight:400;font-size:13px;letter-spacing:.4px;
   color:#8D96A2;text-decoration:none;margin-left:11px;vertical-align:3px;}
 .more:hover{color:var(--red);text-decoration:underline;}
-/* biography page: numbered sections */
+/* biography page: portrait beside the lead, then numbered sections */
+.bio-head{display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:start;
+  margin:0 0 8px;}
+.bio-head img{width:100%;height:auto;display:block;border-top:4px solid var(--red);
+  border-bottom:2px solid var(--gold);}
 .bio-lead{font-size:19px;line-height:1.45;margin:0 0 6px;}
 .bio-sec{display:grid;grid-template-columns:54px 1fr;gap:0 18px;margin:28px 0;
   border-top:1px solid #e3e3e3;padding-top:22px;}
@@ -177,6 +186,8 @@ a.card:hover .mailcue{color:var(--red);}
 @media (max-width:560px){
   .bio-sec{grid-template-columns:1fr;}
   .bio-sec .bn{margin-bottom:8px;}
+  .bio-head{grid-template-columns:1fr;gap:16px;}
+  .bio-head img{max-width:190px;}
 }
 /* ---- EGON graphics ---- */
 /* hazard tiles */
@@ -1135,10 +1146,13 @@ PAGES["bio.html"] = ("Leigh Anne Miller | Ripley Decision Advantage",
 <h1>Leigh Anne Miller</h1>
 <div class="h1-rule"></div>
 
-<p class="bio-lead">A decade-plus in tech, the last four as an AI/ML engineer &mdash; and before
-that, a classically trained international security and foreign policy analyst. The two halves are
-the practice: systems built to survive audit, for decisions that carry real
-consequence.</p>
+<div class="bio-head">
+  <img src="data:image/jpeg;base64,{BIO_PORTRAIT}" alt="Leigh Anne Miller"
+       width="560" height="560">
+  <p class="bio-lead">A decade-plus in tech, the last four as an AI/ML engineer &mdash; and before
+  that, a classically trained international security and foreign policy analyst. The two halves are
+  the practice: systems built to survive audit, for decisions that carry real consequence.</p>
+</div>
 
 <div class="bio-sec">
   <span class="bn">01</span>
