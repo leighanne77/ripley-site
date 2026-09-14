@@ -125,7 +125,7 @@ Entries marked **[verify]** are ones to confirm before saying out loud to USACE.
 | **Ripley Decision Advantage** | The firm. `ripleydecisionadvantage.net`. |
 | **DIN** | Defense Investor Network. The investor-relations platform at `bigdin.net` — **email-verified, team access only**, not password protected. |
 | **DAN** | Defense Angel Network. Sister network to DIN; its mark carries a gold halo above the letters. Both marks share one panel on the Ripley index. |
-| **EGON** | The physical-risk decision-support product. Two public pages: the overview with the Avondale example, and the Baltimore worked example. |
+| **EGON** | The physical-risk decision-support product. Three public pages: the overview with the Avondale example, the Baltimore worked example, and the service page (how it is delivered and bought). |
 | **Wordmark vs lockup** | A wordmark is the letterforms alone; a lockup adds a tagline beneath. All three site marks are cropped to wordmark — the DEFENSE INVESTOR NETWORK and DEFENSE ANGEL NETWORK taglines are excluded. |
 | **Letter band** | y 171.74 → 597.09 — the 425.4-unit cap-height band shared by the EGON, DIN and DAN wordmarks. They come from one design system, which is why normalising to this band makes all three render at identical letter height. |
 
@@ -171,3 +171,6 @@ Phrases that must stay accurate, because they are the product:
 - **PENDING POC** — Permitting is not built. Never present it as shipped.
 - **Percentages stay blank** until filled from the customer's own baseline.
 - **Illustrative figures** on the public EGON pages are labelled as such and must stay labelled until replaced with sourced numbers.
+- **Contract vehicle** — the service page says "commercial service on firm-fixed-price terms" and nothing more. Do not name a Multiple Award Schedule holder or claim catalog pricing until a reseller agreement is signed. **[verify]**
+- **Authorization** — say "nothing to stand up on your network," not "nothing enters your authorization queue." A vendor-run service handling agency data still gets a review.
+- **Portfolio** — outputs are per site, on one basis, so sites can be compared. Do not claim a cross-site ranking until EGON has produced one.

@@ -21,17 +21,24 @@ fonts or the favicons, both of which are already committed.
 - "Resilient Intelligence" was dropped and stays dropped.
 - Voice: short sentences, active verbs, numbers over adjectives, no coined terms.
 
-## The EGON pages are not in the nav
+## Only the EGON service page is in the nav
 
-Nav is About / Tools / Contact. Two EGON pages build and deploy outside it:
+Nav is About / EGON / Tools / Contact. "EGON" points at `egon-service.html`.
+The other two EGON pages build and deploy outside the nav:
 
 - `egon.html` — product page plus the Avondale worked example. Linked from the
-  index "Current work" section.
+  index "Current work" section and from the service page.
 - `egon-baltimore.html` — Baltimore Harbor worked example. Linked from `egon.html`.
+- `egon-service.html` — EGON as a tech-enabled service: what the client receives,
+  why a service, the three engagement phases, defensibility, how to buy. In the
+  nav, and also linked from the index "Current work" card, the Status list on
+  `egon.html`, and Services card 04. The federal card names no contract vehicle
+  and no catalog pricing on purpose — see TERMS.md §12.
 
-They are no longer link-private: anyone browsing the site can reach both, and
-neither is access-gated. Gating `/egon` with Cloudflare Access is an open task.
-To put EGON in the nav, add `("egon.html", "EGON")` back to the `NAV` list.
+None of the three is link-private or access-gated. Gating `/egon` with Cloudflare
+Access is an open task. To add the one-pager to the nav too, add
+`("egon.html", "EGON one-pager")` to the `NAV` list; to take the service page
+out, remove its entry.
 
 ## bio.html is also outside the nav
 

@@ -138,14 +138,20 @@ a.card:hover .mailcue{color:var(--red);}
 .bio-head img{width:100%;height:auto;display:block;border-top:4px solid var(--red);
   border-bottom:2px solid var(--gold);}
 .bio-lead{font-size:19px;line-height:1.45;margin:0 0 6px;}
-.bio-sec{display:grid;grid-template-columns:54px 1fr;gap:0 18px;margin:28px 0;
+.bio-sec,.phase{display:grid;grid-template-columns:54px 1fr;gap:0 18px;margin:28px 0;
   border-top:1px solid #e3e3e3;padding-top:22px;}
-.bio-sec .bn{font-family:'Oswald',sans-serif;font-size:30px;color:var(--gold);line-height:1;}
+.bio-sec .bn,.phase .bn{font-family:'Oswald',sans-serif;font-size:30px;color:var(--gold);
+  line-height:1;}
 .bio-sec h2{margin:0 0 10px;font-size:22px;}
-.bio-sec p:last-child,.bio-sec ul:last-child{margin-bottom:0;}
+.bio-sec p:last-child,.bio-sec ul:last-child,.phase p:last-child{margin-bottom:0;}
+/* engagement phases on the EGON service page: same shape, h3 inside */
+.phase h3{margin:0 0 8px;color:var(--navy);}
+/* two CTAs side by side, centred */
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:22px 0 6px;}
+.cta-row .cta{margin:0;}
 @media (max-width:560px){
-  .bio-sec{grid-template-columns:1fr;}
-  .bio-sec .bn{margin-bottom:8px;}
+  .bio-sec,.phase{grid-template-columns:1fr;}
+  .bio-sec .bn,.phase .bn{margin-bottom:8px;}
   .bio-head{grid-template-columns:1fr;gap:16px;}
   .bio-head img{max-width:190px;}
 }
@@ -279,7 +285,7 @@ footer{background:var(--navy);color:var(--cream-soft);}
   <a class="lockup" href="index.html"><svg class="" viewBox="0 0 120 100" role="img" aria-label="Ripley mountain mark" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" d="M34 34 L66 92 L2 92 Z M25.5 52 L42.5 52 L45.5 59 L41.5 54.5 L37.5 59 L33.5 54.5 L29.5 59 L25.5 54.5 L22 59 Z"/><path fill="currentColor" fill-rule="evenodd" d="M78 10 L118 92 L38 92 Z M68 32.5 L88 32.5 L91.5 41 L87 35.5 L82.5 41 L78 35.5 L73.5 41 L69 35.5 L64.5 41 Z"/></svg>
     <span><span class="wm">Ripley</span><br><span class="tag">DECISION&nbsp;ADVANTAGE</span></span>
   </a>
-  <nav><a href="index.html">About</a><a href="tools.html">Tools</a><a href="contact.html">Contact</a></nav>
+  <nav><a href="index.html">About</a><a href="egon-service.html">EGON</a><a href="tools.html">Tools</a><a href="contact.html">Contact</a></nav>
 </header>
 <main>
 
@@ -361,7 +367,7 @@ practices.</p>
     <a href="terms.html">Terms of Service</a>
     <a href="mailto:miller@ripleydecisionadvantage.net">miller@ripleydecisionadvantage.net</a>
   </div>
-  <div class="fnote">&copy; 2026 Ripley Decision Advantage &middot; Silicon Valley, California</div>
+  <div class="fnote">&copy; 2026 Ripley Decision Advantage &middot; Silicon Valley, California and Denver, Colorado</div>
 </div></footer>
 </body>
 </html>

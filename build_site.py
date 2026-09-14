@@ -178,14 +178,20 @@ a.card:hover .mailcue{color:var(--red);}
 .bio-head img{width:100%;height:auto;display:block;border-top:4px solid var(--red);
   border-bottom:2px solid var(--gold);}
 .bio-lead{font-size:19px;line-height:1.45;margin:0 0 6px;}
-.bio-sec{display:grid;grid-template-columns:54px 1fr;gap:0 18px;margin:28px 0;
+.bio-sec,.phase{display:grid;grid-template-columns:54px 1fr;gap:0 18px;margin:28px 0;
   border-top:1px solid #e3e3e3;padding-top:22px;}
-.bio-sec .bn{font-family:'Oswald',sans-serif;font-size:30px;color:var(--gold);line-height:1;}
+.bio-sec .bn,.phase .bn{font-family:'Oswald',sans-serif;font-size:30px;color:var(--gold);
+  line-height:1;}
 .bio-sec h2{margin:0 0 10px;font-size:22px;}
-.bio-sec p:last-child,.bio-sec ul:last-child{margin-bottom:0;}
+.bio-sec p:last-child,.bio-sec ul:last-child,.phase p:last-child{margin-bottom:0;}
+/* engagement phases on the EGON service page: same shape, h3 inside */
+.phase h3{margin:0 0 8px;color:var(--navy);}
+/* two CTAs side by side, centred */
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:22px 0 6px;}
+.cta-row .cta{margin:0;}
 @media (max-width:560px){
-  .bio-sec{grid-template-columns:1fr;}
-  .bio-sec .bn{margin-bottom:8px;}
+  .bio-sec,.phase{grid-template-columns:1fr;}
+  .bio-sec .bn,.phase .bn{margin-bottom:8px;}
   .bio-head{grid-template-columns:1fr;gap:16px;}
   .bio-head img{max-width:190px;}
 }
@@ -313,9 +319,11 @@ footer{background:var(--navy);color:var(--cream-soft);}
 }
 """.replace("__OSWALD__", OSWALD).replace("__QUICKSAND__", QUICKSAND)
 
-# EGON is deliberately NOT in the public nav. egon.html still builds and is
-# reachable by direct link — send it to prospects rather than advertising it.
-NAV = [("index.html", "About"), ("tools.html", "Tools"), ("contact.html", "Contact")]
+# Only the EGON service page is in the public nav. egon.html and
+# egon-baltimore.html still build and are reachable by direct link and from
+# the service page — send them to prospects rather than advertising them.
+NAV = [("index.html", "About"), ("egon-service.html", "EGON"), ("tools.html", "Tools"),
+       ("contact.html", "Contact")]
 
 def page(fname, title, desc, body):
     ACT = ' class="active"'
@@ -353,7 +361,7 @@ def page(fname, title, desc, body):
     <a href="terms.html">Terms of Service</a>
     <a href="mailto:miller@ripleydecisionadvantage.net">miller@ripleydecisionadvantage.net</a>
   </div>
-  <div class="fnote">&copy; 2026 Ripley Decision Advantage &middot; Silicon Valley, California</div>
+  <div class="fnote">&copy; 2026 Ripley Decision Advantage &middot; Silicon Valley, California and Denver, Colorado</div>
 </div></footer>
 </body>
 </html>
@@ -557,6 +565,18 @@ def icon(name, cls="icon"):
     return (f'<svg class="{cls}" viewBox="0 0 64 64" aria-hidden="true" '
             f'xmlns="http://www.w3.org/2000/svg">{ICONS[name]}</svg>')
 
+def mailto(subject, body):
+    # quote (not quote_plus): a "+" would render literally in the mail body
+    query = urllib.parse.urlencode({"subject": subject, "body": body},
+                                   quote_via=urllib.parse.quote)
+    return html.escape(f"mailto:{EMAIL}?{query}", quote=True)
+
+# Card 04 and the EGON service page share one enquiry, so every lead from
+# that service line arrives under the same subject.
+TES_TITLE = "Tech-enabled services"
+TES_ASK = ("I am writing to inquire about your tech-enabled services for infrastructure risk, "
+           "please contact me to start this discussion")
+
 # Each card is a mailto link with the enquiry pre-written, so the visitor's
 # first email arrives already scoped to the service they clicked.
 SERVICES = [
@@ -574,15 +594,16 @@ SERVICES = [
      "the room.",
      "I am writing to inquire about your technical sales and pre-sales services, "
      "please contact me to start this discussion"),
+    ("04", "industrial", TES_TITLE,
+     "EGON run by us, delivered as work product. Infrastructure hazard exposure, priced site by "
+     "site. Outcomes you defend, not software you staff.",
+     TES_ASK),
 ]
 
 def service_cards():
     cards = []
     for kick, ico, title, blurb, ask in SERVICES:
-        # quote (not quote_plus): a "+" would render literally in the mail body
-        query = urllib.parse.urlencode({"subject": title, "body": ask},
-                                       quote_via=urllib.parse.quote)
-        href = html.escape(f"mailto:{EMAIL}?{query}", quote=True)
+        href = mailto(title, ask)
         cards.append(
             f'  <a class="card" href="{href}">'
             f'<span class="kick">{kick}</span>'
@@ -672,7 +693,8 @@ person in the executive demo and in the codebase.</p>
         <li>Isolated and API-first. It never plugs into a financial core &mdash; it exports
         verifiable data a human carries into their own models.</li>
       </ul>
-      <p><a href="egon.html">Read the EGON one-pager</a> &mdash; deeper technical detail on
+      <p><a href="egon.html">Read the EGON one-pager</a> &middot;
+      <a href="egon-service.html">EGON as a service</a> &mdash; deeper technical detail on
       request.</p>
     </div>
   </div>
@@ -930,7 +952,8 @@ capability rides on top at no cost to return.</p>
 <ul>
   <li>Built and piloted across ports, data centers, and district infrastructure in
   <span class="num">four</span> countries.</li>
-  <li>Delivered by Ripley Decision Advantage. Demonstrations available under NDA.</li>
+  <li>Delivered by Ripley Decision Advantage <a href="egon-service.html">as a service</a>.
+  Demonstrations available under NDA.</li>
 </ul>
 
 <p style="text-align:center"><a class="cta" href="contact.html">Ask about EGON</a></p>
@@ -1136,6 +1159,167 @@ can see what the model choice is worth &mdash; or flagged as a gap, never quietl
 
 <p style="text-align:center"><a class="cta" href="contact.html">Ask about EGON</a></p>
 <p style="text-align:center"><a href="egon.html">EGON overview and the Avondale example</a></p>
+""")
+
+# ---------------------------------------------------------------- egon: service
+# EGON delivered as a tech-enabled service: the commercial model, not the
+# product. What the client receives, why a service, the engagement phases,
+# defensibility, and how to buy. Product detail stays on egon.html.
+# Federal path deliberately names no contract vehicle or catalog pricing —
+# see TERMS.md §12 before adding either.
+SCOPING = mailto(TES_TITLE, TES_ASK)
+WALKTHROUGH = mailto("EGON walkthrough",
+    "I would like to see a walkthrough of EGON, please contact me to arrange one")
+
+PAGES["egon-service.html"] = ("EGON as a Service | Ripley Decision Advantage",
+  "EGON run by Ripley and delivered as defensible work product. Nothing to stand up, no "
+  "maintenance trap.",
+  f"""
+<h1>EGON as a service</h1>
+<div class="h1-rule"></div>
+<h4 style="color:var(--blue);letter-spacing:4px;">Tech-enabled services</h4>
+
+<p>You don&rsquo;t buy software. You get the answer, and the record behind it.</p>
+<p>EGON is run as a service, by us. Hazard exposure across highways, ports, waterways, levees and
+dams, site by site &mdash; assembled, scenario-tested, and delivered as work product your reviewers
+can defend line by line.</p>
+<p><a class="cta" href="{SCOPING}">Start a scoping call</a></p>
+
+<h2>{icon("shield")}What you receive</h2>
+<p>Outcomes, not a login. Every engagement produces artifacts a decision can rest on. The
+platform is how we get there; it isn&rsquo;t what we hand you.</p>
+<div class="grid">
+  <div class="card">
+    <h3>One basis of comparison</h3>
+    <p>Every site priced on the same basis, so prioritization stops being an argument between
+    districts with different spreadsheets.</p>
+  </div>
+  <div class="card">
+    <h3>Scenario sets your reviewers accept</h3>
+    <p>Built only from sources already recognized in your process. No figure enters a scenario
+    without a named, dated origin.</p>
+  </div>
+  <div class="card">
+    <h3>Funding and budget packages</h3>
+    <p>Assembled to the standard of the record &mdash; structured for the review that decides
+    whether a project is funded, not for a slide.</p>
+  </div>
+  <div class="card">
+    <h3>A defensibility file</h3>
+    <p>The full chain from source to number to conclusion, versioned and closed, so the basis of
+    a decision survives after the people who made it move on.</p>
+  </div>
+</div>
+
+<h2>{icon("compass")}Why a service</h2>
+<p>Acquiring a system means a procurement, a deployment on your network, and an operations
+obligation that outlives the budget that created it. Acquiring the outcome means none of the
+three.</p>
+<div class="grid">
+  <div class="card">
+    <h3>Nothing to stand up</h3>
+    <p>We operate EGON in our own environment and deliver work product. Nothing is stood up on
+    your network by default.</p>
+    <p>If you would rather it run inside your boundary, it deploys there and inherits the
+    controls you already hold.</p>
+  </div>
+  <div class="card">
+    <h3>No specification written years early</h3>
+    <p>Scope is set against your current baseline and adjusted as the work reveals what actually
+    drives the decision. Targets are agreed with you, measured against your own starting point
+    &mdash; not asserted by a vendor up front.</p>
+  </div>
+  <div class="card">
+    <h3>No maintenance trap</h3>
+    <p>Model updates, data refreshes, dependency upkeep and the on-call burden are ours. You never
+    find yourself funding a rewrite because the thing you bought stopped being maintained.</p>
+  </div>
+</div>
+<div class="callout">
+  <div class="ctitle">What this is not</div>
+  <p>A dashboard license, a data subscription, or a model you have to staff. If what you need is
+  software you run yourself, say so &mdash; that is a different conversation and we are glad to
+  have it.</p>
+</div>
+
+<h2>{icon("summit")}How the engagement runs</h2>
+<p>Three phases, each one gating the next. Nothing scales until the prior phase has produced
+something you can check.</p>
+
+<div class="phase">
+  <span class="bn">01</span>
+  <div>
+    <h3>Site proof</h3>
+    <p>One location, on the ground, on real data &mdash; your sources, your regulations, your
+    definition of success. A working proof, not a demo. It ends with criteria you set, and those
+    criteria decide whether phase two happens.</p>
+  </div>
+</div>
+
+<div class="phase">
+  <span class="bn">02</span>
+  <div>
+    <h3>Deployment</h3>
+    <p>Additional locations, brought on in sequence. The slow part is never the modeling &mdash;
+    it is getting internal data holders to collaborate. We plan for that explicitly and name it
+    early rather than discovering it in month four.</p>
+  </div>
+</div>
+
+<div class="phase">
+  <span class="bn">03</span>
+  <div>
+    <h3>Sustained operation</h3>
+    <p>We run it. Your teams use the output in their own modeling, funding packages and external
+    briefings. Refreshes, model updates and support sit on our side of the line.</p>
+  </div>
+</div>
+
+<h2>{icon("glasses")}Built to survive the review, not the demo</h2>
+<p>Most analytical tools are judged on what they show. Ours is built for what happens six months
+later, when someone asks where a number came from.</p>
+<ul>
+  <li><strong>Traceable by construction.</strong> Every figure resolves to a named, dated,
+  retrievable source. No orphan numbers.</li>
+  <li><strong>Deterministic gates.</strong> Where a value must be exact, the system is not
+  permitted to generate it. Language models draft, summarize and retrieve; they do not invent
+  quantities.</li>
+  <li><strong>Document possession and record-closing.</strong> The supporting record is held,
+  versioned and closed with the decision, so the file is intact when the staff has turned
+  over.</li>
+  <li><strong>Confidential compute where data cannot travel.</strong> Analysis runs against data
+  that never leaves its owner&rsquo;s control, for the cases where sharing the underlying file is
+  not on the table.</li>
+  <li><strong>Human in every consequential loop.</strong> Automation compresses the work; it does
+  not sign the conclusion.</li>
+</ul>
+
+<h2>{icon("industrial")}What it runs on</h2>
+<p>EGON is a multi-agent decision-support system for physical hazard exposure across public and
+industrial infrastructure. It is operated by Ripley, or deployed inside a boundary you already
+hold. It reads public and open sources alongside your internal data, and interfaces with the
+hydrologic and coastal models your engineers already use. Your data is not used to train
+anyone&rsquo;s model.</p>
+<p><a href="egon.html">Read the EGON one-pager</a> &mdash; asset classes, stressors, how it
+works, and the Avondale worked example.</p>
+
+<h2>{icon("briefcase")}How to buy it</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Federal</h3>
+    <p>Acquired as a commercial service on firm-fixed-price terms. Ask us about the acquisition
+    path and we will route the specifics to your contracting officer directly.</p>
+  </div>
+  <div class="card">
+    <h3>Commercial and capital</h3>
+    <p>Asset owners, operators, terminal and port authorities, and the investors underwriting
+    them. Same engine, same defensibility standard, priced against the exposure it resolves.</p>
+  </div>
+</div>
+<div class="cta-row">
+  <a class="cta" href="{SCOPING}">Start a scoping call</a>
+  <a class="cta" href="{WALKTHROUGH}">Request a walkthrough</a>
+</div>
 """)
 
 # ---------------------------------------------------------------- bio
