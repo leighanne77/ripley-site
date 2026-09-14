@@ -45,7 +45,15 @@ out, remove its entry.
 `bio.html` is the long-form biography, reached from a small grey "more" link
 beside the "The principal" heading on the index. Three numbered sections —
 AI/ML engineering, international security, founder — modelled on the Defense
-Angel Network bio page. No photo yet.
+Angel Network bio page.
+
+## The CV download
+
+`site/leigh-anne-miller-cv.pdf` is a committed binary, like the favicon PNGs.
+The build does not generate or touch it; drop in a new file to update it.
+Linked from `bio.html` under the lead and from the contact callout, via
+`CV_FILE` / `CV_NAME` in `build_site.py`. Content rules apply to the PDF too —
+check a replacement for banned copy before committing it.
 
 ## Worked-example figures are illustrative
 

@@ -95,9 +95,10 @@ a.card{display:block;text-decoration:none;color:inherit;transition:background .1
 a.card:hover .card-icon{color:var(--red);}
 a.card:hover{background:var(--cream-soft);border-color:var(--red);}
 a.card:hover h3{color:var(--red);}
-a.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
-  letter-spacing:2px;text-transform:uppercase;color:var(--blue);}
-a.card:hover .mailcue{color:var(--red);}
+.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
+  letter-spacing:2px;text-transform:uppercase;color:var(--blue);text-decoration:none;}
+a.card:hover .mailcue,.card a.mailcue:hover{color:var(--red);}
+.card a.mailcue+a.mailcue{margin-top:6px;}
 /* current work: two side-by-side blocks with wordmark thumbnails */
 .work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px;
   margin:18px 0 10px;}
@@ -138,6 +139,7 @@ a.card:hover .mailcue{color:var(--red);}
 .bio-head img{width:100%;height:auto;display:block;border-top:4px solid var(--red);
   border-bottom:2px solid var(--gold);}
 .bio-lead{font-size:19px;line-height:1.45;margin:0 0 6px;}
+.bio-dl{font-size:14px;color:#8D96A2;margin:10px 0 0;}
 .bio-sec,.phase{display:grid;grid-template-columns:54px 1fr;gap:0 18px;margin:28px 0;
   border-top:1px solid #e3e3e3;padding-top:22px;}
 .bio-sec .bn,.phase .bn{font-family:'Oswald',sans-serif;font-size:30px;color:var(--gold);

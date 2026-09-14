@@ -135,9 +135,10 @@ a.card{display:block;text-decoration:none;color:inherit;transition:background .1
 a.card:hover .card-icon{color:var(--red);}
 a.card:hover{background:var(--cream-soft);border-color:var(--red);}
 a.card:hover h3{color:var(--red);}
-a.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
-  letter-spacing:2px;text-transform:uppercase;color:var(--blue);}
-a.card:hover .mailcue{color:var(--red);}
+.card .mailcue{display:block;margin-top:10px;font-family:'Oswald',sans-serif;font-size:12px;
+  letter-spacing:2px;text-transform:uppercase;color:var(--blue);text-decoration:none;}
+a.card:hover .mailcue,.card a.mailcue:hover{color:var(--red);}
+.card a.mailcue+a.mailcue{margin-top:6px;}
 /* current work: two side-by-side blocks with wordmark thumbnails */
 .work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:22px;
   margin:18px 0 10px;}
@@ -178,6 +179,7 @@ a.card:hover .mailcue{color:var(--red);}
 .bio-head img{width:100%;height:auto;display:block;border-top:4px solid var(--red);
   border-bottom:2px solid var(--gold);}
 .bio-lead{font-size:19px;line-height:1.45;margin:0 0 6px;}
+.bio-dl{font-size:14px;color:#8D96A2;margin:10px 0 0;}
 .bio-sec,.phase{display:grid;grid-template-columns:54px 1fr;gap:0 18px;margin:28px 0;
   border-top:1px solid #e3e3e3;padding-top:22px;}
 .bio-sec .bn,.phase .bn{font-family:'Oswald',sans-serif;font-size:30px;color:var(--gold);
@@ -578,44 +580,61 @@ TES_ASK = ("I am writing to inquire about your tech-enabled services for infrast
            "please contact me to start this discussion")
 
 # Each card is a mailto link with the enquiry pre-written, so the visitor's
-# first email arrives already scoped to the service they clicked.
+# first email arrives already scoped to the service they clicked. Cards are
+# numbered by their position in this list, so reorder freely. A card with a
+# fifth element, `more`, is a box carrying two links instead: the same
+# pre-written email, and "Find out more" pointing at that page.
 SERVICES = [
-    ("01", "summit", "Zero-to-one product engineering",
+    ("compass", "Forward deployed engineering: pre- and post-sales",
+     "An engineer inside your customer's team for a defined period. Pre-sale, the proof of "
+     "concept that closes. Post-sale, your AI product working in their environment, enterprise "
+     "or government.",
+     "I am writing to inquire about your forward deployed engineering services, "
+     "please contact me to start this discussion"),
+    ("industrial", TES_TITLE,
+     "EGON run by us, delivered as work product. Infrastructure hazard exposure, priced site by "
+     "site. Outcomes you defend, not software you staff.",
+     TES_ASK, "egon-service.html"),
+    ("summit", "Zero-to-one product engineering",
      "Bespoke AI/ML systems from first requirement to production. Architecture, build, launch.",
      "I am writing to inquire about your zero-to-one product engineering services, "
      "please contact me to start this discussion"),
-    ("02", "shield", "MLOps & governance",
+    ("shield", "MLOps & governance",
      "Deployment pipelines, model risk management, and audit-ready frameworks that survive "
      "regulatory review.",
      "I am writing to inquire about your MLOps and governance services, "
      "please contact me to start this discussion"),
-    ("03", "podium", "Technical sales & pre-sales",
-     "Demos, proofs of concept, and technical narratives that close. Engineering credibility in "
-     "the room.",
-     "I am writing to inquire about your technical sales and pre-sales services, "
-     "please contact me to start this discussion"),
-    ("04", "industrial", TES_TITLE,
-     "EGON run by us, delivered as work product. Infrastructure hazard exposure, priced site by "
-     "site. Outcomes you defend, not software you staff.",
-     TES_ASK),
 ]
 
 def service_cards():
     cards = []
-    for kick, ico, title, blurb, ask in SERVICES:
+    for n, (ico, title, blurb, ask, *more) in enumerate(SERVICES, 1):
+        kick = f"{n:02d}"
         href = mailto(title, ask)
-        cards.append(
-            f'  <a class="card" href="{href}">'
-            f'<span class="kick">{kick}</span>'
-            f'{icon(ico, "card-icon")}'
-            f'<h3>{html.escape(title)}</h3>'
-            f'<p>{html.escape(blurb)}</p>'
-            f'<span class="mailcue">Click to email &rarr;</span></a>')
+        body = (f'<span class="kick">{kick}</span>'
+                f'{icon(ico, "card-icon")}'
+                f'<h3>{html.escape(title)}</h3>'
+                f'<p>{html.escape(blurb)}</p>')
+        if more:
+            cards.append(
+                f'  <div class="card">{body}'
+                f'<a class="mailcue" href="{href}">Click to email &rarr;</a>'
+                f'<a class="mailcue" href="{more[0]}">Find out more &rarr;</a></div>')
+        else:
+            cards.append(
+                f'  <a class="card" href="{href}">{body}'
+                f'<span class="mailcue">Click to email &rarr;</span></a>')
     return "\n".join(cards)
 
 SERVICE_CARDS = service_cards()
 
 PAGES = {}
+
+# The CV is a committed binary in site/, like the favicon PNGs. The build does
+# not touch it; replace the file to update the download. `download=` sets the
+# filename the visitor's browser saves it under.
+CV_FILE = "leigh-anne-miller-cv.pdf"
+CV_NAME = "Leigh Anne Miller CV.pdf"
 
 # ---------------------------------------------------------------- index
 PAGES["index.html"] = ("Ripley Decision Advantage — AI/ML Consulting, Silicon Valley",
@@ -1333,10 +1352,14 @@ PAGES["bio.html"] = ("Leigh Anne Miller | Ripley Decision Advantage",
 <div class="bio-head">
   <img src="data:image/jpeg;base64,{BIO_PORTRAIT}" alt="Leigh Anne Miller"
        width="560" height="560">
-  <p class="bio-lead">A decade-plus in engineering, the last four specializing in multi-agent
-  systems &mdash; and before that, a classically trained international security and foreign policy
-  analyst. The two halves are the practice: systems built to survive audit, for decisions that
-  carry real consequence.</p>
+  <div>
+    <p class="bio-lead">A decade-plus in engineering, the last four specializing in multi-agent
+    systems &mdash; and before that, a classically trained international security and foreign
+    policy analyst. The two halves are the practice: systems built to survive audit, for decisions
+    that carry real consequence.</p>
+    <p class="bio-dl"><a href="{CV_FILE}" download="{CV_NAME}">Download the CV</a>
+    &middot; PDF, two pages</p>
+  </div>
 </div>
 
 <div class="bio-sec">
@@ -1395,7 +1418,7 @@ PAGES["bio.html"] = ("Leigh Anne Miller | Ripley Decision Advantage",
 # ---------------------------------------------------------------- contact
 PAGES["contact.html"] = ("Contact | Ripley Decision Advantage",
   "Contact Ripley Decision Advantage. Email miller@ripleydecisionadvantage.net.",
-  """
+  f"""
 <h1>Contact</h1>
 <div class="h1-rule"></div>
 <p>One email starts it. Describe the problem; we answer with questions, not a pitch.</p>
@@ -1407,6 +1430,7 @@ PAGES["contact.html"] = ("Contact | Ripley Decision Advantage",
   <span style="font-size:14px;font-weight:400">(call or text)</span></p>
   <p style="margin-top:8px"><a href="https://www.linkedin.com/in/leighannemillerengineering/">LinkedIn:
   leighannemillerengineering</a></p>
+  <p><a href="{CV_FILE}" download="{CV_NAME}">Download the CV</a> &middot; PDF, two pages</p>
 </div>
 
 <div class="stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
