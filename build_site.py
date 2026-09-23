@@ -35,6 +35,9 @@ DAN_WORDMARK = svg_asset("dan-wordmark.svg").replace('<svg ', '<svg class="dan" 
 # request. Source was 800px PNG at 601KB; downscaled to 560px JPEG at 68KB
 # before encoding, or the data URI would have tripled the page.
 BIO_PORTRAIT = b64(ROOT / "assets" / "bio-portrait.jpg")
+# One thumbnail per page of the FDE infographic, rendered from its HTML source
+# (see CLAUDE.md, "The principal thumbnails") and inlined like the portrait.
+FDE_THUMBS = [b64(ROOT / "assets" / f"fde-p{n}.webp") for n in (1, 2, 3)]
 
 # ---- Ripley mountain mark: geometric filled silhouette, true-knockout zigzag snowcaps
 # (EGON-style: fill-rule evenodd, page shows through the caps; fill:currentColor)
@@ -173,6 +176,34 @@ a.card:hover .mailcue,.card a.mailcue:hover{color:var(--red);}
 .more{font-family:Arial,sans-serif;font-weight:400;font-size:13px;letter-spacing:.4px;
   color:#8D96A2;text-decoration:none;margin-left:11px;vertical-align:3px;}
 .more:hover{color:var(--red);text-decoration:underline;}
+/* index: the firm and track record side by side */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;align-items:start;}
+/* index: the principal as three clickable page thumbnails */
+.fde-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:16px 0 10px;}
+a.fde{display:block;text-decoration:none;color:inherit;border:1px solid #ccc;
+  border-top:4px solid var(--red);background:#fff;transition:border-color .12s,background .12s;}
+a.fde img{display:block;width:100%;height:auto;border-bottom:1px solid #e3e3e3;}
+a.fde .fde-cap{display:block;padding:12px 14px 14px;}
+a.fde .fde-n{font-family:'Oswald',sans-serif;color:var(--red);font-size:13px;letter-spacing:2px;}
+a.fde .fde-t{display:block;font-weight:700;color:var(--navy);font-size:15px;margin-top:3px;
+  line-height:1.35;}
+a.fde .fde-cue{display:block;margin-top:9px;font-family:'Oswald',sans-serif;font-size:12px;
+  letter-spacing:2px;text-transform:uppercase;color:var(--blue);}
+a.fde:hover{border-color:var(--red);background:var(--cream-soft);}
+a.fde:hover .fde-t,a.fde:hover .fde-cue{color:var(--red);}
+@media (max-width:760px){.two-col,.fde-grid{grid-template-columns:1fr;}}
+/* index: stack as a striped band of chips, one row per layer */
+.stack{border-top:4px solid var(--red);border-bottom:2px solid var(--gold);margin:16px 0 10px;}
+.srow{display:grid;grid-template-columns:200px 1fr;gap:10px 14px;align-items:center;
+  padding:12px 16px;border-top:1px solid #e3e3e3;}
+.srow:first-child{border-top:0;}
+.srow:nth-child(even){background:var(--cream);}
+.sk{font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);}
+.sv{display:flex;flex-wrap:wrap;gap:6px;}
+.sv span{background:var(--navy);color:var(--cream);font-weight:700;font-size:12px;
+  padding:4px 9px;white-space:nowrap;}
+.sv span.hl{background:var(--red);color:#fff;}
+@media (max-width:560px){.srow{grid-template-columns:1fr;gap:6px;}}
 /* biography page: portrait beside the lead, then numbered sections */
 .bio-head{display:grid;grid-template-columns:190px 1fr;gap:28px;align-items:start;
   margin:0 0 8px;}
@@ -628,6 +659,39 @@ def service_cards():
 
 SERVICE_CARDS = service_cards()
 
+# Stack rows for the index. A (text, True) entry is the row's anchor item and
+# renders in red; plain strings render navy.
+STACK = [
+    ("Languages", ["Python", "Java", "TypeScript", "JavaScript", "React", "Node.js", "FastAPI",
+                   "Pydantic", "SQLAlchemy"]),
+    ("Data", [("PostgreSQL \u00b7 production core", True), "Array columns", "Recursive CTEs",
+              "Neo4j / Cypher", "Elasticsearch kNN", "BigQuery", "Snowflake", "Databricks / Spark",
+              "dbt", "Airflow"]),
+    ("Agentic", [("Google ADK", True), "A2A protocol", "MCP", "LangChain routing",
+                 "SuperAGI autonomy", "Graph-grounded output verification", "Bounded agent loops",
+                 "Human-in-the-loop"]),
+    ("Infrastructure", [("GCP \u00b7 Cloud Run \u00b7 Cloud SQL \u00b7 Secret Manager", True), "AWS",
+                        "Multi-cloud via Shadeform", "Docker", "Kubernetes", "WebSockets",
+                        "Cloudflare", "Google OAuth 2.0", "Fernet", "Circuit breakers",
+                        "Exponential backoff"]),
+    ("Evaluation and governance", [("NIST AI RMF \u00b7 SR 11-7", True), "promptfoo", "Arize",
+                                   "Weights & Biases", "OpenTelemetry", "PII governance", "RBAC",
+                                   "Confidential computing (TEEs)"]),
+]
+
+def stack_band():
+    rows = []
+    for label, items in STACK:
+        chips = "".join(
+            f'<span class="hl">{html.escape(t[0])}</span>' if isinstance(t, tuple) and t[1]
+            else f'<span>{html.escape(t[0] if isinstance(t, tuple) else t)}</span>'
+            for t in items)
+        rows.append(f'  <div class="srow"><div class="sk">{html.escape(label)}</div>'
+                    f'<div class="sv">{chips}</div></div>')
+    return "\n".join(rows)
+
+STACK_BAND = stack_band()
+
 PAGES = {}
 
 # The CV is a committed binary in site/, like the favicon PNGs. The build does
@@ -635,6 +699,9 @@ PAGES = {}
 # filename the visitor's browser saves it under.
 CV_FILE = "leigh-anne-miller-cv.pdf"
 CV_NAME = "Leigh Anne Miller CV.pdf"
+# The three-page FDE infographic, also a committed binary. The index thumbnails
+# open it at the matching page; no download= so the browser shows it inline.
+FDE_FILE = "leigh-anne-miller-fde.pdf"
 
 # ---------------------------------------------------------------- index
 PAGES["index.html"] = ("Ripley Decision Advantage — AI/ML Consulting, Silicon Valley",
@@ -651,33 +718,17 @@ PAGES["index.html"] = ("Ripley Decision Advantage — AI/ML Consulting, Silicon 
   <div class="stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
 </div>
 
-<h2>{icon("industrial")}The firm</h2>
-<p>Ripley Decision Advantage is a full-service AI/ML engineering consulting firm. We advise on
-tooling and workflow optimization for businesses and public-sector organizations. The result is measured in
-your numbers: lower engineering costs, stronger product-market fit, and growing revenue &mdash;
-not just a beautiful product.</p>
-
-<h2>{icon("people")}The principal<a class="more" href="bio.html">more</a></h2>
-<p>Leigh Anne Miller architects and industrializes AI/ML systems for high-stakes, low-trust
-environments &mdash; from Fortune&nbsp;50 boardrooms to post-conflict infrastructure. She embeds
-with the client, runs the technical discovery, and stays hands-on through production: the same
-person in the executive demo and in the codebase.</p>
-<ul>
-  <li>A decade-plus in engineering, the last four specializing in multi-agent systems.</li>
-  <li>Started as a classically trained international security and foreign policy analyst &mdash;
-  under Dr.&nbsp;Pfaltzgraff at Tufts, then with Dr.&nbsp;Strmecki at the Smith Richardson
-  Foundation, whose board has included Rumsfeld, Brzezinski and Woolsey, and today McMaster and
-  Keane.</li>
-  <li>Volunteers with the Department of War&rsquo;s Office of Net Assessment on AI-enabled
-  scenario-based planning.</li>
-  <li>Affiliated with the Institute for State Effectiveness in Washington,&nbsp;D.C.</li>
-  <li>EGON applies that background: AI-enabled scenario tools for rebuilding the infrastructure
-  behind US organic means of production, built for a two-front scenario.</li>
-  <li>Caltech AI/ML engineering certificate, Stanford master&rsquo;s, Tufts BA.</li>
-  <li>Prior roles: Google, Nielsen/Gracenote, and HP&nbsp;Inc.</li>
-</ul>
-
-<h2>{icon("compass")}Track record</h2>
+<div class="two-col">
+  <div>
+    <h2>{icon("industrial")}The firm</h2>
+<p>Ripley Decision Advantage is a full-service AI/ML engineering consulting firm for businesses
+and public-sector organizations. Forward deployed engineering with your customers, pre- and
+post-sale. Analysis run as a service, so you buy the outcome, not the software. Production AI
+systems, built and kept audit-ready. The result is measured in your numbers: lower engineering
+costs, stronger product-market fit, and growing revenue &mdash; not just a beautiful product.</p>
+  </div>
+  <div>
+    <h2>{icon("compass")}Track record</h2>
 <ul>
   <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
   <span class="num">$300M</span> Gracenote business at Nielsen.</li>
@@ -689,6 +740,8 @@ person in the executive demo and in the codebase.</p>
   <li>Shipped HP&rsquo;s first API-based data exchange and governance capability, for a
   <span class="num">$40B</span> channel-partner program.</li>
 </ul>
+  </div>
+</div>
 
 <h2>{icon("summit")}Current work</h2>
 
@@ -723,7 +776,8 @@ person in the executive demo and in the codebase.</p>
     <div class="work-body">
       <h3>AI tools for patriotic capital</h3>
       <p class="meta">Palo Alto, CA &middot; May 2026&ndash;present &middot; AI Solution
-      Architect &middot; <a href="https://www.bigdin.net">bigdin.net</a> (team access only)</p>
+      Architect &middot; <a href="https://www.defenseinvestornetwork.net">www.defenseinvestornetwork.net</a>
+      (member access only)</p>
       <p>Defense Investor Network (DIN) and Defense Angel Network (DAN): a production
       investor-relations platform for a dual-use defense investor team &mdash; maritime industrial
       base, critical-mineral sovereignty, energy resilience. Architected and shipped solo, live
@@ -741,30 +795,26 @@ person in the executive demo and in the codebase.</p>
 
 </div>
 
-<div class="callout">
-  <div class="ctitle">Stack</div>
-  <p><strong>Languages</strong> &middot; Python, Java, TypeScript, JavaScript, React, Node.js,
-  FastAPI, Pydantic, SQLAlchemy</p>
-  <p><strong>Data</strong> &middot; PostgreSQL as production core &mdash; array columns, recursive
-  CTEs &middot; Neo4j/Cypher &middot; Elasticsearch kNN &middot; BigQuery, Snowflake,
-  Databricks/Spark, dbt, Airflow</p>
-  <p><strong>Agentic</strong> &middot; Google ADK &middot; A2A protocol &middot; LangChain routing
-  with SuperAGI autonomy &middot; graph-grounded output verification &middot; bounded agent loops
-  &middot; human-in-the-loop &middot; MCP</p>
-  <p><strong>Infrastructure</strong> &middot; GCP (Cloud Run, Cloud SQL, Secret Manager) &middot;
-  AWS &middot; multi-cloud via Shadeform &middot; Docker &middot; Kubernetes &middot; WebSockets
-  &middot; Cloudflare &middot; Google OAuth&nbsp;2.0 &middot; Fernet &middot; circuit breakers and
-  exponential backoff</p>
-  <p><strong>Evaluation and governance</strong> &middot; promptfoo &middot; Arize &middot;
-  Weights &amp; Biases &middot; OpenTelemetry &middot; NIST AI RMF &middot; SR&nbsp;11-7 &middot;
-  PII governance and RBAC &middot; confidential computing (TEEs)</p>
+<h2>{icon("people")}The principal<a class="more" href="bio.html">more</a></h2>
+<p>Leigh Anne Miller, founder and principal. A forward deployed engineer: she embeds with the
+customer, finds the real problem, and ships the AI system to production herself. Three pages on
+how she works &mdash; click any to open it.</p>
+<div class="fde-grid">
+  <a class="fde" href="{FDE_FILE}#page=1"><img src="data:image/webp;base64,{FDE_THUMBS[0]}" alt="Page 1 of the forward deployed engineer infographic: The FDE loop, a case study, and two systems in production" width="680" height="880"><span class="fde-cap"><span class="fde-n">01</span><span class="fde-t">The FDE loop, a case study, and two systems in production</span><span class="fde-cue">Open the page &rarr;</span></span></a>
+  <a class="fde" href="{FDE_FILE}#page=2"><img src="data:image/webp;base64,{FDE_THUMBS[1]}" alt="Page 2 of the forward deployed engineer infographic: How she builds: contracts, production patterns, field record, stack" width="680" height="880"><span class="fde-cap"><span class="fde-n">02</span><span class="fde-t">How she builds: contracts, production patterns, field record, stack</span><span class="fde-cue">Open the page &rarr;</span></span></a>
+  <a class="fde" href="{FDE_FILE}#page=3"><img src="data:image/webp;base64,{FDE_THUMBS[2]}" alt="Page 3 of the forward deployed engineer infographic: FAQ: how she handles the hard parts" width="680" height="880"><span class="fde-cap"><span class="fde-n">03</span><span class="fde-t">FAQ: how she handles the hard parts</span><span class="fde-cue">Open the page &rarr;</span></span></a>
+</div>
+
+<h2>{icon("link")}Stack</h2>
+<div class="stack">
+{STACK_BAND}
 </div>
 
 <div class="quote">
   <div class="q">&ldquo;Considered near-impossible to do &mdash; but she did them with
   ease.&rdquo;</div>
   <div class="attr">&mdash; Peter Dunker, VP Technology, Cloud Enablement &amp; Infrastructure,
-  Gracenote / Nielsen &mdash; on the unified data model and platform build</div>
+  Gracenote / Nielsen</div>
 </div>
 
 <div class="quote">
@@ -1397,8 +1447,10 @@ PAGES["bio.html"] = ("Leigh Anne Miller | Ripley Decision Advantage",
   <span class="bn">03</span>
   <div>
     <h2>Founder &mdash; Ripley Decision Advantage</h2>
-    <p>Ripley Decision Advantage is a full-service AI/ML engineering consulting firm, advising on
-    tooling and workflow optimization for businesses and public-sector organizations.</p>
+    <p>Ripley Decision Advantage is a full-service AI/ML engineering consulting firm for businesses
+    and public-sector organizations: forward deployed engineering with clients&rsquo; customers,
+    pre- and post-sale; analysis run as a service, so the client buys the outcome, not the
+    software; and production AI systems, built and kept audit-ready.</p>
     <p>Its product EGON, new as of July&nbsp;2026, is an AI-enabled scenario tool for rebuilding
     the infrastructure behind US organic means of production, built for a two-front scenario.
     <a href="egon.html">Read the EGON one-pager</a>.</p>

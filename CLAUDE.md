@@ -55,6 +55,29 @@ Linked from `bio.html` under the lead and from the contact callout, via
 `CV_FILE` / `CV_NAME` in `build_site.py`. Content rules apply to the PDF too —
 check a replacement for banned copy before committing it.
 
+## The principal thumbnails
+
+The index "The principal" section is one intro line and three clickable
+thumbnails, one per page of the three-page FDE infographic
+`site/leigh-anne-miller-fde.pdf` (`FDE_FILE`, also a committed binary). Each
+thumbnail opens the PDF at its page via `#page=N`. Nothing else about the
+principal lives on the index; the long form is `bio.html`.
+
+The thumbnails are `assets/fde-p1.webp` … `fde-p3.webp`, inlined as data URIs
+(`FDE_THUMBS`). To regenerate after the infographic changes: take its HTML
+source, swap `__OSWALD__` for the base64 of `fonts/Oswald-700.woff2`, hide all
+but one `.page` with a `.page:not(:nth-of-type(N)){display:none}` style,
+screenshot with headless Chrome at `--window-size=816,1056
+--force-device-scale-factor=2`, then `cwebp -resize 680 0 -q 82`. No PDF
+rasterizer is installed on the build machine, and sips cannot crop from a zero
+offset, so render page by page rather than cropping a strip.
+
+## Index order
+
+Hero · The firm and Track record side by side (`.two-col`) · Current work ·
+The principal (thumbnails) · Stack (a striped band of chips from the `STACK` list;
+a `(text, True)` entry is the row's red anchor chip) · quotes · Services.
+
 ## Worked-example figures are illustrative
 
 Both EGON pages carry dollar figures that are illustrative, not analysis output.

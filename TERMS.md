@@ -123,7 +123,7 @@ Entries marked **[verify]** are ones to confirm before saying out loud to USACE.
 | Term | Means |
 |---|---|
 | **Ripley Decision Advantage** | The firm. `ripleydecisionadvantage.net`. |
-| **DIN** | Defense Investor Network. The investor-relations platform at `bigdin.net` — **email-verified, team access only**, not password protected. |
+| **DIN** | Defense Investor Network. The investor-relations platform at `www.defenseinvestornetwork.net` — **email-verified, member access only**, not password protected. |
 | **DAN** | Defense Angel Network. Sister network to DIN; its mark carries a gold halo above the letters. Both marks share one panel on the Ripley index. |
 | **EGON** | The physical-risk decision-support product. Three public pages: the overview with the Avondale example, the Baltimore worked example, and the service page (how it is delivered and bought). |
 | **Wordmark vs lockup** | A wordmark is the letterforms alone; a lockup adds a tagline beneath. All three site marks are cropped to wordmark — the DEFENSE INVESTOR NETWORK and DEFENSE ANGEL NETWORK taglines are excluded. |
