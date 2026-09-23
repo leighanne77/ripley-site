@@ -722,10 +722,14 @@ PAGES["index.html"] = ("Ripley Decision Advantage — AI/ML Consulting, Silicon 
   <div>
     <h2>{icon("industrial")}The firm</h2>
 <p>Ripley Decision Advantage is a full-service AI/ML engineering consulting firm for businesses
-and public-sector organizations. Forward deployed engineering with your customers, pre- and
-post-sale. Analysis run as a service, so you buy the outcome, not the software. Production AI
-systems, built and kept audit-ready. The result is measured in your numbers: lower engineering
-costs, stronger product-market fit, and growing revenue &mdash; not just a beautiful product.</p>
+and public-sector organizations.</p>
+<ul>
+  <li>Forward deployed engineering with your customers, pre- and post-sale.</li>
+  <li>Analysis run as a service, so you buy the outcome, not the software.</li>
+  <li>Production AI systems, built and kept audit-ready.</li>
+</ul>
+<p>The result is measured in your numbers: lower engineering costs, stronger product-market fit,
+and growing revenue &mdash; not just a beautiful product.</p>
   </div>
   <div>
     <h2>{icon("compass")}Track record</h2>
