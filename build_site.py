@@ -736,8 +736,6 @@ and growing revenue &mdash; not just a beautiful product.</p>
   <div>
     <h2>{icon("compass")}Track record</h2>
 <ul>
-  <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
-  <span class="num">$300M</span> Gracenote business at Nielsen.</li>
   <li>Improved IRR accuracy by <span class="num">15%+</span> in regulated capital-markets work.</li>
   <li>Production AI systems in continuous service since <span class="num">2023</span>.</li>
   <li>Built and piloted multi-agent systems for decision support, for infrastructure investors
@@ -745,6 +743,8 @@ and growing revenue &mdash; not just a beautiful product.</p>
   assets.</li>
   <li>Shipped HP&rsquo;s first API-based data exchange and governance capability, for a
   <span class="num">$40B</span> channel-partner program.</li>
+  <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
+  <span class="num">$300M</span> Gracenote business at Nielsen.</li>
 </ul>
   </div>
 </div>
