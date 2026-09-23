@@ -63,14 +63,23 @@ thumbnails, one per page of the three-page FDE infographic
 thumbnail opens the PDF at its page via `#page=N`. Nothing else about the
 principal lives on the index; the long form is `bio.html`.
 
-The thumbnails are `assets/fde-p1.webp` … `fde-p3.webp`, inlined as data URIs
-(`FDE_THUMBS`). To regenerate after the infographic changes: take its HTML
-source, swap `__OSWALD__` for the base64 of `fonts/Oswald-700.woff2`, hide all
-but one `.page` with a `.page:not(:nth-of-type(N)){display:none}` style,
-screenshot with headless Chrome at `--window-size=816,1056
---force-device-scale-factor=2`, then `cwebp -resize 680 0 -q 82`. No PDF
-rasterizer is installed on the build machine, and sips cannot crop from a zero
-offset, so render page by page rather than cropping a strip.
+The infographic's HTML source is committed as `assets/fde-infographic-source.html`
+(with the `__OSWALD__` font placeholder; edits made on the site side live as
+override rules at the end of its `<style>`). Both the served PDF and the
+thumbnails `assets/fde-p1.webp` … `fde-p3.webp` (inlined as `FDE_THUMBS`) are
+rendered from it, so edit the source, then regenerate both:
+
+1. Swap `__OSWALD__` for the base64 of `fonts/Oswald-700.woff2`.
+2. PDF: headless Chrome `--no-pdf-header-footer --print-to-pdf=…` on that file,
+   copy to `site/leigh-anne-miller-fde.pdf`.
+3. Thumbnails: for each page N, add `.page:not(:nth-of-type(N)){display:none}`
+   and screenshot with `--window-size=816,1056 --force-device-scale-factor=2`,
+   then `cwebp -resize 680 0 -q 82`.
+
+No PDF rasterizer is installed on the build machine, and sips cannot crop from
+a zero offset, so render page by page rather than cropping a strip. Each
+`.page` is a fixed 11in with `overflow:hidden`, so anything that overflows
+clips the footer: check the render after adding content.
 
 ## Index order
 

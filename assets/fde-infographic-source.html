@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Leigh Anne Miller — Forward Deployed Engineer</title>
+<style>
+@font-face{font-family:"Oswald";font-weight:700;src:url(data:font/woff2;base64,__OSWALD__) format("woff2");}
+@page{size:letter;margin:0}
+:root{--red:#C8202F;--gold:#E8A82A;--goldt:#B07D1A;--blue:#4A6B8A;--navy:#1A2332;--cream:#F5EEE0;--ink:#1A2332;--mute:#4f5b69;--rule:#c9ccd1}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,"Liberation Sans",Helvetica,sans-serif;color:var(--ink);background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:8.5in;height:11in;padding:0.42in 0.5in 0.36in;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+.disp{font-family:"Oswald",Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.01em}
+.mono{font-family:"Courier New","Liberation Mono",monospace}
+.kick{font-size:7.6px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);font-weight:700}
+/* header */
+.hdr{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:9px;border-bottom:2px solid var(--gold)}
+.name{font-size:28px;line-height:.95;color:var(--red)}
+.role{margin-top:6px;font-size:9.5px;letter-spacing:.24em;color:var(--blue);font-weight:700}
+.contact{text-align:right;font-size:9px;line-height:1.55;color:var(--blue)}
+.contact b{color:var(--navy);letter-spacing:.14em}
+.tag{font-size:15px;line-height:1.3;color:var(--blue);margin:8px 0 6px}
+.tag b{color:var(--navy)}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:10px}
+.stat .n{font-size:24px;color:var(--red);font-weight:700;line-height:1.05}
+.stat p{font-size:8.6px;line-height:1.35;color:var(--mute);margin-top:3px}
+.stat p b{color:var(--navy)}
+/* section heads */
+.sh{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:3px;margin:8px 0 6px}
+.sh .t{font-size:16px;color:var(--red)}
+.sh .s{font-size:8px;letter-spacing:.2em;color:var(--blue);font-weight:700;text-transform:uppercase}
+/* FDE loop */
+.loop{display:flex;height:30px}
+.chev{flex:1;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%,12% 50%);margin-right:-8px;padding:0 8px 0 14px}
+.chev:first-child{clip-path:polygon(0 0,88% 0,100% 50%,88% 100%,0 100%)}
+.chev:last-child{clip-path:polygon(0 0,100% 0,100% 100%,0 100%,12% 50%);margin-right:0}
+.chev.c1{background:var(--navy);color:#fff}.chev.c2{background:var(--blue);color:#fff}.chev.c3{background:var(--red);color:#fff}
+.loopl{display:flex;margin-top:3px}
+.loopl span{flex:1;text-align:center;font-size:7.8px;color:var(--mute)}
+/* system cards */
+.sys{border:1px solid var(--blue);border-top:4px solid var(--navy);margin-bottom:8px;padding:9px 11px 7px}
+.sys.egon{border-top-color:var(--red)}
+.syshd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.syshd .t{font-size:17px;color:var(--navy)}
+.syshd .t em{font-style:normal;color:var(--red)}
+.syshd .t small{font-family:Arial,sans-serif;font-size:9.5px;letter-spacing:.14em;color:var(--blue);margin-left:8px;font-weight:700;text-transform:uppercase}
+.pill{font-size:7.6px;letter-spacing:.16em;font-weight:700;padding:3px 7px;color:#fff;background:var(--navy)}
+.pill.red{background:var(--red)}
+.pill.gold{background:transparent;color:var(--goldt);border:1px solid var(--gold)}
+.cols{display:grid;grid-template-columns:0.82fr 1.18fr;gap:10px}
+.prob{background:var(--cream);padding:7px 9px}
+.lbl{font-size:7.6px;letter-spacing:.18em;font-weight:700;color:var(--red);margin-bottom:4px;text-transform:uppercase}
+.lbl.b{color:var(--blue)}
+ul.sq{list-style:none}
+ul.sq li{position:relative;padding-left:11px;font-size:8.9px;line-height:1.34;margin-bottom:2px}
+ul.sq li:before{content:"";position:absolute;left:0;top:3.4px;width:5px;height:5px;background:var(--red)}
+ul.sq li b{color:var(--navy)}
+/* pipeline */
+.pipe{display:flex;align-items:stretch;margin-top:6px;gap:0}
+.nd{flex:1;padding:4px 4px;text-align:center;font-size:7.4px;line-height:1.3;color:var(--mute);display:flex;flex-direction:column;justify-content:center}
+.nd b{display:block;font-size:8.3px;letter-spacing:.04em;color:var(--navy);margin-bottom:1px}
+.nd.in{background:var(--cream)}
+.nd.llm{border:1.5px dashed var(--gold);background:#fff}
+.nd.llm b{color:var(--goldt)}
+.nd.gate{background:var(--red);color:#fff;flex:.85}
+.nd.gate b{color:#fff}
+.nd.det{background:var(--blue);color:#e9eef3}
+.nd.det b{color:#fff}
+.nd.out{background:var(--navy);color:#cfd6de}
+.nd.out b{color:#fff}
+.ar{width:14px;display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:10px;flex:0 0 14px}
+.brk{display:flex;margin-top:3px;font-size:6.9px;letter-spacing:.16em;font-weight:700}
+.brk div{text-align:center;padding-top:2px}
+.brk .n{color:var(--goldt);border-top:1.5px solid var(--gold)}
+.brk .d{color:var(--blue);border-top:1.5px solid var(--blue)}
+.cap{font-size:8.3px;color:var(--mute);margin-top:5px;text-align:center}
+.cap b{color:var(--navy)}
+.chips{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:2px}
+.chips .kick{margin-right:6px}
+.chip{background:var(--navy);color:#fff;font-size:8px;font-weight:700;padding:2px 7px}
+.foot{margin-top:auto;border-top:1px solid var(--rule);padding-top:5px;display:flex;justify-content:space-between;font-size:7.6px;letter-spacing:.2em;color:var(--blue);font-weight:700}
+/* page 2 */
+.p2hd{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--gold);padding-bottom:6px}
+.p2hd .name{font-size:28px}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:10px}
+.req{display:grid;grid-template-columns:78px 1fr;gap:8px;align-items:center}
+.rq{background:var(--navy);color:#fff;text-align:center;padding:8px 4px;font-size:7.6px;line-height:1.3}
+.rq b{display:block;font-size:9.5px;margin-bottom:2px}
+.lane{padding:6px 8px;margin-bottom:5px;font-size:8.2px;line-height:1.35}
+.lane .k{font-size:7px;letter-spacing:.18em;font-weight:700;margin-bottom:2px}
+.lane.d{background:var(--blue);color:#fff}
+.lane.d .k{color:#dfe6ee}
+.lane.n{border:1.5px dashed var(--gold)}
+.lane.n .k{color:var(--goldt)}
+.code{background:var(--navy);color:#dfe6ee;font-family:"Courier New","Liberation Mono",monospace;font-size:7.7px;line-height:1.42;padding:8px 9px;white-space:pre}
+.code .c{color:#8fa3b8}.code .e{color:#ff8a93;font-weight:700}.code .ok{color:#f0c060}
+.codecap{font-size:7.8px;color:var(--mute);margin-top:4px}
+.rule{display:flex;gap:12px;align-items:center;background:var(--cream);border-left:4px solid var(--red);padding:7px 11px;margin-top:8px}
+.rule .t{font-size:14px;color:var(--red);white-space:nowrap}
+.rule p{font-size:9.2px;line-height:1.38}
+.gov{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.gv{border-top:3px solid var(--red);background:var(--cream);padding:6px 7px}
+.gv .t{font-size:10.5px;color:var(--navy);margin-bottom:2px}
+.gv p{font-size:7.9px;line-height:1.36;color:var(--ink)}
+.pats{display:grid;grid-template-columns:1fr 1fr;gap:5px 10px}
+.pt{border:1px solid var(--rule);border-top:3px solid var(--blue);padding:5px 8px 6px}
+.pt.r{border-top-color:var(--red)}
+.pth{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px}
+.pth .t{font-size:11px;color:var(--navy)}
+.where{font-size:6.8px;letter-spacing:.16em;font-weight:700;padding:2px 5px;color:#fff;background:var(--navy)}
+.where.e{background:var(--red)}
+.where.x{background:transparent;color:var(--goldt);border:1px solid var(--gold)}
+.where.both{background:var(--blue)}
+.pt p{font-size:8px;line-height:1.37;color:var(--ink)}
+.pt p b{color:var(--navy)}
+.tl{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;border-top:1px solid var(--rule);padding-top:0}
+.tl > div{position:relative;padding-top:10px}
+.tl > div:before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;background:var(--red)}
+.tl .y{font-family:"Courier New","Liberation Mono",monospace;font-weight:700;color:var(--red);font-size:9px}
+.tl .o{font-weight:700;font-size:9.2px;line-height:1.2;margin:1px 0 2px;color:var(--navy)}
+.tl p{font-size:7.6px;line-height:1.33;color:var(--mute)}
+.tl .m{font-family:"Courier New","Liberation Mono",monospace;font-weight:700;color:var(--navy);font-size:10px;margin-top:3px}
+.tl .m.red{color:var(--red)}
+table.stk{width:100%;border-collapse:collapse}
+.stk td{padding:1.5px 8px;font-size:8.8px;border-top:1px solid var(--rule)}
+.stk tr:nth-child(even) td{background:var(--cream)}
+.stk td:first-child{width:132px;font-size:7.4px;letter-spacing:.2em;font-weight:700;color:var(--blue)}
+.stk td:last-child{font-weight:700;color:var(--blue)}
+
+.hib{display:grid;grid-template-columns:1.12fr .88fr;gap:12px;align-items:stretch}
+.fork{display:grid;grid-template-columns:60px 18px 1fr;align-items:center}
+.rq2{background:var(--navy);color:#fff;text-align:center;padding:10px 3px;font-size:7.2px;line-height:1.3}
+.rq2 b{display:block;font-size:9.5px;margin-bottom:2px;letter-spacing:.04em}
+.fk{width:18px;height:100%}
+.lanes{display:flex;flex-direction:column;gap:9px}
+.ln{display:flex;align-items:center;flex-wrap:wrap;gap:3px;position:relative;padding-top:10px}
+.lk{position:absolute;top:0;left:0;font-size:6.6px;letter-spacing:.18em;font-weight:700}
+.lk.d{color:var(--blue)}.lk.n{color:var(--goldt)}
+.tags{display:flex;flex-wrap:nowrap;gap:2px;flex:1}
+.tg{font-style:normal;font-size:7px;padding:2px 3px;font-weight:700;white-space:nowrap}
+.tg.d{background:#dde5ee;color:var(--navy)}
+.tg.n{background:#fdf3de;color:var(--goldt);border:1px dashed var(--gold)}
+.bx{font-size:7.4px;font-weight:700;padding:5px 5px;letter-spacing:.06em;white-space:nowrap}
+.bx.d{background:var(--blue);color:#fff}.bx.dk{background:var(--navy);color:#fff}
+.bx.n{border:1.5px dashed var(--gold);color:var(--goldt);background:#fff}.bx.r{background:var(--red);color:#fff}
+.a{color:var(--navy);font-size:8px}
+.prov{background:var(--navy);padding:7px 9px;display:flex;flex-direction:column;gap:5px}
+.pvh{display:flex;justify-content:space-between;align-items:center;color:#fff;font-size:11px;margin-bottom:1px}
+.pvr{display:grid;grid-template-columns:62px 72px 10px 1fr;align-items:center;gap:4px;font-family:"Courier New","Liberation Mono",monospace;font-size:7.8px}
+.pvr .a{color:#8fa3b8}
+.val{color:#fff;font-weight:700}
+.src{padding:2px 4px;text-align:center;font-weight:700}
+.src.none{border:1px dashed #8fa3b8;color:#8fa3b8}
+.src.bad{border:1px solid #f0c060;color:#f0c060;text-decoration:line-through}
+.src.ok{background:#dde5ee;color:var(--navy)}
+.res{padding:3px 5px;font-weight:700;text-align:center;font-family:Arial,sans-serif;font-size:7.4px;letter-spacing:.08em}
+.res.x{background:var(--red);color:#fff}.res.g{background:var(--gold);color:var(--navy)}.res.ok{background:#fff;color:var(--navy)}
+.rule2{display:grid;grid-template-columns:128px 1fr;gap:12px;background:var(--cream);border-left:4px solid var(--red);padding:7px 11px 8px;margin-top:9px;align-items:end}
+.rl .disp{display:block;font-size:17px;color:var(--red);line-height:1}
+.rl small{display:block;font-size:7.8px;color:var(--mute);margin-top:4px;line-height:1.35}
+.mv{display:flex;align-items:center;gap:6px;font-size:7px;letter-spacing:.16em;color:var(--red);font-weight:700;white-space:nowrap;margin-bottom:5px}.mv i{flex:1;height:1.5px;background:var(--red)}.mv em{font-style:normal;font-size:8px;margin-left:-6px}
+.steps{display:flex;align-items:flex-end;gap:5px}
+.st{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:4px 7px;font-size:7.3px}
+.st b{font-size:8.4px;letter-spacing:.08em}
+.s1{height:24px;background:#fff;border:1px dashed var(--mute);color:var(--mute)}
+.s2{height:32px;background:#c9d5e2;color:var(--navy)}
+.s3{height:40px;background:var(--blue);color:#fff}
+.s4{height:48px;background:var(--red);color:#fff}
+
+.sys{border-top:4px solid var(--red)!important}
+.band{display:flex;align-items:center;gap:14px;background:var(--navy);margin:-9px -11px 6px;padding:7px 12px}
+.lgs{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.lg{display:block;height:22px;width:auto}
+.lg.dan{height:30px;margin-top:-8px}
+.lgs .sep{width:1px;height:20px;background:rgba(245,238,224,.3)}
+.bt{flex:1;color:var(--cream);font-size:9.5px;font-weight:700;letter-spacing:.06em;line-height:1.35}
+.bt span{font-weight:400;font-size:8.2px;color:#b9c3cf;letter-spacing:.02em}
+.pill.gold{color:var(--gold)}
+.where.dd{background:var(--navy)}
+
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px;margin-top:18px;margin-bottom:14px}
+.fq{border:1px solid var(--rule);border-top:3px solid var(--red);padding:9px 11px 10px;display:flex;flex-direction:column;gap:7px;justify-content:space-evenly}
+.fq.wide{grid-column:1/-1;border-top-color:var(--navy)}
+.qh{display:flex;align-items:center;gap:7px}
+.qh .disp{font-size:13.5px;color:var(--navy);flex:1}
+.qn{background:var(--red);color:#fff;font-weight:700;font-size:9px;width:15px;height:15px;display:flex;align-items:center;justify-content:center;font-family:"Oswald",Arial}
+.qa{font-size:9.8px;line-height:1.35;color:var(--ink);font-weight:700}
+.qa2{font-size:8.6px;font-weight:700;color:var(--ink)}
+.qf{font-size:8.5px;line-height:1.4;color:var(--mute)}
+.qf b{color:var(--navy)}
+.qf .where{margin-right:4px}
+.ar2{color:var(--navy);font-size:8px;flex:0 0 auto;padding:0 2px}
+table.vt{border-collapse:collapse;width:100%;font-size:8px}
+.vt th{font-size:6.8px;letter-spacing:.14em;color:var(--blue);text-transform:uppercase;padding:2px 4px;text-align:center}
+.vt td{padding:6px 4px;text-align:center;border-top:1px solid var(--rule);font-weight:700}
+.vt td:first-child{text-align:left;color:var(--mute);font-size:8px}
+.vt tr.hl td{background:var(--navy);color:#fff}
+.vt .no{color:var(--red);font-size:11px}.vt .yes{color:var(--gold);font-size:11px}
+.fl{display:flex;align-items:center;font-size:7.8px;text-align:center}
+.fl span:not(.ar2){flex:1;padding:8px 3px;font-weight:700;line-height:1.3}
+.fl i{font-style:normal;font-weight:400;font-size:7.2px}
+.n1{background:var(--cream)}.n2{border:1.5px dashed var(--gold);color:var(--goldt)}.n3{background:var(--blue);color:#fff}
+.fl.sub{margin-top:-2px}.fl .spacer{flex:1.9!important;padding:0!important}
+.n4{background:var(--navy);color:#fff;flex:1.4!important;font-size:7.2px}
+.chain,.rag{display:flex;align-items:stretch}
+.chain > span:not(.ar2),.rag > span:not(.ar2):not(.k2){flex:1;padding:8px 3px;font-size:7.8px;font-weight:700;letter-spacing:.04em;text-align:center;display:flex;flex-direction:column;justify-content:center;line-height:1.25}
+.chain i,.rag i{font-style:normal;font-weight:400;font-size:7.1px;letter-spacing:0;margin-top:1px}
+.chain .ar2,.rag .ar2{display:flex;align-items:center}
+.c1{background:var(--cream);color:var(--navy)}.c2{background:var(--red);color:#fff}.c3{background:var(--blue);color:#fff}.c4{background:var(--navy);color:#fff}
+.cage{border:2px solid var(--red);padding:5px;display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.lim{background:var(--red);color:#fff;font-size:7.2px;font-weight:700;letter-spacing:.08em;text-align:center;padding:5px 2px}
+.graph{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:3px;background:var(--cream);padding:10px 4px;margin-top:2px}
+.graph span:not(.ar2){background:var(--blue);color:#fff;font-size:7.4px;font-weight:700;padding:3px 8px}
+.graph span.llm{background:#fff;border:1.5px dashed var(--gold);color:var(--goldt)}
+.tri{display:grid;grid-template-columns:62px 1fr 62px;gap:6px;align-items:stretch}
+.log,.ev{display:flex;flex-direction:column;justify-content:center;text-align:center;font-size:8.4px;font-weight:700;padding:4px;line-height:1.3}
+.log{background:var(--navy);color:#fff}.ev{background:var(--red);color:#fff}
+.log i,.ev i{font-style:normal;font-weight:400;font-size:6.9px}
+.br{display:flex;flex-direction:column;gap:3px;position:relative}
+.br div{background:var(--cream);font-size:8px;padding:6px 7px;display:flex;justify-content:space-between;gap:6px;border-left:3px solid var(--blue)}
+.br b{color:var(--navy)}
+.inj{display:flex;align-items:center;gap:3px}
+.src2{display:flex;flex-direction:column;gap:3px;width:78px}
+.src2 span{background:var(--cream);font-size:7.8px;font-weight:700;padding:6px 6px;color:var(--navy)}
+.src2 i{display:block;font-style:normal;font-weight:400;font-size:6.8px;color:var(--mute)}
+.zone{flex:1;border:2px solid var(--navy);padding:8px 6px;text-align:center}
+.zone b{font-size:7.8px;letter-spacing:.1em;color:var(--navy)}
+.sh2{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;margin-top:3px}
+.sh2 i{font-style:normal;background:var(--blue);color:#fff;font-size:7.3px;font-weight:700;padding:3px 5px}
+.repos{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.rp{background:var(--cream);border-left:3px solid var(--red);padding:8px 8px}
+.rp b{display:block;font-family:"Courier New","Liberation Mono",monospace;font-size:7.4px;color:var(--navy)}
+.rp i{font-style:normal;font-size:7.9px;color:var(--mute);line-height:1.3;display:block;margin-top:2px}
+.term{background:var(--navy);color:#f0c060;font-family:"Courier New","Liberation Mono",monospace;font-size:8.4px;padding:7px 8px;font-weight:700}
+.term span{color:#8fa3b8;font-weight:400}
+.rag{gap:0}
+.k2{flex:0 0 58px;font-size:7px;letter-spacing:.16em;font-weight:700;color:var(--blue);display:flex;align-items:center}
+
+.case{margin-top:6px;border:1px solid var(--rule);border-top:3px solid var(--gold)}
+.caseh{display:flex;align-items:center;gap:10px;padding:5px 8px;background:var(--cream)}
+.caseh .disp{font-size:12px;color:var(--navy);white-space:nowrap}
+.caseh .cs{flex:1;font-size:8px;color:var(--mute)}
+.pill.gold2{background:transparent;color:var(--goldt);border:1px solid var(--gold)}
+.cg{display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+.cg > div{padding:5px 6px 6px;font-size:7.8px;line-height:1.35;color:var(--ink);border-right:1px solid var(--rule)}
+.cg > div:last-child{border-right:0}
+.cg b{display:block;font-size:8.2px;color:var(--navy);margin-bottom:2px}
+.cg > .hot{background:var(--navy);color:#dfe6ee}
+.cg > .hot b{color:var(--gold)}
+
+.wt{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px}
+.wb{border:1px solid var(--rule);border-top:3px solid var(--red);padding:6px 8px 7px;display:flex;flex-direction:column;gap:5px}
+.wbh{display:flex;justify-content:space-between;align-items:baseline}
+.wbh .disp{font-size:12px;color:var(--navy)}
+.wk{font-size:6.6px;letter-spacing:.16em;font-weight:700;color:var(--blue)}
+.vf{display:flex;align-items:center;gap:0}
+.vin{display:flex;flex-direction:column;gap:4px;width:92px}
+.vin div{font-size:7.4px;font-weight:700;padding:4px 5px;line-height:1.2}
+.vin i{display:block;font-style:normal;font-weight:400;font-size:6.6px}
+.e1{border:1.5px dashed var(--mute);color:var(--mute)}
+.e2{background:var(--navy);color:#fff}
+.vj{width:12px;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.vj span{flex:1;border-right:1.5px solid var(--navy)}
+.vj span:first-child{border-top:1.5px solid var(--navy);margin-top:13px}
+.vj span:last-child{border-bottom:1.5px solid var(--navy);margin-bottom:13px}
+.vcore{flex:1;background:var(--blue);color:#fff;padding:6px;text-align:center}
+.vcore b{font-size:8.4px;letter-spacing:.1em}
+.vchk{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:4px}
+.vchk i{font-style:normal;background:#fff;color:var(--navy);font-size:6.9px;font-weight:700;padding:2px 4px}
+.vchk em{font-style:normal;font-size:10px;color:var(--gold)}
+.vout{display:flex;flex-direction:column;gap:3px;width:78px}
+.vout div{font-size:7.2px;font-weight:700;text-align:center;padding:3px}
+.ok2{background:var(--cream);color:var(--navy)}.no2{background:var(--red);color:#fff}
+.fc{font-weight:400!important;font-size:6.6px!important;color:var(--mute);padding:0!important}
+.tw{display:flex;align-items:stretch;gap:0}
+.zone1,.zone2{flex:1;padding:4px 5px;display:flex;flex-direction:column;align-items:center;gap:3px}
+.zone1{background:var(--cream)}
+.zone2{background:var(--navy)}
+.zl{font-size:6.3px;letter-spacing:.14em;font-weight:700;color:var(--mute);align-self:flex-start}
+.zone2 .zl{color:var(--gold)}
+.rp2{background:#fff;border:1px solid var(--blue);color:var(--navy);font-size:7.2px;font-weight:700;padding:2px 8px}
+.rp2.m{font-family:"Courier New","Liberation Mono",monospace}
+.wall{width:28px;background:repeating-linear-gradient(45deg,var(--red) 0 4px,#a51824 4px 8px);display:flex;align-items:center;justify-content:center}
+.wall span{writing-mode:vertical-rl;transform:rotate(180deg);color:#fff;font-size:5.8px;font-weight:700;letter-spacing:.12em;text-align:center;background:var(--red);padding:3px 1px}
+.poll{font-size:7px;color:#fff;font-weight:700;align-self:flex-start;margin-left:-2px}
+.led{display:flex;flex-direction:column;gap:2px;width:100%}
+.led i{font-style:normal;font-family:"Courier New","Liberation Mono",monospace;font-size:7px;background:#2a3648;color:#dfe6ee;padding:1px 5px}
+.led i:nth-child(3){background:var(--red);color:#fff}
+.led i.nx{background:transparent;color:#8fa3b8;font-family:Arial,sans-serif;font-size:6.4px;letter-spacing:.12em;text-transform:uppercase;padding:0 5px}
+.wft{font-size:7.6px;color:var(--mute)}
+.wft b{font-family:"Courier New","Liberation Mono",monospace;color:var(--red);font-size:11px}
+.jd{display:flex;align-items:center;gap:0}
+.jp{background:var(--cream);font-size:7.2px;font-weight:700;color:var(--navy);padding:8px 5px;text-align:center;line-height:1.2}
+.jj{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;padding-bottom:10px}
+.jj span{background:var(--blue);color:#fff;font-size:7.6px;font-weight:700;text-align:center;padding:7px 2px;border-right:2px dashed #fff}
+.jj span:nth-child(3){border-right:0}
+.jj span i{font-style:normal;font-weight:400;font-size:6.5px}
+.jj em{position:absolute;bottom:0;left:0;right:0;text-align:center;font-style:normal;font-size:6.5px;letter-spacing:.12em;color:var(--mute);text-transform:uppercase}
+.jv{display:flex;flex-direction:column;gap:2px;width:96px}
+.jv div{font-size:6.8px;font-weight:700;padding:3px 4px;text-align:center;letter-spacing:.04em}
+.c2x{background:var(--red);color:#fff}.c4x{background:var(--navy);color:#fff}.c3x{background:var(--cream);color:var(--navy)}
+table.sp{width:100%;border-collapse:collapse;font-size:7.8px}
+.sp th{font-size:6.6px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);padding:1px 4px;text-align:center}
+.sp td{text-align:center;padding:2px 4px;border-top:1px solid var(--rule);font-weight:700}
+.sp td.y{color:var(--navy)}.sp td.n{color:var(--red)}.sp td.g{color:var(--mute)}
+.sp td.ei{color:var(--mute);font-weight:400;font-style:italic}
+.vp,.vx{display:inline-block;min-width:74px;padding:1px 4px;font-size:7px;letter-spacing:.1em}
+.vp{background:var(--cream);color:var(--navy)}.vx{background:var(--red);color:#fff}
+
+.rt{display:flex;align-items:stretch;gap:0}
+.rcall{background:var(--navy);color:#fff;font-size:8px;font-weight:700;padding:6px 5px;width:62px;display:flex;flex-direction:column;justify-content:center;text-align:center;line-height:1.25}
+.rcall i{font-style:normal;font-weight:400;font-size:6.6px;color:#b9c3cf}
+.rfork{width:14px;display:flex;flex-direction:column}
+.rfork span{flex:1;border-bottom:1.5px solid var(--navy)}
+.rfork span:first-child{border-top:0}
+.rlanes{flex:1;display:flex;flex-direction:column;gap:3px}
+.rln{display:grid;grid-template-columns:84px 1fr;align-items:center;gap:1px 6px;padding:5px 7px;font-size:7.4px}.rln b{grid-row:span 2}
+.rln b{font-size:7.4px;letter-spacing:.06em}
+.rln em{font-style:normal;font-weight:700;font-size:6.8px}
+.rln.onp{background:var(--navy);color:#fff}.rln.onp em{color:var(--gold)}
+.rln.fast{background:var(--cream);color:var(--navy)}.rln.fast em{color:var(--goldt)}
+.rln.front{background:var(--blue);color:#fff}.rln.front em{color:#fff}
+
+.sl{display:flex;align-items:stretch;gap:0}
+.tagp,.tagf{width:30px;font-size:6.6px;font-weight:700;letter-spacing:.1em;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);color:#fff}
+.tagp{background:var(--blue)}.tagf{background:var(--red)}
+.sl .ar2{display:flex;align-items:center}
+.sn{flex:1;font-size:7px;font-weight:700;text-align:center;padding:4px 2px;display:flex;flex-direction:column;justify-content:center;line-height:1.2;letter-spacing:.03em}
+.sn i{font-style:normal;font-weight:400;font-size:6.5px;letter-spacing:0}
+.sn.c{background:var(--cream);color:var(--navy);font-family:Arial,sans-serif}
+.sn.c i{font-family:"Courier New","Liberation Mono",monospace;font-weight:700}
+.sn.b{background:var(--blue);color:#fff}
+.sn.ok{background:var(--navy);color:#fff}
+.sn.x{background:#fff;border:1.5px dashed var(--red);color:var(--red)}
+.sn.bad{background:var(--red);color:#fff}
+.slc{font-size:7.2px;line-height:1.35;color:var(--mute)}
+.slc b{color:var(--navy)}
+
+.pats6{display:grid;grid-template-columns:repeat(10,1fr);gap:5px 10px}
+.pats6 .sp2{grid-column:span 4}.pats6 .sp3{grid-column:span 5}.pats6 .sp4{grid-column:span 6}
+.pi{display:flex;align-items:stretch;gap:3px}
+.pi .ar2{display:flex;align-items:center}
+.pin{background:var(--red);color:#fff;font-size:6.8px;font-weight:700;letter-spacing:.06em;padding:4px;display:flex;align-items:center;text-align:center;line-height:1.2}
+.pg{flex:1;background:var(--navy);color:#fff;padding:4px 4px;display:flex;flex-direction:column;justify-content:center;border-left:3px solid var(--gold)}
+.pg b{font-size:6.8px;letter-spacing:.06em}
+.pg i{font-style:normal;font-size:6.4px;line-height:1.25;color:#c9d3de;margin-top:1px}
+.pg.nx{background:var(--cream);color:var(--navy);border-left-color:var(--red)}
+.pg.nx i{color:var(--mute)}
+
+.page:nth-of-type(2) .sh{margin:5px 0 4px}
+.page:nth-of-type(2) .rule2{margin-top:6px;padding:5px 11px 6px}
+.page:nth-of-type(2) .wb{padding:5px 8px 5px;gap:4px}
+.page:nth-of-type(2) .stk td{padding:1px 8px}
+.page:nth-of-type(2) .tl > div{padding-top:8px}
+.ev2{font-size:7.6px!important;line-height:1.34!important;margin-bottom:2px}
+
+.pats6 .sp6{grid-column:span 6}.pats6 .spa4{grid-column:span 4}.pats6 .evg{grid-column:1/-1}
+.evg{display:flex;flex-direction:column;gap:4px}
+.el{display:flex;align-items:stretch;gap:3px}
+.el .ar2{display:flex;align-items:center}
+.elab{width:58px;flex:0 0 58px;background:var(--navy);color:#fff;font-size:6.8px;font-weight:700;letter-spacing:.1em;display:flex;align-items:center;justify-content:center}
+.elab.e{background:var(--red)}
+.ec{flex:1;padding:4px 5px;display:flex;flex-direction:column;justify-content:center;line-height:1.2}
+.ec b{font-size:7px;letter-spacing:.06em}
+.ec i{font-style:normal;font-size:6.6px;margin-top:1px}
+.ec em{font-style:normal;font-size:5.8px;letter-spacing:.14em;font-weight:700;margin-bottom:1px}
+.ec.c1{background:var(--cream);color:var(--navy)}.ec.c3{background:var(--blue);color:#fff}.ec.c4{background:var(--navy);color:#fff}
+.ec.bt{background:var(--navy);color:#fff;border-left:3px solid var(--gold)}.ec.bt em{color:var(--gold)}
+.ec.sp{background:#fff;border:1.5px dashed var(--blue);color:var(--navy)}.ec.sp em{color:var(--blue)}
+.vcw{border-top-color:var(--blue)!important}
+
+.page:nth-of-type(2) .s1{height:25px}.page:nth-of-type(2) .s2{height:30px}.page:nth-of-type(2) .s3{height:35px}.page:nth-of-type(2) .s4{height:40px}
+.page:nth-of-type(2) .st{padding:3px 7px}
+.page:nth-of-type(2) .ec{padding:3px 5px}
+.page:nth-of-type(2) .evg{gap:3px}
+.page:nth-of-type(2) .pt{padding:4px 8px 5px}
+.page:nth-of-type(2) .zone1,.page:nth-of-type(2) .zone2{padding:3px 5px;gap:2px}
+.page:nth-of-type(2) .jp{padding:6px 5px}
+.page:nth-of-type(2) .jj span{padding:5px 2px}
+.page:nth-of-type(2) .code{padding:6px 9px}
+.page:nth-of-type(2) .tl p{line-height:1.25}.page:nth-of-type(2) .tl > div{padding-top:7px}.page:nth-of-type(2) .stk td{padding:1px 8px}
+
+.onto{display:grid;grid-template-columns:1.35fr 1fr;gap:10px;align-items:stretch}
+.ostack{display:flex;flex-direction:column;gap:2px}
+.ol{display:flex;align-items:center;gap:8px;padding:4px 8px;font-size:7.4px}
+.ol b{font-size:7.6px;letter-spacing:.06em;white-space:nowrap}
+.ol i{font-style:normal;flex:1;font-size:7px}
+.ol em{font-style:normal;font-size:6.2px;letter-spacing:.14em;font-weight:700}
+.ol.auth{background:var(--red);color:#fff;margin:0 22%}
+.ol.dom{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:0;background:transparent}
+.ol.dom span{background:var(--blue);color:#fff;padding:4px 5px;display:flex;flex-direction:column}
+.ol.dom span i{font-size:6.6px;color:#dfe6ee}
+.ol.mid{background:var(--navy);color:#fff;margin:0 3%}.ol.mid em{color:var(--gold)}
+.ol.top{background:#0f1622;color:#fff}.ol.top em{color:var(--gold)}
+.oreg{border:2px solid var(--navy);padding:5px 7px;display:flex;flex-direction:column;gap:4px;justify-content:center}
+.orh{font-size:6.6px;letter-spacing:.14em;font-weight:700;color:var(--blue)}
+.orc{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.orc span{background:var(--cream);color:var(--navy);font-size:6.8px;font-weight:700;text-align:center;padding:5px 2px}
+.orn{font-size:7.2px;color:var(--ink);background:#fdf3de;border-left:3px solid var(--gold);padding:3px 5px}
+.orx{font-size:7.2px;color:var(--red);font-weight:700}
+
+.onto2{display:grid;grid-template-columns:1.25fr 1fr;gap:6px;align-items:stretch}
+.onto2 .ol{padding:3px 6px}
+.onto2 .ol.auth{margin:0 18%;justify-content:space-between}
+.onto2 .ol.dom span{padding:3px 4px}
+.onto2 .ol b{font-size:7px}
+.onto2 .oreg{padding:4px 5px;gap:3px}
+.onto2 .orc span{padding:3px 1px;font-size:6.4px}
+.onto2 .orn{font-size:6.8px}
+
+.wfull{grid-column:1/-1}
+.pats6 .ong{grid-column:1/-1}
+.onto3{display:grid;grid-template-columns:1.5fr 1fr;gap:8px;align-items:stretch}
+.onto3 .ol{padding:3px 7px}
+.onto3 .ol.auth{justify-content:space-between}
+.onto3 .ol.dom span{padding:2px 5px}.onto3 .ol.dom span i{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.onto3 .oreg{padding:4px 7px;gap:3px}
+.onto3 .orc span{padding:3px 2px}
+
+.ax{display:flex;align-items:stretch;gap:3px;margin-top:3px}
+.ax .elab{width:48px;flex:0 0 48px;font-size:6.4px}
+.ax .ar2{display:flex;align-items:center}
+.ac{font-size:6.6px;font-weight:700;letter-spacing:.04em;padding:3px 4px;display:flex;flex-direction:column;justify-content:center;text-align:center;line-height:1.2}
+.ac i{font-style:normal;font-weight:400;font-size:6.2px}
+.ac.c1{background:var(--cream);color:var(--navy)}.ac.c3{background:var(--blue);color:#fff}
+.ac.no{flex:1;background:#fff;border:1.5px dashed var(--red);color:var(--red)}
+.ac.lo{flex:1;background:var(--navy);color:#fff}
+.tiers{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--navy);padding:2px}
+.tiers em{grid-column:1/-1;font-style:normal;font-size:5.8px;letter-spacing:.12em;color:var(--gold);font-weight:700;text-align:center}
+.tiers span{font-size:6.4px;text-align:center;padding:1px}
+.tv{background:#fff;color:var(--navy)}.tr{background:#c9d5e2;color:var(--navy)}.th{background:#2a3648;color:#6f7f93;text-decoration:line-through}
+.oline{display:flex;align-items:stretch;gap:0;margin-top:2px}
+.oline .ar2{display:flex;align-items:center}
+.oc{flex:1;font-size:7.2px;font-weight:700;letter-spacing:.05em;padding:4px 6px;display:flex;flex-direction:column;justify-content:center;line-height:1.2}
+.oc i{font-style:normal;font-weight:400;font-size:6.5px;letter-spacing:0;margin-top:1px}
+.oc.top{background:#0f1622;color:#fff}.oc.mid{background:var(--navy);color:#fff}.oc.dom{background:var(--blue);color:#fff;flex:1.4}.oc.auth{background:var(--red);color:#fff}
+.oreg2{margin-top:4px;font-size:7.2px;color:var(--ink);background:#fdf3de;border-left:3px solid var(--gold);padding:3px 6px}
+.oreg2 span{display:inline-block;background:var(--cream);border:1px solid var(--rule);font-size:6.3px;font-weight:700;letter-spacing:.08em;padding:0 4px;margin:0 1px;color:var(--navy)}
+
+/* Production Patterns, neutral palette: navy for text and rules only; red and gold as accents. */
+.pats6 .elab{background:var(--cream);color:var(--navy);border-left:3px solid var(--navy)}
+.pats6 .elab.e{background:var(--cream);color:var(--red);border-left-color:var(--red)}
+.pats6 .ec.c1,.pats6 .ac.c1{background:var(--cream);color:var(--navy)}
+.pats6 .ec.c3,.pats6 .ac.c3{background:#DDE5EE;color:var(--navy)}
+.pats6 .ec.c4{background:#E4E8EC;color:var(--navy)}
+.pats6 .ec.bt{background:#E4E8EC;color:var(--navy);border-left:3px solid var(--gold)}
+.pats6 .ec.bt em,.pats6 .tiers em{color:var(--goldt)}
+.pats6 .ec.sp{background:#fff;border:1.5px dashed var(--blue);color:var(--navy)}
+.pats6 .ec i,.pats6 .ac i,.pats6 .oc i,.pats6 .pg i{color:var(--mute)}
+.pats6 .pg{background:#E4E8EC;color:var(--navy);border-left:3px solid var(--gold)}
+.pats6 .pg.nx{background:var(--cream);border-left-color:var(--red)}
+.pats6 .ac.lo{background:#E4E8EC;color:var(--navy)}
+.pats6 .tiers{background:#E4E8EC}
+.pats6 .tiers .tv{background:#fff;color:var(--navy)}
+.pats6 .tiers .tr{background:#DDE5EE;color:var(--navy)}
+.pats6 .tiers .th{background:#c9ccd1;color:#6f7f93}
+.pats6 .oc.top,.pats6 .oc.mid{background:#E4E8EC;color:var(--navy)}
+.pats6 .oc.dom{background:#DDE5EE;color:var(--navy)}
+.pats6 .oreg2{background:var(--cream)}
+.pats6 .where{background:transparent;color:var(--navy);border:1px solid var(--navy)}
+.pats6 .where.e{color:var(--red);border-color:var(--red)}
+.pats6 .where.both{color:var(--blue);border-color:var(--blue)}
+.pats6 .ar2{color:var(--mute)}
+.pats6 .oc.auth i{color:rgba(255,255,255,.85)}
+
+/* Page 3: fewer cards, so more air between and inside them. */
+.faq{gap:30px 22px;margin-top:26px}
+.fq{padding:16px 18px 18px;gap:11px}
+.qa{font-size:10.6px}
+.qf{font-size:9px;line-height:1.45}
+</style></head><body>
+
+<!-- ========================= PAGE 1 ========================= -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="name disp">Leigh Anne Miller</div>
+      <div class="role">FORWARD DEPLOYED ENGINEER · AI SOLUTION ARCHITECT</div>
+    </div>
+    <div class="contact mono">
+      <b>PALO ALTO, CA · DENVER, CO</b><br>
+      leighmillerengineering@gmail.com<br>
+      (650) 469-6032<br>
+      linkedin.com/in/leighannemillerengineering<br>
+      github.com/leighanne77
+    </div>
+  </div>
+
+  <p class="tag">I'm a forward-deployed engineer: I embed with the customer, find the real problem, and <b>ship the AI system to production myself</b>.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="n mono">$40B/YR</div><p>AMPLIFY, HP's first API-based channel data exchange. Led enterprise data-strategy programs targeting $15B in new revenue.</p></div>
+    <div class="stat"><div class="n mono">0 → 1</div><p>Multiple products opened from zero: discovery, demos, Tier-1 deployment, and the engineering.</p></div>
+    <div class="stat"><div class="n mono">$300M</div><p>Unified data platform restarted and shipped at Nielsen/Gracenote after a five-year impasse. I supplied the revenue case.</p></div>
+  </div>
+
+  <div class="sh"><span class="t disp">The FDE Loop</span><span class="s">How every engagement runs · field feedback + evals feed the next loop</span></div>
+  <div class="loop disp">
+    <div class="chev c1">Embed</div><div class="chev c2">Discover</div><div class="chev c1">Architect</div><div class="chev c2">Build</div><div class="chev c1">Ship</div><div class="chev c3">Govern · Measure</div>
+  </div>
+  <div class="case">
+    <div class="caseh"><span class="disp">Case study · How I build from 0 → 1</span><span class="cs">Pre-sales engagement · supplier-risk intelligence platform · a defense prime won't hand over its product data</span><span class="pill gold2">SCOPED</span></div>
+    <div class="cg">
+      <div><b>Join the account</b>Into the account team for a named account under evaluation. No quota.</div>
+      <div><b>The real blocker</b>Not features: the prime won't let an outside party map its product data.</div>
+      <div class="hot"><b>Work inside the limit</b>Prime keeps ownership; the platform holds only the resolution layer (canonical IDs). Query in place: answers, never records.</div>
+      <div><b>Demo on their question</b>Configure the shared platform against the buyer's real question. No fork.</div>
+      <div><b>Evaluation unblocked</b>Account team owns the close; I carry no quota and commit to no terms.</div>
+      <div><b>Post-sale triage</b>Configure → generalize → fork only as last resort, logged with its recurring cost and signed off.</div>
+    </div>
+  </div>
+
+  <div class="sh"><span class="t disp">FDE Work: Live, In Production</span><span class="s">Built solo · DIN · DAN in production · EGON in pilots</span></div>
+  <div class="chips" style="margin:-1px 0 6px"><span class="kick">I owned, solo</span><span class="chip">Discovery</span><span class="chip">Architecture</span><span class="chip">Full stack</span><span class="chip">ML ops</span><span class="chip">Multi-tenant cloud</span><span class="chip">Security</span><span class="chip">Governance</span><span class="chip">Rollout</span></div>
+
+  <!-- DIN / DAN -->
+  <div class="sys">
+    <div class="band">
+      <div class="lgs"><svg class="lg din" xmlns="http://www.w3.org/2000/svg" viewBox="0 166 1269 437" role="img" aria-label="Defense Investor Network"><g fill="#F5EEE0"><path d="M354 455L165 455C161 455 156 454 153 452C146 447 142 440 142 432L142 337C142 329 146 321 153 317C156 315 161 314 165 314L354 314C394 314 425 345 425 384C425 424 394 455 354 455M555 314C526 231 447 172 354 172L165 172C152 172 142 182 142 195L142 290C142 303 131 314 118 314L24 314C11 314 0 324 0 337L0 432C0 445 11 455 24 455L85 455C98 455 108 466 108 479C108 485 106 491 101 496L42 555C42 555 42 556 41 556L39 558C35 563 33 568 33 573C33 586 44 597 57 597L354 597C447 597 526 538 555 455C563 433 567 409 567 384C567 360 563 336 555 314"/><path d="M744 195L744 573C744 586 734 597 721 597L626 597C613 597 603 586 603 573L603 195C603 182 613 172 626 172L721 172C734 172 744 182 744 195"/><path d="M792 573L792 432C792 419 802 408 815 408L875 408C889 408 899 397 899 384C899 378 897 373 893 369C893 368 892 367 891 367L838 314L798 274C794 269 792 264 792 258L792 195C792 182 802 172 815 172L887 172C893 172 899 174 904 179L1082 357C1086 362 1092 364 1099 364C1112 364 1122 354 1122 341L1122 195C1122 182 1133 172 1146 172L1241 172C1254 172 1264 182 1264 195L1264 573C1264 586 1254 597 1241 597L1131 597C1128 597 1125 597 1122 595C1119 594 1117 592 1115 590L974 449C969 445 964 442 957 442C948 442 940 448 936 455C934 459 933 462 933 466L933 573C933 586 923 597 910 597L815 597C802 597 792 586 792 573"/></g></svg><span class="sep"></span><svg class="lg dan" xmlns="http://www.w3.org/2000/svg" viewBox="0 -2 1493 604" role="img" aria-label="DAN — Defense Angel Network"><g fill="#F5EEE0"><path d="M354 455L165 455C161 455 156 454 153 452C146 447 142 440 142 432L142 337C142 329 146 321 153 317C156 315 161 314 165 314L354 314C394 314 425 345 425 384C425 424 394 455 354 455M555 314C526 231 447 172 354 172L165 172C152 172 142 182 142 195L142 290C142 303 131 314 118 314L24 314C11 314 0 324 0 337L0 432C0 445 11 455 24 455L85 455C98 455 108 466 108 479C108 485 106 491 101 496L42 555C42 555 42 556 41 556L39 558C35 563 33 568 33 573C33 586 44 597 57 597L354 597C447 597 526 538 555 455C563 433 567 409 567 384C567 360 563 336 555 314"/><path fill-rule="evenodd" transform="translate(509,0)" d="M39 597A24 24 0 0 1 19 562L218 188A31 31 0 0 1 245 172L255 172A31 31 0 0 1 282 188L481 562A24 24 0 0 1 461 597L39 597ZM210 385L290 385A40 40 0 0 1 290 465L210 465A40 40 0 0 1 210 385ZM190 597L190 572A60 60 0 0 1 310 572L310 597Z"/><path transform="translate(228,0)" d="M792 573L792 432C792 419 802 408 815 408L875 408C889 408 899 397 899 384C899 378 897 373 893 369C893 368 892 367 891 367L838 314L798 274C794 269 792 264 792 258L792 195C792 182 802 172 815 172L887 172C893 172 899 174 904 179L1082 357C1086 362 1092 364 1099 364C1112 364 1122 354 1122 341L1122 195C1122 182 1133 172 1146 172L1241 172C1254 172 1264 182 1264 195L1264 573C1264 586 1254 597 1241 597L1131 597C1128 597 1125 597 1122 595C1119 594 1117 592 1115 590L974 449C969 445 964 442 957 442C948 442 940 448 936 455C934 459 933 462 933 466L933 573C933 586 923 597 910 597L815 597C802 597 792 586 792 573"/></g><path fill="#E8A82A" fill-rule="evenodd" d="M641 100A118 38 0 1 0 877 100A118 38 0 1 0 641 100ZM668 100A91 11 0 1 0 850 100A91 11 0 1 0 668 100Z"/></svg></div>
+      <div class="bt">Voice CRM + warm-intro engine<br><span>Defense Investor Network · Defense Angel Network</span></div>
+      <span class="pill gold">IN PRODUCTION · LIVE LP DATA</span>
+    </div>
+    <div class="cols">
+      <div class="prob">
+        <div class="lbl">The customer problem</div>
+        <ul class="sq">
+          <li><b>Traditional CRMs fail at the moment of capture.</b> Partners don't type notes after a meeting, so the data goes stale and the tool quietly dies.</li>
+          <li>"Who do we know who knows this LP?" was tribal knowledge. You couldn't query it.</li>
+          <li>Sensitive LP data: regulator-grade scrutiny from day one.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="lbl b">What I shipped</div>
+        <ul class="sq">
+          <li><b>Voice capture</b> on iPhone (TestFlight): speak it, get a structured, access-controlled record.</li>
+          <li><b>Warm-intro engine</b>: deterministic path scoring, affinity × connection ÷ hops, ≤2 hops, blocklist + consent gates the model cannot override.</li>
+          <li><b>Policy engine on every tool call</b>: deny-by-default, fail-closed; destructive ops need a signed, expiring confirm token.</li>
+          <li><b>PII core</b>: visible / redacted / hidden tiers at the query layer; hashed audit with field-level diffs; mapped to NIST AI RMF · SR 11-7.</li>
+          <li><b>AVA</b> thesis testing (pass · conditional · reject, citation-first) and <b>ARA</b> sealed sharing: answers plus cryptographic receipts, never records.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pipe">
+      <div class="nd in"><b>PARTNER</b>speaks on iPhone</div><div class="ar">▶</div>
+      <div class="nd in"><b>SPEECH → TEXT</b>swappable ASR</div><div class="ar">▶</div>
+      <div class="nd llm"><b>CLAUDE TOOL-USE</b>bounded loop · input sandboxed</div><div class="ar">▶</div>
+      <div class="nd gate"><b>POLICY GATE</b>schema · allowlist · confirm</div><div class="ar">▶</div>
+      <div class="nd det" style="flex:1.3"><b>DETERMINISTIC CORE</b>PostgreSQL · path scoring · privacy tiers</div><div class="ar">▶</div>
+      <div class="nd out"><b>ANSWER</b>intro path + audit row</div>
+    </div>
+    <div class="cap"><b>Voice is the interface to the data, not a phone line. No LLM in the trust path:</b> the model narrates; code decides who is reachable and who can see what.</div>
+  </div>
+
+  <!-- EGON -->
+  <div class="sys egon">
+    <div class="band">
+      <div class="lgs"><svg class="lg egon" xmlns="http://www.w3.org/2000/svg" viewBox="-12 166 1888 437" role="img" aria-label="EGON"><g fill="#F5EEE0" fill-rule="evenodd">
+<path d="M301 289.74A59 59 0 0 0 301 171.74L59 171.74A59 59 0 0 0 0 230.74L0 538.09A59 59 0 0 0 59 597.09L301 597.09A59 59 0 0 0 301 479.09L118 479.09L118 443.41L261 443.41A59 59 0 0 0 261 325.41L118 325.41L118 289.74Z"/>
+<path d="M414 230.74L414 538.09A59 59 0 0 0 473 597.09L777 597.09A59 59 0 0 0 836 538.09L836 384.41A59 59 0 0 0 777 325.41L627 325.41A59 59 0 0 0 627 443.41L718 443.41L718 479.09L532 479.09L532 289.74L777 289.74A59 59 0 0 0 777 171.74L473 171.74A59 59 0 0 0 414 230.74Z"/>
+<path d="M1075 171.74L1135 171.74A185 185 0 0 1 1320 356.74L1320 412.09A185 185 0 0 1 1135 597.09L1075 597.09A185 185 0 0 1 890 412.09L890 356.74A185 185 0 0 1 1075 171.74ZM1102.67 479.09A94.67 94.67 0 0 1 1102.67 289.74L1107.33 289.74A94.67 94.67 0 0 1 1107.33 479.09Z"/>
+<path transform="translate(600,0)" d="M792 573L792 432C792 419 802 408 815 408L875 408C889 408 899 397 899 384C899 378 897 373 893 369C893 368 892 367 891 367L838 314L798 274C794 269 792 264 792 258L792 195C792 182 802 172 815 172L887 172C893 172 899 174 904 179L1082 357C1086 362 1092 364 1099 364C1112 364 1122 354 1122 341L1122 195C1122 182 1133 172 1146 172L1241 172C1254 172 1264 182 1264 195L1264 573C1264 586 1254 597 1241 597L1131 597C1128 597 1125 596 1122 595C1119 594 1117 592 1115 590L974 449C969 445 964 442 957 442C948 442 940 448 936 455C934 459 933 462 933 466L933 573C933 586 923 597 910 597L815 597C802 597 792 586 792 573Z"/></g></svg></div>
+      <div class="bt">Multi-agent decision support<br><span>Extreme-weather risk for the assets defense depends on</span></div>
+      <span class="pill red">PILOTS · 4 COUNTRIES · PRE-PRODUCTION</span>
+    </div>
+    <div class="cols">
+      <div class="prob">
+        <div class="lbl">The customer problem</div>
+        <ul class="sq">
+          <li>Port authorities, the Army Corps and infrastructure investors need to know what extreme weather will cost <b>a specific asset</b>, what protects it, and what that protection is worth.</li>
+          <li>Today's answer: one-off consulting reports with figures no one can trace to a source.</li>
+        </ul>
+        <div class="lbl" style="margin-top:6px">Proving grounds</div>
+        <ul class="sq">
+          <li>Baltimore Harbor (USACE proof of concept) · Mare Island shipyard, Vallejo</li>
+        </ul>
+      </div>
+      <div>
+        <div class="lbl b">What I built</div>
+        <ul class="sq">
+          <li><b>20+ data loaders</b> over federal and science APIs: NOAA CO-OPS · OpenFEMA · USGS · ERDDAP · FRED · Census · NASA CMR.</li>
+          <li><b>Google ADK coordinator</b> fanning out to 10 worker agent classes over <b>A2A</b>: validated envelopes, circuit breaker, retries.</li>
+          <li><b>Provenance by construction</b>: frozen Pydantic blocks. No citation, no figure; computed ⇒ calc trace; projected ⇒ model ref.</li>
+          <li><b>SKOS/OWL ontology</b>, declarative site specs, deterministic compile → lint → render.</li>
+          <li><b>Architecture manifest</b> generates diagrams, docs and stack; 35 ADRs with decision + retirement logs.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pipe">
+      <div class="nd in"><b>SITE SPEC</b>declarative asset + scope</div><div class="ar">▶</div>
+      <div class="nd in"><b>FEDERAL DATA</b>20+ loaders · registry</div><div class="ar">▶</div>
+      <div class="nd llm" style="flex:1.2"><b>AGENT TEAM</b>ADK coordinator → 10 workers · A2A</div><div class="ar">▶</div>
+      <div class="nd gate"><b>PAYLOAD FACTORY</b>no citation, no figure</div><div class="ar">▶</div>
+      <div class="nd det"><b>COMPILE · LINT · RENDER</b>deterministic</div><div class="ar">▶</div>
+      <div class="nd out"><b>SCENARIO</b>exportable · every figure traced</div>
+    </div>
+    <div class="cap"><b>Referee, not advocate.</b> A defensible scenario a human carries into their own decision, never a decision the machine makes.</div>
+  </div>
+
+  <div class="foot"><span>LEIGH ANNE MILLER · FORWARD DEPLOYED ENGINEER</span><span>STACK · HOW I BUILD · PATTERNS · FIELD RECORD OVERLEAF &nbsp; 1/3</span></div>
+</section>
+
+<!-- ========================= PAGE 2 ========================= -->
+<section class="page">
+  <div class="p2hd">
+    <div class="name disp">Leigh Anne Miller</div>
+    <div class="kick">Stack · how I build · patterns · field record &nbsp; 2/3</div>
+  </div>
+
+  <div class="sh"><span class="t disp">The Stack</span><span class="s">What I build with</span></div>
+  <table class="stk">
+    <tr><td>LANGUAGES</td><td>Python · TypeScript · Java · SQL</td></tr>
+    <tr><td>LLMS · AGENTS</td><td>Claude · Llama (local) · Claude Code · Google ADK · A2A · MCP · LangGraph</td></tr>
+    <tr><td>CONTRACTS · TESTS</td><td>Pydantic v2 (frozen models) · mypy --strict · pytest · Playwright · promptfoo</td></tr>
+    <tr><td>DATA</td><td>PostgreSQL/pgvector · SQLAlchemy · BigQuery · rdflib (SKOS/OWL) · Kafka</td></tr>
+    <tr><td>CLOUD · APP</td><td>GCP (Cloud Run · Cloud SQL · Vertex AI) · Confidential Space · AWS · FastAPI · React · Capacitor iOS</td></tr>
+    <tr><td>VOICE · TRACING</td><td>Google Chirp · ElevenLabs · Deepgram · Groq · Arize · OpenTelemetry</td></tr>
+  </table>
+
+  <div class="sh"><span class="t disp">How I Build</span><span class="s">Enforced contracts · light declarative orchestration</span></div>
+  <div class="hib">
+    <div class="fork">
+      <div class="rq2"><b>REQUEST</b>thin graph<br>no LLM planner</div>
+      <svg class="fk" viewBox="0 0 30 100" preserveAspectRatio="none"><path d="M0 50 C15 50 12 22 30 22" stroke="#1A2332" stroke-width="1.6" fill="none" vector-effect="non-scaling-stroke"/><path d="M0 50 C15 50 12 78 30 78" stroke="#1A2332" stroke-width="1.6" fill="none" vector-effect="non-scaling-stroke"/></svg>
+      <div class="lanes">
+        <div class="ln">
+          <div class="lk d">DETERMINISTIC</div>
+          <div class="tags"><i class="tg d">records</i><i class="tg d">prices</i><i class="tg d">paths</i><i class="tg d">permissions</i><i class="tg d">figures</i></div>
+          <span class="a">▶</span><div class="bx d">TYPED TOOL</div><span class="a">▶</span><div class="bx dk">AS-IS ✓</div>
+        </div>
+        <div class="ln">
+          <div class="lk n">NON-DETERMINISTIC</div>
+          <div class="tags"><i class="tg n">summaries</i><i class="tg n">extraction</i><i class="tg n">explanations</i></div>
+          <span class="a">▶</span><div class="bx n">LLM STEP</div><span class="a">▶</span><div class="bx r">SCHEMA ✓</div>
+        </div>
+      </div>
+    </div>
+    <div class="prov">
+      <div class="pvh"><span class="disp">Provenance by construction</span><span class="where e">EGON</span></div>
+      <div class="pvr"><span class="val">$2.4M/yr</span><span class="src none">no source</span><span class="a">▶</span><span class="res x">✗ CAN'T BE BUILT</span></div>
+      <div class="pvr"><span class="val">flood map</span><span class="src bad">dead link</span><span class="a">▶</span><span class="res g">! VISIBLE GAP</span></div>
+      <div class="pvr"><span class="val">19,500 sq mi</span><span class="src ok">USGS 03086000</span><span class="a">▶</span><span class="res ok">✓ FIGURE</span></div>
+    </div>
+  </div>
+  <div class="sh"><span class="t disp">Production Patterns</span><span class="s">And where each one runs</span></div>
+  <div class="pats6">
+    <div class="pt evg"><div class="pth"><span class="t disp">Evals · testing</span><span class="wk">GRADED BY CODE WHEREVER POSSIBLE · A MODEL ONLY WHERE IT MUST</span></div>
+      <div class="el"><span class="elab">DIN · DAN</span>
+        <div class="ec c1"><b>PROMPTFOO</b><i>banned-term + injection cases</i></div><span class="ar2">▶</span>
+        <div class="ec c3"><b>DETERMINISTIC ASSERTS</b><i>+ LLM rubric</i></div><span class="ar2">▶</span>
+        <div class="ec c4"><b>PYTEST</b><i>mostly negative tests</i></div>
+        <div class="ec c4"><b>PLAYWRIGHT</b><i>end-to-end</i></div>
+        <div class="ec c4"><b>MYPY --STRICT</b><i>types as contracts</i></div></div>
+      <div class="el"><span class="elab e">EGON</span>
+        <div class="ec bt"><em>BUILT</em><b>VERBATIM CLAIMS</b><i>claim text ⊂ source text</i></div>
+        <div class="ec bt"><em>BUILT</em><b>REFUSAL, BOTH HALVES</b><i>must refuse ✓ · must not refuse ✓</i></div>
+        <div class="ec sp"><em>SPECIFIED</em><b>ARITHMETIC INVARIANTS</b><i>combined benefit ≤ do-nothing loss · parts + interaction = whole</i></div>
+        <div class="ec sp"><em>SPECIFIED</em><b>ENGINE FAITHFULNESS</b><i>engine = rendered = narrated, same order</i></div></div>
+    </div>
+    <div class="pt r wfull"><div class="pth"><span class="t disp">Prompt-injection defense</span><span class="where">DIN · DAN</span></div>
+      <div class="pi"><div class="pin">INJECTED<br>INSTRUCTION</div><span class="ar2">▶</span>
+        <div class="pg"><b>PRIVACY FILTER</b><i>on every read: sees only what you can</i></div>
+        <div class="pg"><b>FIELD ALLOWLIST</b><i>reveals are named fields, never "all except"</i></div>
+        <div class="pg"><b>HMAC TOKEN</b><i>delete · transfer need your spoken yes</i></div>
+        <div class="pg"><b>CAPS OFF-SCHEMA</b><i>5-step loop; export ceiling set server-side</i></div>
+        <div class="pg nx"><b>NO SEND TOOL</b><i>sending takes 2 human clicks</i></div></div></div>
+    <div class="pt wfull"><div class="pth"><span class="t disp">Access · privacy</span><span class="where both">BOTH</span></div>
+      <div class="ax"><span class="elab">DIN · DAN</span>
+        <span class="ac c1">OAUTH<i>allowlist</i></span><span class="ar2">▶</span><span class="ac c3">JWT<i>short-lived</i></span><span class="ar2">▶</span>
+        <span class="tiers"><em>QUERY-LAYER TIERS</em><span class="tv">visible</span><span class="tr">red▮cted</span><span class="th">hidden</span></span></div>
+      <div class="ax"><span class="elab e">EGON</span>
+        <span class="ac no">✗ CUSTOMER FINANCIAL RECORDS</span><span class="ac no">✗ PERSONAL IDs IN RESEARCH</span><span class="ac lo">⌂ ESCROW STAYS LOCAL</span></div></div>
+    <div class="pt ong"><div class="pth"><span class="t disp">Ontology · reuse first</span><span class="wk" style="flex:1;margin-left:12px">AUTHOR ONLY THE CONNECTIVE TISSUE · NOT A PRIVATE VOCABULARY CALLED AN ONTOLOGY</span><span class="where e">EGON</span></div>
+      <div class="oline">
+        <span class="oc top">BFO<i>ISO/IEC 21838-2 top level</i></span><span class="ar2">▶</span>
+        <span class="oc mid">CCO<i>defense + intel mid-level</i></span><span class="ar2">▶</span>
+        <span class="oc dom">SKOS · FIBO · DEFENSE · NAICS<i>subjects · capital · programs · industries</i></span><span class="ar2">▶</span>
+        <span class="oc auth">CONNECTIVE TISSUE<i>the only layer authored here</i></span></div>
+      <div class="oreg2"><b>ONE REGISTER</b> every borrowed term names <span>INHERIT</span><span>REFUSE</span><span>BINDS TO</span> · <b>binds to: none</b> ⇒ a claim, not a fact · test-enforced</div></div>
+  </div>
+
+  <div class="sh"><span class="t disp">Watchtower</span><span class="s">Bespoke tooling to govern AI agents on regulated, data-intensive builds</span></div>
+  <div class="wt">
+    <div class="wb">
+      <div class="wbh"><span class="disp">Verifier</span><span class="wk">ONE VERIFIER · TWO ENTRY POINTS</span></div>
+      <div class="vf">
+        <div class="vin"><div class="e1">LOCAL HOOK<i>on commit · advisory</i></div><div class="e2">CI RUN<i>whole pushed range · authoritative</i></div></div>
+        <div class="vj"><span></span><span></span></div>
+        <div class="vcore"><b>VERIFIER</b><div class="vchk"><i>plan cited</i><em>⇄</em><i>actual diff</i></div></div>
+        <span class="ar2">▶</span>
+        <div class="vout"><div class="ok2">✓ MERGE</div><div class="no2">✗ BLOCK</div><div class="fc">empty input → fail closed</div></div>
+      </div>
+    </div>
+    <div class="wb">
+      <div class="wbh"><span class="disp">Watchtower</span><span class="wk">OUT OF THE AGENT'S REACH</span></div>
+      <div class="tw">
+        <div class="zone1"><span class="zl">AGENT CAN WRITE</span><div class="rp2">CODING AGENT</div><span class="ar2">▼</span><div class="rp2 m">main</div></div>
+        <div class="wall"><span>NO<br>CREDENTIAL</span></div>
+        <div class="zone2"><span class="zl">AGENT CANNOT TOUCH</span><div class="poll">◀ polls main</div><div class="led"><i>#0412 ✓</i><i>#0413 ✓</i><i>#0414 ✗ alarm</i><i class="nx">append-only</i></div></div>
+      </div>
+      <div class="wft"><b>13</b> bypass classes tested</div>
+    </div>
+  </div>
+
+  <div class="sh"><span class="t disp">Field Record</span><span class="s">Customer-facing deployments</span></div>
+  <div class="tl">
+    <div><div class="y">2018–21</div><div class="o">HP</div><p>AMPLIFY: partner-facing channel data exchange, API-first</p><div class="m">$40B/YR</div></div>
+    <div><div class="y">2021–23</div><div class="o">Nielsen / Gracenote</div><p>Unified data platform on AWS, unstalled after a five-year impasse</p><div class="m">$300M/YR</div></div>
+    <div><div class="y">2023–24</div><div class="o">Ripley Decision Advantage</div><p>Founder-engineer: compound AI systems, built and shipped solo</p></div>
+    <div><div class="y">2024</div><div class="o">SpinF AI · BootstrapLabs</div><p>Real-time voice AI on live sales calls, discovery through Tier-1 deployment</p><div class="m">0 → 1</div></div>
+    <div><div class="y">2025–26</div><div class="o">X, The Moonshot Factory</div><p>AI engineer</p></div>
+    <div><div class="y">2026–</div><div class="o">DIN · DAN</div><p>AI Solution Architect. Voice CRM + intro engine on live LP data</p><div class="m red">LIVE</div></div>
+    <div><div class="y">2026–</div><div class="o">Ripley · EGON</div><p>Multi-agent decision support for ports and federal agencies</p><div class="m red">PILOTS</div></div>
+  </div>
+
+
+  <div class="foot"><span>LEIGH ANNE MILLER · FORWARD DEPLOYED ENGINEER</span><span>FAQ OVERLEAF &nbsp; 2/3</span></div>
+</section>
+
+<!-- ========================= PAGE 3 · FAQ ========================= -->
+<section class="page">
+  <div class="p2hd">
+    <div class="name disp">Leigh Anne Miller</div>
+    <div class="kick">FAQ · how I handle the hard parts &nbsp; 3/3</div>
+  </div>
+  <div class="faq">
+    <div class="fq wide vcw"><div class="qh"><span class="qn">Q</span><span class="disp">What's under the voice interface?</span><span class="where">DIN · DAN</span></div>
+      <div class="chain"><span class="c1">SPEAK<i>iPhone</i></span><span class="ar2">▶</span><span class="c1">VOICE-ACTIVITY DETECTION</span><span class="ar2">▶</span><span class="c3">SPEECH → TEXT<i>Google Chirp · swappable</i></span><span class="ar2">▶</span><span class="c2">MODEL + TOOLS<i>async UX for slow calls</i></span><span class="ar2">▶</span><span class="c3">TEXT → SPEECH<i>ElevenLabs · swappable</i></span><span class="ar2">▶</span><span class="c4">ANSWER<i>+ audit row</i></span></div></div>
+
+    <div class="fq"><div class="qh"><span class="qn">Q</span><span class="disp">An external service is slow or failing?</span></div>
+      <p class="qa">Never a 30-second spinner. Never stale data shown as fresh.</p>
+      <div class="chain"><span class="c1">TIMEOUT<i>under budget</i></span><span class="ar2">▶</span><span class="c1">RETRY<i>429 · 503 · timeout<br>backoff + jitter</i></span><span class="ar2">▶</span><span class="c2">BREAKER OPENS<i>fail fast</i></span><span class="ar2">▶</span><span class="c3">HALF-OPEN<i>probe, then close</i></span><span class="ar2">▶</span><span class="c4">FALLBACK<i>cached + timestamp</i></span></div>
+      <p class="qf"><b>No retry</b> on a bad 400 · idempotency keys on writes · long jobs go async: job ID, then poll or push.</p></div>
+
+    <div class="fq"><div class="qh"><span class="qn">Q</span><span class="disp">How do you stop runaway tool loops?</span></div>
+      <p class="qa">The graph decides what runs next. The model only fills in parameters.</p>
+      <div class="cage"><div class="lim">STEP CAP</div><div class="lim">TOKEN + COST BUDGET</div><div class="lim">PER-TOOL TIMEOUT</div><div class="lim">REPEAT-CALL STOP</div>
+        <div class="graph"><span>step</span><span class="ar2">▶</span><span class="llm">model fills params</span><span class="ar2">▶</span><span>step</span><span class="ar2">▶</span><span>step</span></div></div>
+      <p class="qf">A limit hit stops the run and escalates to a <b>human, with the full trace</b>.</p></div>
+
+    <div class="fq"><div class="qh"><span class="qn">Q</span><span class="disp">The system gave a wrong answer. Now what?</span></div>
+      <p class="qa">Classify the failure first. Each cause has a different fix.</p>
+      <div class="tri">
+        <div class="log">TRACE<i>query · chunks<br>prompt · output</i></div>
+        <div class="br"><div><b>Retrieval missed</b>→ index + search tuning</div><div><b>Model ignored context</b>→ prompt + decoding</div><div><b>Source wrong or stale</b>→ data cleanup</div></div>
+        <div class="ev">EVAL CASE<i>ships only<br>on pass</i></div></div></div>
+
+    <div class="fq"><div class="qh"><span class="qn">Q</span><span class="disp">Authentication and authorization?</span></div>
+      <p class="qa">Identity is short-lived; access is checked on every request and logged.</p>
+      <div class="chain"><span class="c1">OIDC / OAUTH2</span><span class="ar2">▶</span><span class="c1">SHORT-LIVED JWT<i>sig · iss · aud · exp</i></span><span class="ar2">▶</span><span class="c3">SCOPES + RBAC</span><span class="ar2">▶</span><span class="c3">DATA-LAYER RULES<i>tiers · row-level</i></span><span class="ar2">▶</span><span class="c4">ACCESS LOG</span></div>
+      <p class="qf">Services: workload identity, mTLS, rotated secrets. <span class="where">DIN · DAN</span> Google OAuth allowlist → JWT; privacy tiers at the query layer.</p></div>
+
+    <div class="fq"><div class="qh"><span class="qn">Q</span><span class="disp">How hands-on are you?</span></div>
+      <p class="qa">I code daily, Python first. Don't take my word for it:</p>
+      <div class="repos">
+        <div class="rp"><b>github.com/leighanne77/DESS</b><i>Public tree of the DIN · DAN CRM + intro engine. Runs end-to-end on fictional data.</i></div>
+        <div class="rp"><b>github.com/leighanne77/MAS_Example</b><i>Provenance by construction: the EGON trust-core pattern.</i></div></div>
+      <div class="term">$ git clone … &amp;&amp; pytest <span>· FastAPI · LangGraph · ADK · Node · Java</span></div></div>
+
+    <div class="fq"><div class="qh"><span class="qn">Q</span><span class="disp">How do you manage model costs?</span></div>
+      <p class="qa">Route each call to the cheapest place that meets the bar, and meter everything.</p>
+      <div class="rt">
+        <div class="rcall">CALL<i>task · data · latency</i></div>
+        <div class="rfork"><span></span><span></span><span></span></div>
+        <div class="rlanes">
+          <div class="rln onp"><b>ON-PREM GPU</b><span>Ollama · 7–14B models on an RTX 4060 Ti</span><em>$0 marginal · data stays home</em></div>
+          <div class="rln fast"><b>FAST CLOUD</b><span>Groq · low-latency voice-to-text</span><em>pay per use</em></div>
+          <div class="rln front"><b>FRONTIER CLOUD</b><span>Claude · hard reasoning, customer-facing answers</span><em>only where it earns it</em></div>
+        </div>
+      </div>
+      <p class="qf">On-prem runs coding assist, the local Llama judge and bulk jobs. <span class="where">DIN · DAN</span> per-user token + voice budgets; web-search spend capped and audited. Right-size infra too: PostgreSQL, not Spark.</p></div>
+  </div>
+  <div class="foot"><span>LEIGH ANNE MILLER · FORWARD DEPLOYED ENGINEER</span><span>LEIGHMILLERENGINEERING@GMAIL.COM &nbsp; 3/3</span></div>
+</section>
+</body></html>
