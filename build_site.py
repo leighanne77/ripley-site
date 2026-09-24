@@ -121,7 +121,10 @@ ul ul li::before{content:"\\2013";color:var(--navy);}
   color:var(--blue);text-transform:uppercase;margin-top:4px;}
 .hero .rule{width:180px;height:3px;background:var(--gold);margin:22px auto;}
 .hero h1{margin:0;}
-.hero .sub{font-size:19px;color:var(--navy);margin-top:14px;}
+.hero .why{max-width:700px;margin:20px auto 0;font-size:17px;line-height:1.55;color:var(--navy);}
+.hero .gps{max-width:700px;margin:12px auto 0;font-size:16px;line-height:1.5;font-style:italic;
+  color:var(--blue);}
+.hero .sub{font-size:19px;color:var(--navy);margin-top:18px;}
 .hero .doctype{font-style:italic;color:var(--blue);font-size:14px;margin-top:8px;}
 /* services grid */
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin:18px 0;}
@@ -623,7 +626,7 @@ SERVICES = [
      "I am writing to inquire about your forward deployed engineering services, "
      "please contact me to start this discussion"),
     ("industrial", TES_TITLE,
-     "EGON run by us, delivered as work product. Infrastructure hazard exposure, priced site by "
+     "EGON run by me, delivered as work product. Infrastructure hazard exposure, priced site by "
      "site. Outcomes you defend, not software you staff.",
      TES_ASK, "egon-service.html"),
     ("summit", "Zero-to-one product engineering",
@@ -705,15 +708,22 @@ FDE_FILE = "leigh-anne-miller-fde.pdf"
 
 # ---------------------------------------------------------------- index
 PAGES["index.html"] = ("Ripley Decision Advantage — AI/ML Consulting, Silicon Valley",
-  "AI/ML systems that ship. Specialists in high-stakes, low-trust regulated industries. "
-  "Forward deployed, shipped to production, for enterprise and government.",
+  "Building AI that helps people decide, and never decides for them. Specialists in high-stakes, "
+  "low-trust regulated industries. Forward deployed, shipped to production, for enterprise and "
+  "government.",
   f"""
 <div class="hero">
   {mark_svg()}
   <div class="wm">Ripley</div>
   <div class="tag">Decision Advantage</div>
   <div class="rule"></div>
-  <h1>AI/ML systems that ship.</h1>
+  <h1>Building AI that helps people decide, and never decides for them.</h1>
+  <p class="why">A lot of AI is being built to make choices for people: approve the new account, flag
+  the patient, pick the navigational heading. I build the other kind. My systems do the homework.
+  They pull the data, run the scenarios, and show what each option costs. Then a person makes the
+  call, and can see exactly why the machine showed them what it did.</p>
+  <p class="gps">GPS shows three routes, the traffic and the arrival times. You&rsquo;re still
+  driving. I build like that. What I don&rsquo;t build: a self-driving car.</p>
   <p class="sub">Specialists in high-stakes, low-trust regulated industries.<br>
   Forward deployed. Shipped to production.</p>
   <p class="doctype">Full-service &middot; Enterprise and government</p>
@@ -741,7 +751,7 @@ and growing revenue &mdash; not just a beautiful product.</p>
   <li>Built and piloted multi-agent systems for decision support, for infrastructure investors
   across <span class="num">four</span> countries &mdash; ports, data centers, and district
   assets.</li>
-  <li>Shipped HP&rsquo;s first API-based data exchange and governance capability, for a
+  <li>Designed HP&rsquo;s first API-based data exchange and governance capability, for a
   <span class="num">$40B</span> channel-partner program.</li>
   <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
   <span class="num">$300M</span> Gracenote business at Nielsen.</li>
@@ -759,6 +769,11 @@ and growing revenue &mdash; not just a beautiful product.</p>
       <h3>Extreme-weather risk for defense-adjacent assets</h3>
       <p class="meta">Ripley Decision Advantage &middot; Palo Alto, CA &middot; New as of
       July 2026 &middot; Founder &amp; architect</p>
+      <p>Say you run a port. A Katrina-sized storm could shut it down for weeks. Before you build
+      anything, my system shows what that would cost you and what would protect you: restoring the
+      marsh offshore, adding backup power, or raising the substations above the flood line. It
+      prices each option, shows how others have paid for it, and shows who else in town gains if
+      it works. Then you decide, because you answer for it.</p>
       <p>A multi-agent decision-support system that prices statistically significant
       extreme-weather risk for the assets defense depends on &mdash; shipyards, ports, mineral
       processing, and the energy that powers the perimeter.</p>
@@ -784,17 +799,21 @@ and growing revenue &mdash; not just a beautiful product.</p>
       <p class="meta">Palo Alto, CA &middot; May 2026&ndash;present &middot; AI Solution
       Architect &middot; <a href="https://www.defenseinvestornetwork.net">www.defenseinvestornetwork.net</a>
       (member access only)</p>
-      <p>Defense Investor Network (DIN) and Defense Angel Network (DAN): a production
-      investor-relations platform for a dual-use defense investor team &mdash; maritime industrial
-      base, critical-mineral sovereignty, energy resilience. Architected and shipped solo, live
-      with a real user base.</p>
+      <p>Defense Investor Network (DIN) and Defense Angel Network (DAN): a production, voice-first
+      investor-relations CRM for a dual-use defense investor team &mdash; maritime industrial base,
+      critical-mineral sovereignty, energy resilience. Architected and shipped solo; live on web
+      and iPhone with the team using it daily.</p>
       <ul>
-        <li>A graph-backed warm-introduction engine on Neo4j scores relationship paths
-        deterministically and auditably, behind hard safety gates.</li>
-        <li>PII governance mapped to NIST AI RMF and SR&nbsp;11-7: three-tier privacy at the
-        query layer, owner-scoped writes, Fernet encryption, hashed-payload audit trail.</li>
-        <li>Data layer right-sized deliberately &mdash; PostgreSQL and recursive CTEs first,
-        Spark rejected as over-scaled for the volume.</li>
+        <li>A warm-introduction engine scores relationship paths deterministically and auditably,
+        behind hard safety gates. No model decides who can see what or which route is best.</li>
+        <li>PII governance mapped to NIST AI RMF and SR&nbsp;11-7: three-tier privacy enforced at
+        the query layer, owner-scoped writes, a hashed-payload audit trail, and Fernet encryption
+        of stored credentials.</li>
+        <li>Data layer right-sized on purpose: PostgreSQL recursive queries for the graph, Neo4j
+        deferred behind a stated scale trigger, Spark rejected as over-scaled.</li>
+        <li>Built with an AI coding agent under enforced governance: every commit cites its plan,
+        the builder cannot approve its own work, and an independent owner-run checker re-verifies
+        each change.</li>
       </ul>
     </div>
   </div>
@@ -802,9 +821,9 @@ and growing revenue &mdash; not just a beautiful product.</p>
 </div>
 
 <h2>{icon("people")}The principal<a class="more" href="bio.html">more</a></h2>
-<p>Leigh Anne Miller, founder and principal. A forward deployed engineer: she embeds with the
-customer, finds the real problem, and ships the AI system to production herself. Three pages on
-how she works &mdash; click any to open it.</p>
+<p>I&rsquo;m Leigh Anne Miller, founder and principal, and a forward deployed engineer: I embed
+with the customer, find the real problem, and ship the AI system to production myself. Three pages
+on how I work &mdash; click any to open it.</p>
 <div class="fde-grid">
   <a class="fde" href="{FDE_FILE}#page=1"><img src="data:image/webp;base64,{FDE_THUMBS[0]}" alt="Page 1 of the forward deployed engineer infographic: The FDE loop, two cases, and two systems: one live, one in pilots" width="680" height="880"><span class="fde-cap"><span class="fde-n">01</span><span class="fde-t">The FDE loop, two cases, and two systems: one live, one in pilots</span><span class="fde-cue">Open the page &rarr;</span></span></a>
   <a class="fde" href="{FDE_FILE}#page=2"><img src="data:image/webp;base64,{FDE_THUMBS[1]}" alt="Page 2 of the forward deployed engineer infographic: Stack, how she builds, production patterns, governing coding agents, field record" width="680" height="880"><span class="fde-cap"><span class="fde-n">02</span><span class="fde-t">Stack, how she builds, production patterns, governing coding agents, field record</span><span class="fde-cue">Open the page &rarr;</span></span></a>
@@ -836,7 +855,7 @@ how she works &mdash; click any to open it.</p>
 </div>
 
 <p style="text-align:center">
-  <a class="cta" href="mailto:{EMAIL}">Something else &mdash; email us</a><br>
+  <a class="cta" href="mailto:{EMAIL}">Something else &mdash; email me</a><br>
   <a href="mailto:{EMAIL}">{EMAIL}</a>
 </p>
 
@@ -851,13 +870,14 @@ PAGES["egon.html"] = ("EGON | Ripley Decision Advantage",
 <h4 style="color:var(--blue);letter-spacing:4px;">Physical risk, priced</h4>
 
 <p>EGON prices physical risk on real assets. For a given asset, EGON quantifies the physical
-exposure the owner actually carries, then tests every available mitigation against it &mdash; hard
+exposure the owner actually carries, then tests the mitigations in scope for it &mdash; hard
 infrastructure, nature-based solutions, and hybrids &mdash; on a single return-on-investment
 basis.</p>
-<p>The output is not a hazard map or an exploratory dashboard. It is a prescriptive shortlist: the
-specific resilience moves that pay for themselves within the ownership period, ranked by
+<p>The output is not a hazard map or an exploratory dashboard. It is a ranked shortlist you
+choose from: the resilience moves that pay for themselves within the ownership period, ranked by
 risk-adjusted return, with every number traceable to a source that can be challenged line by
-line.</p>
+line. EGON states what it tested and what it did not &mdash; the tested scope is part of the
+answer, not a footnote.</p>
 
 <h2>{icon("industrial")}The economy runs on exposed ground</h2>
 <p>Highways, ports, waterways, levees and dams &mdash; the arteries that move freight and project
@@ -1005,7 +1025,7 @@ example &mdash; Baltimore Harbor, USACE Baltimore District</a></p>
   <li>Quantified exposure across storm, water, heat and ground &mdash; for your specific asset,
   not a region.</li>
   <li>A mitigation shortlist ranked by risk-adjusted return, tested on one basis across gray,
-  nature-based and hybrid options.</li>
+  nature-based and hybrid options &mdash; with the tested scope stated alongside it.</li>
   <li>Every figure traceable to a source that can be challenged line by line.</li>
   <li>Defensible, exportable scenarios a human carries into their own decision &mdash; never a
   decision the machine makes.</li>
@@ -1025,10 +1045,36 @@ capability rides on top at no cost to return.</p>
 
 <h2>{icon("glasses")}Status</h2>
 <ul>
-  <li>Built and piloted across ports, data centers, and district infrastructure in
-  <span class="num">four</span> countries.</li>
+  <li>Multi-agent decision support built and piloted for infrastructure customers in
+  <span class="num">four</span> countries &mdash; ports, data centers and district assets.</li>
+  <li>Four worked United States sites for EGON &mdash; a coastal corridor, a harbor cluster, an
+  industrial port and a shipyard terminal.</li>
+  <li>EGON&rsquo;s first customer field study concludes in late <span class="num">2026</span>.
+  Findings, and what they change, will be published here.</li>
   <li>Delivered by Ripley Decision Advantage <a href="egon-service.html">as a service</a>.
   Demonstrations available under NDA.</li>
+</ul>
+
+<h2>{icon("compass")}On the roadmap</h2>
+<p>Designed and in build. None of the following runs today &mdash; it is listed because what a
+system will do is part of judging whether to adopt it.</p>
+<ul>
+  <li><b>Next &mdash; compliance footprint.</b> Every recommended measure carries the statutes and
+  permits it triggers and the documentation path to satisfy them, including where a nature-based
+  measure exceeds the regulatory baseline rather than merely meeting it. Built to stand up in a
+  NEPA decision record, and version-watched, because the federal rules are changing.</li>
+  <li><b>Next &mdash; forecast triggers and adaptive pathways.</b> Not one recommendation but a
+  sequence with trigger points: what to build now, and the observed condition that should start
+  the next stage.</li>
+  <li><b>Following &mdash; monitoring and optimization.</b> Today EGON informs a decision. Next it
+  follows one: a monitoring plan for each selected measure, local observers where communities
+  consent to take part, and the analysis recomposed as real outcomes arrive.</li>
+  <li><b>Following &mdash; views for the people in the room.</b> One body of evidence, presented
+  for the role reading it &mdash; program manager, scientist, local or indigenous expert,
+  investor. The framing changes; the evidence does not.</li>
+  <li><b>Planned &mdash; confidential enterprise compute.</b> For customers whose asset data
+  cannot leave their boundary: analysis that runs against proprietary data and returns only cited
+  findings, never records.</li>
 </ul>
 
 <p style="text-align:center"><a class="cta" href="contact.html">Ask about EGON</a></p>
@@ -1255,14 +1301,14 @@ PAGES["egon-service.html"] = ("EGON as a Service | Ripley Decision Advantage",
 <h4 style="color:var(--blue);letter-spacing:4px;">Tech-enabled services</h4>
 
 <p>You don&rsquo;t buy software. You get the answer, and the record behind it.</p>
-<p>EGON is run as a service, by us. Hazard exposure across highways, ports, waterways, levees and
+<p>EGON is run as a service, by me. Hazard exposure across highways, ports, waterways, levees and
 dams, site by site &mdash; assembled, scenario-tested, and delivered as work product your reviewers
 can defend line by line.</p>
 <p><a class="cta" href="{SCOPING}">Start a scoping call</a></p>
 
 <h2>{icon("shield")}What you receive</h2>
 <p>Outcomes, not a login. Every engagement produces artifacts a decision can rest on. The
-platform is how we get there; it isn&rsquo;t what we hand you.</p>
+platform is how I get there; it isn&rsquo;t what I hand you.</p>
 <div class="grid">
   <div class="card">
     <h3>One basis of comparison</h3>
@@ -1293,7 +1339,7 @@ three.</p>
 <div class="grid">
   <div class="card">
     <h3>Nothing to stand up</h3>
-    <p>We operate EGON in our own environment and deliver work product. Nothing is stood up on
+    <p>I operate EGON in my own environment and deliver work product. Nothing is stood up on
     your network by default.</p>
     <p>If you would rather it run inside your boundary, it deploys there and inherits the
     controls you already hold.</p>
@@ -1306,14 +1352,14 @@ three.</p>
   </div>
   <div class="card">
     <h3>No maintenance trap</h3>
-    <p>Model updates, data refreshes, dependency upkeep and the on-call burden are ours. You never
+    <p>Model updates, data refreshes, dependency upkeep and the on-call burden are mine. You never
     find yourself funding a rewrite because the thing you bought stopped being maintained.</p>
   </div>
 </div>
 <div class="callout">
   <div class="ctitle">What this is not</div>
   <p>A dashboard license, a data subscription, or a model you have to staff. If what you need is
-  software you run yourself, say so &mdash; that is a different conversation and we are glad to
+  software you run yourself, say so &mdash; that is a different conversation and I am glad to
   have it.</p>
 </div>
 
@@ -1336,7 +1382,7 @@ something you can check.</p>
   <div>
     <h3>Deployment</h3>
     <p>Additional locations, brought on in sequence. The slow part is never the modeling &mdash;
-    it is getting internal data holders to collaborate. We plan for that explicitly and name it
+    it is getting internal data holders to collaborate. I plan for that explicitly and name it
     early rather than discovering it in month four.</p>
   </div>
 </div>
@@ -1345,13 +1391,13 @@ something you can check.</p>
   <span class="bn">03</span>
   <div>
     <h3>Sustained operation</h3>
-    <p>We run it. Your teams use the output in their own modeling, funding packages and external
-    briefings. Refreshes, model updates and support sit on our side of the line.</p>
+    <p>I run it. Your teams use the output in their own modeling, funding packages and external
+    briefings. Refreshes, model updates and support sit on my side of the line.</p>
   </div>
 </div>
 
 <h2>{icon("glasses")}Built to survive the review, not the demo</h2>
-<p>Most analytical tools are judged on what they show. Ours is built for what happens six months
+<p>Most analytical tools are judged on what they show. Mine is built for what happens six months
 later, when someone asks where a number came from.</p>
 <ul>
   <li><strong>Traceable by construction.</strong> Every figure resolves to a named, dated,
@@ -1382,8 +1428,8 @@ works, and the Avondale worked example.</p>
 <div class="grid">
   <div class="card">
     <h3>Federal</h3>
-    <p>Acquired as a commercial service on firm-fixed-price terms. Ask us about the acquisition
-    path and we will route the specifics to your contracting officer directly.</p>
+    <p>Acquired as a commercial service on firm-fixed-price terms. Ask me about the acquisition
+    path and I will route the specifics to your contracting officer directly.</p>
   </div>
   <div class="card">
     <h3>Commercial and capital</h3>
@@ -1429,7 +1475,7 @@ PAGES["bio.html"] = ("Leigh Anne Miller | Ripley Decision Advantage",
     <ul>
       <li>Restarted the world&rsquo;s largest metadata platform build &mdash; stalled in the
       <span class="num">$300M</span> Gracenote business at Nielsen.</li>
-      <li>Shipped HP&rsquo;s first API-based data exchange and governance capability, for a
+      <li>Designed HP&rsquo;s first API-based data exchange and governance capability, for a
       <span class="num">$40B</span> channel-partner program.</li>
       <li>Production AI systems in continuous service since <span class="num">2023</span>.</li>
     </ul>
@@ -1479,7 +1525,7 @@ PAGES["contact.html"] = ("Contact | Ripley Decision Advantage",
   f"""
 <h1>Contact</h1>
 <div class="h1-rule"></div>
-<p>One email starts it. Describe the problem; we answer with questions, not a pitch.</p>
+<p>One email starts it. Describe the problem; I answer with questions, not a pitch.</p>
 
 <div class="callout">
   <div class="ctitle">Reach me directly</div>

@@ -20,6 +20,10 @@ fonts or the favicons, both of which are already committed.
 - No X / Moonshot Factory in the biography.
 - "Resilient Intelligence" was dropped and stays dropped.
 - Voice: short sentences, active verbs, numbers over adjectives, no coined terms.
+- First person singular. The site speaks as Leigh Anne: "I", "my", "me", never
+  "we" or "our" (2026-09-24: "it is only me"). Exceptions: the privacy and
+  terms pages keep "we" as the Company, testimonial quotes keep "she", and
+  bio.html stays in the third person.
 
 ## Only the EGON service page is in the nav
 
