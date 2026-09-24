@@ -76,6 +76,11 @@ rendered from it, so edit the source, then regenerate both:
    and screenshot with `--window-size=816,1056 --force-device-scale-factor=2`,
    then `cwebp -resize 680 0 -q 82`.
 
+The Field Record row on page 2 carries a navy tile per entry with a white-out
+mark. HP, Nielsen and Google were knocked out of supplied images with Pillow
+(`assets/logo-*-w.png`, embedded in the source as data URIs); DIN, DAN, EGON
+and the Ripley mark reuse the SVGs already in the source; SpinF is type only.
+
 No PDF rasterizer is installed on the build machine, and sips cannot crop from
 a zero offset, so render page by page rather than cropping a strip. Each
 `.page` is a fixed 11in with `overflow:hidden`, so anything that overflows
