@@ -64,17 +64,23 @@ thumbnail opens the PDF at its page via `#page=N`. Nothing else about the
 principal lives on the index; the long form is `bio.html`.
 
 The infographic's HTML source is committed as `assets/fde-infographic-source.html`
-(with the `__OSWALD__` font placeholder; edits made on the site side live as
-override rules at the end of its `<style>`). Both the served PDF and the
-thumbnails `assets/fde-p1.webp` … `fde-p3.webp` (inlined as `FDE_THUMBS`) are
-rendered from it, so edit the source, then regenerate both:
+(v2, 2026-09-24; it embeds its own Oswald fonts, so there is no font placeholder
+to swap). Site-side edits live as override rules at the end of its `<style>`.
+Both the served PDF and the thumbnails `assets/fde-p1.webp` … `fde-p3.webp`
+(inlined as `FDE_THUMBS`) are rendered from it, so edit the source, then
+regenerate both:
 
-1. Swap `__OSWALD__` for the base64 of `fonts/Oswald-700.woff2`.
-2. PDF: headless Chrome `--no-pdf-header-footer --print-to-pdf=…` on that file,
+1. PDF: headless Chrome `--no-pdf-header-footer --print-to-pdf=…` on the source,
    copy to `site/leigh-anne-miller-fde.pdf`.
-3. Thumbnails: for each page N, add `.page:not(:nth-of-type(N)){display:none}`
-   and screenshot with `--window-size=816,1056 --force-device-scale-factor=2`,
-   then `cwebp -resize 680 0 -q 82`.
+2. Thumbnails: for each page N, inject a style that neutralises the source's
+   `@media screen` chrome (`html{background:#fff}body{padding:0}.page{margin:0;
+   box-shadow:none}`) and hides the other pages with
+   `.page:not(:nth-of-type(N)){display:none}`, then screenshot with
+   `--window-size=816,1056 --force-device-scale-factor=2` and
+   `cwebp -resize 680 0 -q 82`.
+
+The source names the investor platform "DESS · stealth investor network", not
+DIN/DAN, and its Case 2 carries bracketed `[tbd]` placeholders until filled.
 
 The Field Record row on page 2 carries a navy tile per entry with a white-out
 mark. HP, Nielsen and Google were knocked out of supplied images with Pillow
