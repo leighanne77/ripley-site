@@ -774,16 +774,17 @@ and growing revenue &mdash; not just a beautiful product.</p>
       marsh offshore, adding backup power, or raising the substations above the flood line. It
       prices each option, shows how others have paid for it, and shows who else in town gains if
       it works. Then you decide, because you answer for it.</p>
-      <p>A multi-agent decision-support system that prices statistically significant
-      extreme-weather risk for the assets defense depends on &mdash; shipyards, ports, mineral
+      <p>A multi-agent decision-support system that prices extreme-weather risk for the assets
+      defense depends on &mdash; shipyards, ports, mineral
       processing, and the energy that powers the perimeter.</p>
       <ul>
-        <li><span class="num">20+</span> data loaders on a 1&ndash;6 hour refresh, fusing NOAA,
-        OpenFEMA and ERDDAP ground truth with an economic ledger and <span class="num">45+</span>
-        nature-based-solutions datasets.</li>
+        <li><span class="num">20+</span> data loaders fusing NOAA, OpenFEMA and ERDDAP ground truth
+        with an economic ledger and <span class="num">45</span> nature-based solutions with published
+        citations, under a version-controlled refresh registry: cadence, checksum and mutation watch
+        per dataset.</li>
         <li>Orchestrated on Google&rsquo;s ADK over the Agent-to-Agent protocol, with custom
         validation and resilience layers.</li>
-        <li>Isolated and API-first. It never plugs into a financial core &mdash; it exports
+        <li>Isolated. It never plugs into a financial core &mdash; it exports
         verifiable data a human carries into their own models.</li>
       </ul>
       <p><a href="egon.html">Read the EGON one-pager</a> &middot;
@@ -1045,12 +1046,12 @@ capability rides on top at no cost to return.</p>
 
 <h2>{icon("glasses")}Status</h2>
 <ul>
-  <li>Multi-agent decision support built and piloted for infrastructure customers in
-  <span class="num">four</span> countries &mdash; ports, data centers and district assets.</li>
-  <li>Four worked United States sites for EGON &mdash; a coastal corridor, a harbor cluster, an
-  industrial port and a shipyard terminal.</li>
-  <li>EGON&rsquo;s first customer field study concludes in late <span class="num">2026</span>.
-  Findings, and what they change, will be published here.</li>
+  <li>Piloted with infrastructure customers in <span class="num">four</span> countries &mdash;
+  ports, data centers and district assets.</li>
+  <li>Four worked United States sites &mdash; a coastal corridor, a harbor cluster, an industrial
+  port and a shipyard terminal.</li>
+  <li>The first full field study, with a single customer, concludes in late
+  <span class="num">2026</span>. Findings, and what they change, will be published here.</li>
   <li>Delivered by Ripley Decision Advantage <a href="egon-service.html">as a service</a>.
   Demonstrations available under NDA.</li>
 </ul>
