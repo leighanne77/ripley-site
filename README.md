@@ -66,12 +66,71 @@ silhouette with true knockout snowcaps (`fill-rule: evenodd`, `fill: currentColo
 it inherits colour from context). That's the single source for the header lockup, the
 hero, the footer and the favicons.
 
-## Deploying
+## Deploying — the runbook
 
 The Cloudflare Worker `ripley-site` serves `site/` and has both
 `ripleydecisionadvantage.net` and `www.ripleydecisionadvantage.net` attached as custom
-domains. Push to this repo, then redeploy the Worker (or wire up git-connected
-deploys and skip the manual step).
+domains.
+
+**`git push` does not deploy.** The Worker was created by file upload, not a git
+integration, so the repo and the live site are independent. Pushing without deploying
+leaves the site unchanged; deploying without pushing leaves the repo behind. Do both.
+
+### The four steps
+
+```bash
+cd ~/Builds/ripley-site
+
+python3 build_site.py          # 1 · regenerate site/ from build_site.py
+git diff                       # 2 · review — copy changes show up in BOTH files
+git add -A && git commit -m "…"
+./node_modules/.bin/wrangler deploy   # 3 · THIS updates the live site
+git push                       # 4 · optional, and never sufficient on its own
+```
+
+Step 1 is not optional. `site/*.html` is generated; editing it directly is lost on the
+next build, and skipping the build deploys stale HTML while the diff looks correct.
+
+### What a good deploy prints
+
+```
+✨ Read 19 files from the assets directory …/site
+🌀 Found 1 new or modified static asset to upload.
+Uploaded ripley-site (5.70 sec)
+Deployed ripley-site triggers (1.07 sec)
+Current Version ID: …
+```
+
+Only changed assets upload — "18 already uploaded" is normal, not a failure. Wrangler
+lives in `node_modules` (`devDependencies`), so there is no global install to maintain.
+It will offer a version upgrade; **do not take it during a deploy** — upgrade separately.
+
+### Auth
+
+Already configured: an OAuth token under `leighanne@gmail.com`, stored at
+`~/Library/Preferences/.wrangler/config/default.toml`. Check with
+`./node_modules/.bin/wrangler whoami`. If it ever fails, `wrangler login` reopens the
+browser flow.
+
+### Verifying
+
+Check the rendered text, not the raw HTML — copy wraps across lines, so a naive `grep`
+on the served file returns false negatives:
+
+```bash
+curl -s https://www.ripleydecisionadvantage.net/egon > /tmp/live.html
+python3 -c "
+import re,html
+s=open('/tmp/live.html').read()
+print(re.sub(r'\s+',' ',html.unescape(re.sub(r'<[^>]+>',' ',s))).count('your new phrase'))"
+```
+
+**Cloudflare's edge can serve a stale copy for a few seconds after a deploy**, so a first
+check that fails is not a failed deploy. Re-run before investigating.
+
+### If a page changed but the deploy shows 0 assets uploaded
+
+`build_site.py` was not re-run. Go back to step 1.
 
 ## Content rules
 

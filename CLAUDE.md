@@ -128,3 +128,9 @@ footer and favicons.
 Pushing to GitHub does NOT update the live site. The Worker was deployed by
 file upload, not git. Redeploy the Worker after pushing, or wire up
 git-connected deploys.
+
+**Full runbook: README.md § "Deploying — the runbook".** Four steps —
+`python3 build_site.py` → review → commit → `./node_modules/.bin/wrangler deploy`.
+Step 1 is not optional: skipping it deploys stale HTML while the diff looks right.
+Verify on the RENDERED text, not raw HTML (copy wraps across lines), and allow a
+few seconds for the edge cache.
