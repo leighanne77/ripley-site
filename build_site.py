@@ -1092,16 +1092,16 @@ PAGES["tools.html"] = ("Languages & Tools | Ripley Decision Advantage",
 <h3>Strategic technical leadership</h3>
 <ul>
   <li>Sales engineering &middot; product engineering &middot; executive AI strategy</li>
-  <li>Industrialized AI delivery &middot; high-ROI use-case prioritization</li>
+  <li>AI delivery to production &middot; high-ROI use-case prioritization</li>
 </ul>
 <h3>Technical architecture</h3>
 <ul>
   <li>AI solution architecture &middot; agentic AI &amp; orchestration</li>
-  <li>Multimodal AI &middot; vision-language-action (VLA) systems</li>
+  <li>Voice and multimodal AI &middot; governed assistants with human confirmation</li>
 </ul>
 <h3>Governance &amp; systems</h3>
 <ul>
-  <li>Regulatory sandbox execution &middot; systems design methodologies</li>
+  <li>Audit-trail and provenance architectures &middot; systems design methodologies</li>
   <li>Model risk management (MRM) automation</li>
 </ul>
 
@@ -1109,26 +1109,39 @@ PAGES["tools.html"] = ("Languages & Tools | Ripley Decision Advantage",
 <table>
   <tr><th>Domain</th><th>Working set</th></tr>
   <tr><td class="dom">Data</td><td>PostgreSQL as production core &mdash; array columns, recursive
-  CTEs. Neo4j/Cypher for graph fact-checking and the warm-introduction engine. Elasticsearch kNN.
-  Prior platform roles: BigQuery, Snowflake, Databricks/Spark, dbt, Airflow</td></tr>
-  <tr><td class="dom">Pipelines</td><td>ETL and ingestion across <span class="num">20+</span>
-  external-source loaders, entity resolution, data fusion, OSINT acquisition, provenance and
-  lineage, data quality</td></tr>
-  <tr><td class="dom">Agentic AI</td><td>LangChain routing with SuperAGI autonomy as a Compound AI
-  System. A Google ADK build implementing Google&rsquo;s A2A protocol. Graph-grounded output
-  verification. Pydantic-driven tool use, bounded agent loops, human-in-the-loop, MCP</td></tr>
-  <tr><td class="dom">Software</td><td>Python, Java, TypeScript, JavaScript, React, Node.js,
-  FastAPI, Pydantic, SQLAlchemy. AI-native delivery with Claude Code</td></tr>
-  <tr><td class="dom">Infrastructure</td><td>AWS and GCP (Cloud Run, Cloud SQL, Secret Manager),
-  multi-cloud via Shadeform, Docker, Kubernetes, Cloudflare, Google OAuth&nbsp;2.0, Fernet,
-  circuit breakers and exponential backoff</td></tr>
+  CTEs. Neo4j/Cypher for graph fact-checking, the warm-introduction engine and EGON verification.
+  Cassandra and AWS on the Nielsen unified platform. Prior platform roles: BigQuery, Snowflake,
+  Spark SQL, dbt, Airflow, Databricks/Spark. Vector stores evaluated and right-sized: Pinecone,
+  Weaviate, ChromaDB</td></tr>
+  <tr><td class="dom">Pipelines</td><td>Escrowed sources: each dataset fetched once, hashed,
+  vintage-pinned and watched for mutation &mdash; <span class="num">45</span> escrowed datasets.
+  Typed provenance: no figure without its source. ETL and ingestion across
+  <span class="num">20+</span> external-source loaders, entity resolution, data fusion, OSINT
+  acquisition, lineage, data quality</td></tr>
+  <tr><td class="dom">Agentic AI</td><td>Google ADK with Google&rsquo;s A2A protocol: custom message
+  envelope, validation and resilience layers. A <span class="num">36</span>-tool governed assistant:
+  Pydantic-validated dispatch, bounded loops, a content-policy scrubber, human confirmation on every
+  change. A harness for coding agents: the agent commits under its own identity and I merge; models
+  from outside its family review every risky plan and diff; research agents return data that passes
+  a validator before I see it; after-answer truth checks. MCP. Worked with LangGraph, CrewAI,
+  AutoGen, Semantic Kernel, LlamaIndex</td></tr>
+  <tr><td class="dom">Software</td><td>Python, Java, TypeScript, JavaScript, React, Next.js,
+  Node.js, FastAPI, Pydantic, SQLAlchemy, Alembic. AI-native delivery with Claude Code since
+  2025</td></tr>
+  <tr><td class="dom">Infrastructure</td><td>AWS and GCP (Cloud Run, Cloud SQL, Cloud Logging,
+  Secret Manager, Confidential Space, Cloud KMS), Docker, Kubernetes, Cloudflare, Google
+  OAuth&nbsp;2.0, Fernet. Circuit breakers, exponential backoff, session caching.
+  Classification-boundary egress guards with default deny; pytest gates, pre-commit hooks and CI
+  verifiers</td></tr>
   <tr><td class="dom">ML Ops</td><td>Arize, Weights &amp; Biases, promptfoo. Model evaluation,
-  capability auditing, AI failure-mode analysis, boundary testing</td></tr>
-  <tr><td class="dom">Voice</td><td>ASR/TTS and streaming audio &mdash; Vapi, Retell AI, Chirp,
-  Groq, ElevenLabs, Deepgram</td></tr>
-  <tr><td class="dom">Governance</td><td>NIST AI RMF, model risk management (SR&nbsp;11-7),
-  SEC/FINRA and NAIC alignment, PII governance and RBAC, explainable AI (XAI), audit-trail
-  architectures, confidential computing (TEEs), data contracts</td></tr>
+  capability auditing, AI failure-mode analysis, boundary testing, cross-family attack drills on
+  every release</td></tr>
+  <tr><td class="dom">Voice</td><td>ASR/TTS, voice-activity detection and streaming audio &mdash;
+  Vapi, Retell AI, WebSpeech, Chirp, Groq, ElevenLabs, Deepgram</td></tr>
+  <tr><td class="dom">Governance</td><td>NIST AI RMF, NIST CSF 2.0, model risk management
+  (SR&nbsp;11-7), SEC/FINRA and NAIC alignment, FIBO and DoD program-element ontologies, PII
+  governance and RBAC, explainable AI (XAI), audit-trail architectures, data sovereignty,
+  confidential computing (TEEs), data contracts</td></tr>
 </table>
 
 <div class="callout">
