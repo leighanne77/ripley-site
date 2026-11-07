@@ -33,11 +33,19 @@ The other two EGON pages build and deploy outside the nav:
 - `egon.html` — product page plus the Avondale worked example. Linked from the
   index "Current work" section and from the service page.
 - `egon-baltimore.html` — Baltimore Harbor worked example. Linked from `egon.html`.
-- `egon-service.html` — EGON as a tech-enabled service: what the client receives,
-  why a service, the three engagement phases, defensibility, how to buy. In the
-  nav, and also linked from the index "Current work" card, the Status list on
-  `egon.html`, and Services card 04. The federal card names no contract vehicle
-  and no catalog pricing on purpose — see TERMS.md §12.
+- `egon-service.html` — EGON as a product, reached after a co-designed pilot
+  (2026-11-07 reframe; it was "tech-enabled service" before). Lead, the shared
+  graphics, the referee panel, what you get, the three-step pilot-to-product
+  path, why a hosted product, defensibility, how to buy. In the nav, and also
+  linked from the index "Current work" card, the Status list on `egon.html`,
+  and Services card 04. The federal card names no contract vehicle and no
+  catalog pricing on purpose — see TERMS.md §12. Product access is worded as
+  scenarios "exported from EGON into the models you already run", not an API:
+  the payload API is not built (TERMS.md §12). Reword when it ships.
+
+The "economy runs on exposed ground" graphic and the six-step "How EGON works"
+flow live once, as `EXPOSED_GROUND` and `HOW_IT_WORKS`, and render on both
+`egon.html` and `egon-service.html`. Edit them there, not in either page.
 
 None of the three is link-private or access-gated. Gating `/egon` with Cloudflare
 Access is an open task. To add the one-pager to the nav too, add

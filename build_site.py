@@ -281,6 +281,16 @@ a.fde:hover .fde-t,a.fde:hover .fde-cue{color:var(--red);}
 .chip-n{background:var(--blue);color:#fff;}
 .tbd{font-family:'Courier New',Consolas,monospace;font-weight:700;color:var(--blue);}
 .srcnote{font-size:12px;color:#666;font-style:italic;margin-top:10px;}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;align-items:center;margin:16px 0 6px;}
+.ref-scale{border:1px solid #ccc;border-top:4px solid var(--gold);padding:16px 18px 12px;text-align:center;}
+.ref-scale svg{width:100%;max-width:320px;height:auto;display:block;margin:0 auto 8px;}
+.ref-scale p{font-size:13px;margin:0;color:#444;}
+.ticks{list-style:none;padding:0;margin:0;}
+.ticks li{background:var(--cream);border-left:4px solid var(--blue);padding:10px 14px;margin:0 0 8px;font-size:15px;}
+.ticks li::before{content:"✓";position:static;display:inline;width:auto;height:auto;background:none;color:var(--blue);font-weight:700;margin-right:10px;}
+.path{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0 8px;}
+.path .step{border-top-color:var(--red);}
+.path .step .n{color:var(--red);}
 /* USACE process-fit: their phases on top, EGON capability cards beneath */
 .phase-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:3px;
   margin:16px 0 0;}
@@ -609,8 +619,8 @@ def mailto(subject, body):
 
 # Card 04 and the EGON service page share one enquiry, so every lead from
 # that service line arrives under the same subject.
-TES_TITLE = "Tech-enabled services"
-TES_ASK = ("I am writing to inquire about your tech-enabled services for infrastructure risk, "
+TES_TITLE = "EGON: pilot to product"
+TES_ASK = ("I am writing to inquire about an EGON pilot for infrastructure risk, "
            "please contact me to start this discussion")
 
 # Each card is a mailto link with the enquiry pre-written, so the visitor's
@@ -626,8 +636,8 @@ SERVICES = [
      "I am writing to inquire about your forward deployed engineering services, "
      "please contact me to start this discussion"),
     ("industrial", TES_TITLE,
-     "EGON run by me, delivered as work product. Infrastructure hazard exposure, priced site by "
-     "site. Outcomes you defend, not software you staff.",
+     "Infrastructure hazard exposure, priced site by site. A pilot on one of your assets, "
+     "designed with you, then a hosted product whose scenarios export into the models you already run. I run it.",
      TES_ASK, "egon-service.html"),
     ("summit", "Zero-to-one product engineering",
      "Bespoke AI/ML systems from first requirement to production. Architecture, build, launch.",
@@ -788,7 +798,7 @@ and growing revenue &mdash; not just a beautiful product.</p>
         verifiable data a human carries into their own models.</li>
       </ul>
       <p><a href="egon.html">Read the EGON one-pager</a> &middot;
-      <a href="egon-service.html">EGON as a service</a> &mdash; deeper technical detail on
+      <a href="egon-service.html">EGON: pilot to product</a> &mdash; deeper technical detail on
       request.</p>
     </div>
   </div>
@@ -863,24 +873,9 @@ on how I work &mdash; click any to open it.</p>
 """)
 
 # ---------------------------------------------------------------- egon
-PAGES["egon.html"] = ("EGON | Ripley Decision Advantage",
-  "EGON prices physical risk on real assets and ranks the mitigations that pay for themselves.",
-  f"""
-<h1>EGON</h1>
-<div class="h1-rule"></div>
-<h4 style="color:var(--blue);letter-spacing:4px;">Physical risk, priced</h4>
-
-<p>EGON prices physical risk on real assets. For a given asset, EGON quantifies the physical
-exposure the owner actually carries, then tests the mitigations in scope for it &mdash; hard
-infrastructure, nature-based solutions, and hybrids &mdash; on a single return-on-investment
-basis.</p>
-<p>The output is not a hazard map or an exploratory dashboard. It is a ranked shortlist you
-choose from: the resilience moves that pay for themselves within the ownership period, ranked by
-risk-adjusted return, with every number traceable to a source that can be challenged line by
-line. EGON states what it tested and what it did not &mdash; the tested scope is part of the
-answer, not a footnote.</p>
-
-<h2>{icon("industrial")}The economy runs on exposed ground</h2>
+# ---------------------------------------------------------------- shared EGON graphics
+# Used by egon.html and egon-service.html. One source, two pages.
+EXPOSED_GROUND = f"""<h2>{icon("industrial")}The economy runs on exposed ground</h2>
 <p>Highways, ports, waterways, levees and dams &mdash; the arteries that move freight and project
 force &mdash; concentrate on coasts, rivers and water-stressed basins.</p>
 
@@ -922,15 +917,9 @@ force &mdash; concentrate on coasts, rivers and water-stressed basins.</p>
     </div>
     <p>The expected loss window has moved inside the expected service-life window.</p>
   </div>
-</div>
+</div>"""
 
-<div class="callout">
-  <div class="ctitle">Referee, not advocate</div>
-  <p>EGON prices the exposure and lets the return choose the lever. Where a nature-based move beats
-  hard infrastructure per dollar, EGON says so. Where it doesn&rsquo;t, EGON stays quiet.</p>
-</div>
-
-<h2>{icon("compass")}How EGON works</h2>
+HOW_IT_WORKS = f"""<h2>{icon("compass")}How EGON works</h2>
 <div class="flow">
   <div class="step"><span class="n">01</span><div class="t">Price the exposure</div>
     {art("price")}
@@ -950,7 +939,34 @@ force &mdash; concentrate on coasts, rivers and water-stressed basins.</p>
   <div class="step"><span class="n">06</span><div class="t">The result</div>
     {art("result")}
     <p>Longer-lasting infrastructure, better readiness, local economic benefit.</p></div>
+</div>"""
+
+PAGES["egon.html"] = ("EGON | Ripley Decision Advantage",
+  "EGON prices physical risk on real assets and ranks the mitigations that pay for themselves.",
+  f"""
+<h1>EGON</h1>
+<div class="h1-rule"></div>
+<h4 style="color:var(--blue);letter-spacing:4px;">Physical risk, priced</h4>
+
+<p>EGON prices physical risk on real assets. For a given asset, EGON quantifies the physical
+exposure the owner actually carries, then tests the mitigations in scope for it &mdash; hard
+infrastructure, nature-based solutions, and hybrids &mdash; on a single return-on-investment
+basis.</p>
+<p>The output is not a hazard map or an exploratory dashboard. It is a ranked shortlist you
+choose from: the resilience moves that pay for themselves within the ownership period, ranked by
+risk-adjusted return, with every number traceable to a source that can be challenged line by
+line. EGON states what it tested and what it did not &mdash; the tested scope is part of the
+answer, not a footnote.</p>
+
+{EXPOSED_GROUND}
+
+<div class="callout">
+  <div class="ctitle">Referee, not advocate</div>
+  <p>EGON prices the exposure and lets the return choose the lever. Where a nature-based move beats
+  hard infrastructure per dollar, EGON says so. Where it doesn&rsquo;t, EGON stays quiet.</p>
 </div>
+
+{HOW_IT_WORKS}
 
 <h2>{icon("summit")}Worked example &mdash; Avondale, Louisiana</h2>
 <p>A 254-acre riverfront terminal on the Mississippi at River Mile&nbsp;108, twenty miles upriver
@@ -1052,8 +1068,8 @@ capability rides on top at no cost to return.</p>
   port and a shipyard terminal.</li>
   <li>The first full field study, with a single customer, concludes in late
   <span class="num">2026</span>. Findings, and what they change, will be published here.</li>
-  <li>Delivered by Ripley Decision Advantage <a href="egon-service.html">as a service</a>.
-  Demonstrations available under NDA.</li>
+  <li>Delivered by Ripley Decision Advantage: <a href="egon-service.html">a pilot on one site,
+  then a hosted product</a>. Demonstrations available under NDA.</li>
 </ul>
 
 <h2>{icon("compass")}On the roadmap</h2>
@@ -1306,108 +1322,122 @@ SCOPING = mailto(TES_TITLE, TES_ASK)
 WALKTHROUGH = mailto("EGON walkthrough",
     "I would like to see a walkthrough of EGON, please contact me to arrange one")
 
-PAGES["egon-service.html"] = ("EGON as a Service | Ripley Decision Advantage",
-  "EGON run by Ripley and delivered as defensible work product. Nothing to stand up, no "
-  "maintenance trap.",
+PAGES["egon-service.html"] = ("EGON &mdash; pilot to product | Ripley Decision Advantage",
+  "EGON prices physical risk on real assets. A pilot on one site, designed with you, then a "
+  "hosted product whose scenarios export into the models you already run.",
   f"""
-<h1>EGON as a service</h1>
+<h1>EGON</h1>
 <div class="h1-rule"></div>
-<h4 style="color:var(--blue);letter-spacing:4px;">Tech-enabled services</h4>
+<h4 style="color:var(--blue);letter-spacing:4px;">Physical risk, priced &middot; pilot to product</h4>
 
-<p>You don&rsquo;t buy software. You get the answer, and the record behind it.</p>
-<p>EGON is run as a service, by me. Hazard exposure across highways, ports, waterways, levees and
-dams, site by site &mdash; assembled, scenario-tested, and delivered as work product your reviewers
-can defend line by line.</p>
+<p>EGON prices what extreme weather will cost a specific asset, what protects it, and what that
+protection is worth. You get a ranked shortlist of the moves that pay for themselves inside your
+ownership period, with every number traced to a source you can challenge.</p>
+<p>It starts as a pilot on one of your sites, designed with you. It continues as a hosted product
+whose scenarios export into the models you already run. I run the platform.</p>
 <p><a class="cta" href="{SCOPING}">Start a scoping call</a></p>
 
-<h2>{icon("shield")}What you receive</h2>
-<p>Outcomes, not a login. Every engagement produces artifacts a decision can rest on. The
-platform is how I get there; it isn&rsquo;t what I hand you.</p>
+{EXPOSED_GROUND}
+
+{HOW_IT_WORKS}
+
+<h2>{icon("glasses")}Referee, not advocate</h2>
+<div class="ref-grid">
+  <div class="ref-scale">
+    <svg viewBox="0 0 320 160" aria-hidden="true">
+  <rect x="120" y="146" width="80" height="6" fill="#1A2332"/>
+  <rect x="157" y="66" width="6" height="82" fill="#1A2332"/>
+  <line x1="52" y1="56" x2="268" y2="82" stroke="#1A2332" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="160" cy="69" r="6" fill="#E8A82A"/>
+  <line x1="52" y1="56" x2="34" y2="100" stroke="#777" stroke-width="2"/>
+  <line x1="52" y1="56" x2="70" y2="100" stroke="#777" stroke-width="2"/>
+  <rect x="28" y="100" width="48" height="6" fill="#777"/>
+  <rect x="38" y="86" width="10" height="12" fill="#999"/><rect x="50" y="86" width="10" height="12" fill="#999"/>
+  <line x1="268" y1="82" x2="250" y2="126" stroke="#4A6B8A" stroke-width="2"/>
+  <line x1="268" y1="82" x2="286" y2="126" stroke="#4A6B8A" stroke-width="2"/>
+  <rect x="244" y="126" width="48" height="6" fill="#4A6B8A"/>
+  <rect x="250" y="112" width="10" height="12" fill="#4A6B8A"/><rect x="262" y="104" width="10" height="20" fill="#4A6B8A"/><rect x="274" y="112" width="10" height="12" fill="#4A6B8A"/>
+  <text x="52" y="122" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#555">GRAY</text>
+  <text x="268" y="148" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#4A6B8A">NATURE-BASED</text>
+  <text x="268" y="158" text-anchor="middle" font-family="Arial" font-size="9" fill="#4A6B8A">higher return here</text>
+</svg>
+    <p>The return picks the lever. Where gray wins, EGON says so and ranks it first.</p>
+  </div>
+  <ul class="ticks">
+    <li>Gray, nature-based and hybrid moves tested on one basis</li>
+    <li>Return on investment chooses, not a preference</li>
+    <li>Where gray wins, it ranks first</li>
+    <li>What was tested, and what was not, stated with the answer</li>
+  </ul>
+</div>
+
+<h2>{icon("shield")}What you get</h2>
+<p>Outputs a decision can rest on. The platform is how I get there; what you take away is the
+work product and the record behind it.</p>
 <div class="grid">
   <div class="card">
-    <h3>One basis of comparison</h3>
-    <p>Every site priced on the same basis, so prioritization stops being an argument between
-    districts with different spreadsheets.</p>
+    <h3>A ranked shortlist</h3>
+    <p>The resilience moves in scope for your asset, tested on one basis and ranked by
+    risk-adjusted return. You choose from it.</p>
   </div>
   <div class="card">
-    <h3>Scenario sets your reviewers accept</h3>
-    <p>Built only from sources already recognized in your process. No figure enters a scenario
-    without a named, dated origin.</p>
+    <h3>Scenarios for your own models</h3>
+    <p>Exportable, with each figure&rsquo;s source, formula and sensitivity attached, so your
+    reviewers can re-run them in the tools they already use.</p>
   </div>
   <div class="card">
     <h3>Funding and budget packages</h3>
-    <p>Assembled to the standard of the record &mdash; structured for the review that decides
+    <p>Funding sources found and attached to each move, structured for the review that decides
     whether a project is funded, not for a slide.</p>
   </div>
   <div class="card">
     <h3>A defensibility file</h3>
-    <p>The full chain from source to number to conclusion, versioned and closed, so the basis of
-    a decision survives after the people who made it move on.</p>
+    <p>The full chain from source to number to conclusion, versioned and closed with the
+    decision, so the basis survives after the people who made it move on.</p>
   </div>
 </div>
 
-<h2>{icon("compass")}Why a service</h2>
+<h2>{icon("summit")}From pilot to product</h2>
+<p>Three steps, each one gating the next. Nothing scales until the prior step has produced
+something you can check.</p>
+<div class="path">
+  <div class="step"><span class="n">01</span><div class="t">Scoping call</div>
+    <p>One asset, one decision, and the reviewers who have to accept the answer. That sets the
+    pilot&rsquo;s scope and its pass criteria.</p></div>
+  <div class="step"><span class="n">02</span><div class="t">Co-designed pilot</div>
+    <p>One site, on your sources, your regulations and your definition of success. A working
+    proof on real data, not a demo. It ends with criteria you set, and those criteria decide
+    whether step three happens.</p></div>
+  <div class="step"><span class="n">03</span><div class="t">Product access</div>
+    <p>Your sites, your team. Scenarios exported from EGON into the models you already
+    run. Refreshes, model updates and support sit on my side of the line.</p></div>
+</div>
+
+<h2>{icon("compass")}Why a hosted product</h2>
 <p>Acquiring a system means a procurement, a deployment on your network, and an operations
-obligation that outlives the budget that created it. Acquiring the outcome means none of the
-three.</p>
+obligation that outlives the budget that created it. Acquiring the product as a service means
+none of the three.</p>
 <div class="grid">
   <div class="card">
     <h3>Nothing to stand up</h3>
-    <p>I operate EGON in my own environment and deliver work product. Nothing is stood up on
-    your network by default.</p>
-    <p>If you would rather it run inside your boundary, it deploys there and inherits the
-    controls you already hold.</p>
+    <p>EGON runs in my environment. Nothing is stood up on your network by default. If it must
+    run inside your boundary, it deploys there and inherits the controls you already hold.</p>
   </div>
   <div class="card">
-    <h3>No specification written years early</h3>
-    <p>Scope is set against your current baseline and adjusted as the work reveals what actually
-    drives the decision. Targets are agreed with you, measured against your own starting point
-    &mdash; not asserted by a vendor up front.</p>
+    <h3>Scope set by the pilot, not a specification</h3>
+    <p>Targets are agreed against your own baseline and adjusted as the pilot shows what actually
+    drives the decision. Nothing is asserted by a vendor years early.</p>
   </div>
   <div class="card">
     <h3>No maintenance trap</h3>
     <p>Model updates, data refreshes, dependency upkeep and the on-call burden are mine. You never
-    find yourself funding a rewrite because the thing you bought stopped being maintained.</p>
+    fund a rewrite because the thing you bought stopped being maintained.</p>
   </div>
 </div>
 <div class="callout">
   <div class="ctitle">What this is not</div>
-  <p>A dashboard license, a data subscription, or a model you have to staff. If what you need is
-  software you run yourself, say so &mdash; that is a different conversation and I am glad to
-  have it.</p>
-</div>
-
-<h2>{icon("summit")}How the engagement runs</h2>
-<p>Three phases, each one gating the next. Nothing scales until the prior phase has produced
-something you can check.</p>
-
-<div class="phase">
-  <span class="bn">01</span>
-  <div>
-    <h3>Site proof</h3>
-    <p>One location, on the ground, on real data &mdash; your sources, your regulations, your
-    definition of success. A working proof, not a demo. It ends with criteria you set, and those
-    criteria decide whether phase two happens.</p>
-  </div>
-</div>
-
-<div class="phase">
-  <span class="bn">02</span>
-  <div>
-    <h3>Deployment</h3>
-    <p>Additional locations, brought on in sequence. The slow part is never the modeling &mdash;
-    it is getting internal data holders to collaborate. I plan for that explicitly and name it
-    early rather than discovering it in month four.</p>
-  </div>
-</div>
-
-<div class="phase">
-  <span class="bn">03</span>
-  <div>
-    <h3>Sustained operation</h3>
-    <p>I run it. Your teams use the output in their own modeling, funding packages and external
-    briefings. Refreshes, model updates and support sit on my side of the line.</p>
-  </div>
+  <p>A hazard map, a dashboard to explore, or a decision the machine makes. EGON recommends; you
+  decide.</p>
 </div>
 
 <h2>{icon("glasses")}Built to survive the review, not the demo</h2>
@@ -1431,24 +1461,28 @@ later, when someone asks where a number came from.</p>
 
 <h2>{icon("industrial")}What it runs on</h2>
 <p>EGON is a multi-agent decision-support system for physical hazard exposure across public and
-industrial infrastructure. It is operated by Ripley, or deployed inside a boundary you already
+industrial infrastructure. It is hosted by Ripley, or deployed inside a boundary you already
 hold. It reads public and open sources alongside your internal data, and interfaces with the
 hydrologic and coastal models your engineers already use. Your data is not used to train
 anyone&rsquo;s model.</p>
-<p><a href="egon.html">Read the EGON one-pager</a> &mdash; asset classes, stressors, how it
-works, and the Avondale worked example.</p>
+<p><a href="egon.html">Read the EGON one-pager</a> &mdash; the Avondale and Baltimore Harbor
+worked examples, status, and the roadmap.</p>
 
 <h2>{icon("briefcase")}How to buy it</h2>
+<p>The pilot first, then product access for the sites you choose. Both are bought from me
+directly.</p>
 <div class="grid">
   <div class="card">
     <h3>Federal</h3>
-    <p>Acquired as a commercial service on firm-fixed-price terms. Ask me about the acquisition
-    path and I will route the specifics to your contracting officer directly.</p>
+    <p>Bought as a commercial service on firm-fixed-price terms: the pilot on one site, then
+    product access. Ask me about the acquisition path and I will route the specifics to your
+    contracting officer directly.</p>
   </div>
   <div class="card">
     <h3>Commercial and capital</h3>
-    <p>Asset owners, operators, terminal and port authorities, and the investors underwriting
-    them. Same engine, same defensibility standard, priced against the exposure it resolves.</p>
+    <p>Asset owners, operators, port and terminal authorities, and the investors underwriting
+    them. The pilot is scoped to one asset and priced against the exposure it resolves. Product
+    access follows for the sites you choose.</p>
   </div>
 </div>
 <div class="cta-row">
