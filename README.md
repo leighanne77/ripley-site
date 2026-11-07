@@ -53,7 +53,8 @@ are replaced with sourced ones. The rows are internally consistent: ROI = avoide
 loss ÷ spend, and the rows sum to the program total. If you edit a figure, fix the
 arithmetic too.
 
-The phrase "Exit Value Enhancer" is not used anywhere. Don't reintroduce it.
+The phrase "Exit Value Enhancer" is not used anywhere in the HTML. Don't reintroduce it.
+The one exception is the CV PDF, by the owner's decision (see CLAUDE.md § The CV download).
 
 ## Design system
 

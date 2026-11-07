@@ -1461,7 +1461,7 @@ PAGES["bio.html"] = ("Leigh Anne Miller | Ripley Decision Advantage",
     policy analyst. The two halves are the practice: systems built to survive audit, for decisions
     that carry real consequence.</p>
     <p class="bio-dl"><a href="{CV_FILE}" download="{CV_NAME}">Download the CV</a>
-    &middot; PDF, two pages</p>
+    &middot; PDF, four pages</p>
   </div>
 </div>
 
@@ -1535,7 +1535,7 @@ PAGES["contact.html"] = ("Contact | Ripley Decision Advantage",
   <span style="font-size:14px;font-weight:400">(call or text)</span></p>
   <p style="margin-top:8px"><a href="https://www.linkedin.com/in/leighannemillerengineering/">LinkedIn:
   leighannemillerengineering</a></p>
-  <p><a href="{CV_FILE}" download="{CV_NAME}">Download the CV</a> &middot; PDF, two pages</p>
+  <p><a href="{CV_FILE}" download="{CV_NAME}">Download the CV</a> &middot; PDF, four pages</p>
 </div>
 
 <div class="stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>

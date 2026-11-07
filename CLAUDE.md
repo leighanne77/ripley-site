@@ -57,7 +57,10 @@ Angel Network bio page.
 The build does not generate or touch it; drop in a new file to update it.
 Linked from `bio.html` under the lead and from the contact callout, via
 `CV_FILE` / `CV_NAME` in `build_site.py`. Content rules apply to the PDF too —
-check a replacement for banned copy before committing it.
+check a replacement for banned copy before committing it. One standing exception,
+decided by the owner on 2026-11-07: the CV PDF may keep "exit-value enhancer" in
+its EGON entry and may list X, the moonshot factory. Do not flag either again.
+The HTML pages keep the ban.
 
 ## The principal thumbnails
 
